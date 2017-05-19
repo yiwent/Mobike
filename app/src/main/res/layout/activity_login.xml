@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <com.yiwen.mobike.views.MyToolBar
+        android:id="@+id/toolbar_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:navigationIcon="@mipmap/places_ic_clear"
+        app:leftButtonIcon="@mipmap/places_ic_clear"
+        app:showSearchView="false"
+        app:title="手机验证"
+        >
+    </com.yiwen.mobike.views.MyToolBar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar_login"
+        android:layout_margin="20dp"
+
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#F2F2F2"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_marginLeft="3dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="手机号"
+                android:textColor="#333333"
+                android:textSize="18dp"/>
+
+            <com.yiwen.mobike.views.ClearEditText
+                android:id="@+id/et_phone"
+                android:layout_marginRight="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="请输入手机号"
+                android:inputType="phone"
+                android:textColorHint="#ABABAB"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="#F2F2F2"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_marginLeft="3dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="验证码"
+                android:textColor="#333333"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/et_code"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:hint="请输入验证码"
+                android:inputType="phone"
+                android:textColorHint="#ABABAB"/>
+
+            <Button
+                android:id="@+id/get_code"
+
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:background="@color/gray"
+                android:text="获取验证码"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/loin_voice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            android:text="收不到短信，试试语音短信"
+            android:textColor="@color/red"/>
+
+        <Button
+            android:id="@+id/login_query"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/gray"
+            android:text="确定"
+            android:textColor="@color/white"/>
+
+        <LinearLayout
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="点击-确定,即表示已阅读并同意"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/login_services"
+                android:text="《用车服务条款》"
+                android:textColor="@color/red"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

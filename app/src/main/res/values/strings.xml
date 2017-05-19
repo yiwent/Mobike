@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">mobike</string>
+    <string name="title_activity_use_info">UseInfoActivity</string>
+    <string name="title_activity_message_detail">MessageDetailActivity</string>
+</resources>

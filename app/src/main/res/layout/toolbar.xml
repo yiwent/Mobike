@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+    <ImageButton
+        android:id="@+id/id_ib_navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:minWidth="0dp"
+        android:scaleType="centerInside"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/id_et_search"
+        style="@style/search_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:drawableLeft="@mipmap/icon_search"
+        android:gravity="center"
+        android:hint="请输入搜索内容"
+        android:visibility="gone"
+        />
+
+    <TextView
+        android:id="@+id/id_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:visibility="gone"
+        />
+
+    <ImageView
+        android:id="@+id/id_btn_right"
+        style="@android:style/Widget.Material.Toolbar.Button.Navigation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:visibility="gone"
+        />
+
+</RelativeLayout>
