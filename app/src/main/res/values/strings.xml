@@ -2,4 +2,20 @@
     <string name="app_name">mobike</string>
     <string name="title_activity_use_info">UseInfoActivity</string>
     <string name="title_activity_message_detail">MessageDetailActivity</string>
+
+    <string-array name="hint_title">
+        <item>无桩停车</item>
+        <item>预约与计费</item>
+        <item>一键扫码，快速开锁</item>
+        <item>手动关锁，完成还车</item>
+        <item>客户服务</item>
+    </string-array>
+    <string-array name="hint_content">
+        <item>膜拜单车不需要固定车桩，请将单车停放在路边合适区域内，方面他人使用</item>
+        <item>在地图上点击你想要的单车即可预约，预约车辆为您保留15分钟。开锁开始计费</item>
+        <item>在膜拜单车的车把和车锁都印有二维码，，只需用手机扫描，车锁会自动打开</item>
+        <item>骑行结束后一定记得关锁来结束计费哦！（结费或受网络影响，稍等即可）</item>
+        <item>寻找客服、举报违停或发行故障车，请点击首页右下角客服图标</item>
+    </string-array>
+
 </resources>

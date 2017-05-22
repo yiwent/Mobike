@@ -62,7 +62,7 @@ public class MyToolBar extends Toolbar {
 
         isShouw();
 
-        setContentInsetsRelative(10, 10);
+        setContentInsetsRelative(15, 15);
 
         initListener();
 

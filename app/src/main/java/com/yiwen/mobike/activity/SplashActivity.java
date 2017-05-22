@@ -22,7 +22,7 @@ import static com.yiwen.mobike.utils.MyConstains.IS_FIRST_RUN;
 
 public class SplashActivity extends AppCompatActivity {
     private boolean isNeedSetting;
-    private boolean isNeedLogin = true;
+    private boolean isNeedLogin = false;// TODO: 2017/5/21  turn
     private boolean isFirstRun  = true;
 
     @Override
@@ -45,7 +45,8 @@ public class SplashActivity extends AppCompatActivity {
         isFirstRun = getSharedPreferences(MyConstains.SP_MOBIKE, MODE_PRIVATE).
                 getBoolean(IS_FIRST_RUN, true);
         isNeedLogin = getSharedPreferences(MyConstains.SP_MOBIKE, MODE_PRIVATE).
-                getBoolean(MyConstains.IS_NEED_LOGIN, true);
+                getBoolean(MyConstains.IS_NEED_LOGIN, false);
+        //TODO 测试后改为false
     }
 
     private void initConnect() {
@@ -142,11 +143,12 @@ public class SplashActivity extends AppCompatActivity {
 
     private void checkFirstRun() {
         if (isFirstRun) {
-            Go2Guide();
+
             getSharedPreferences(MyConstains.SP_MOBIKE, MODE_PRIVATE)
                     .edit()
                     .putBoolean(MyConstains.IS_FIRST_RUN, false)
                     .apply();
+            Go2Guide();
         } else {
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -157,7 +159,7 @@ public class SplashActivity extends AppCompatActivity {
                         Go2Main();
                     }
                 }
-            }, 2000);
+            }, 20);// TODO: 2017/5/21
         }
 
     }

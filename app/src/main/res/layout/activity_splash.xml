@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     >
     <ImageView
-        android:background="@mipmap/splash"
+        android:background="@drawable/activity_splash_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

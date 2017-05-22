@@ -1,18 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".activity.MainActivity">
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
-</RelativeLayout>
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize">
+
+        <ImageView
+            android:id="@+id/ic_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="5dp"
+            android:clickable="true"
+            android:src="@drawable/icon_actionbar_home"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:minHeight="?attr/actionBarSize"
+            android:src="@drawable/mobike_title_img"/>
+
+        <ImageView
+            android:id="@+id/ic_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="15dp"
+            android:layout_toLeftOf="@+id/ic_message"
+            android:clickable="true"
+            android:src="@drawable/icon_actionbar_search"/>
+
+        <ImageView
+            android:id="@+id/ic_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="5dp"
+            android:clickable="true"
+            android:src="@drawable/notification"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_selectmobike"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:gravity="center"
+        android:visibility="visible"
+        android:minHeight="?attr/actionBarSize"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_allmobike"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="center"
+            android:tag="0"
+            android:text="全部单车"
+            android:textColor="@color/white"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:id="@+id/tv_mobike"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="center"
+            android:tag="1"
+            android:text="Mobike"
+            android:textColor="@color/white"
+            android:textSize="15dp"/>
+
+        <TextView
+            android:id="@+id/tv_mobikelite"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:gravity="center"
+            android:tag="2"
+            android:text="Mobike Lite"
+            android:textColor="@color/white"
+            android:textSize="15dp"/>
+
+    </LinearLayout>
+
+    <include layout="@layout/bike_info_board"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.baidu.mapapi.map.TextureMapView
+            android:id="@+id/bmapview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true">
+
+        </com.baidu.mapapi.map.TextureMapView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/main_login"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/red"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="10dp"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:text="你尚未完成手机验证，请先进行手机验证"
+                    android:textColor="@color/white"
+                    android:textSize="15dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="8dp"
+                    android:gravity="center"
+                    android:text=">"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    />
+            </RelativeLayout>
+            <ImageView
+                android:id="@+id/dingwei"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:src="@drawable/map_location_btn"/>
+
+            <ImageView
+                android:id="@+id/kefu"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:src="@drawable/service_menu_btn"/>
+
+            <FrameLayout
+                android:id="@+id/refreshAll"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_above="@+id/dingwei"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/map_refresh_btn"
+                android:clickable="true">
+
+                <ImageView
+                    android:id="@+id/refresh"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/map_refresh_btn_arrow"
+                    />
+            </FrameLayout>
+
+
+            <ImageView
+                android:id="@+id/hongbao"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_above="@+id/kefu"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="8dp"
+                android:clickable="true"
+                android:src="@drawable/icon_red_packet_access"/>
+
+            <LinearLayout
+                android:id="@+id/scan_qrcode"
+                android:background="@drawable/scan_unlock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/report_issue_scan_qrcode"/>
+                <TextView
+                    android:text="扫码开锁"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

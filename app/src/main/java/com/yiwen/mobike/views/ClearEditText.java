@@ -38,7 +38,7 @@ public class ClearEditText extends AppCompatEditText implements View.OnTouchList
 
     private void init(final Context context) {
 
-        final Drawable drawable = ContextCompat.getDrawable(context, R.drawable.icon_delete_32);
+        final Drawable drawable = ContextCompat.getDrawable(context, R.mipmap.places_ic_clear);
         final Drawable wrappedDrawable = DrawableCompat.wrap(drawable); //Wrap the drawable so that it can be tinted pre Lollipop
         DrawableCompat.setTint(wrappedDrawable, getCurrentHintTextColor());
         mClearTextIcon = wrappedDrawable;

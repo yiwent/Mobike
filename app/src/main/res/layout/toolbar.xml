@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
+                android:minHeight="?attr/actionBarSize"
               android:layout_height="wrap_content">
     <ImageButton
         android:id="@+id/id_ib_navigation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
         android:minWidth="0dp"
+        style="@android:style/Widget.Material.Toolbar.Button.Navigation"
+        android:layout_marginLeft="5dp"
         android:scaleType="centerInside"
         android:visibility="gone"/>
 

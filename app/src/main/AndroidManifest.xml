@@ -22,7 +22,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/mobike_logo"
+        android:icon="@drawable/mobike_logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -30,10 +30,10 @@
         <!-- lbs -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="GbaZiAIoubBRuNF7SGHPvFEILfbkTR9o"/>
+            android:value="FzrnM3BFcOI9M4ZiWn0NvABCq0uWtyda"/>
 
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".activity.SplashActivity"
             android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -43,10 +43,9 @@
         </activity>
         <activity android:name=".activity.GuideActivity">
         </activity>
-        <!--
-        <activity android:name=".activity.LoginActivity"
-        android:theme="@style/AppTheme.NoActionBar"></activity>
-        -->
+        <activity
+            android:name=".activity.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".activity.UseInfoActivity"
             android:label="@string/title_activity_use_info"
@@ -57,7 +56,8 @@
         <activity android:name=".activity.ActionSearchActivity">
         </activity>
         <!-- <activity android:name=".activity.SplashActivity"></activity> -->
-        <activity android:name=".activity.MainActivity"/>
+        <activity android:name=".activity.MainActivity"
+            android:launchMode="singleTop"/>
         <!-- baidu lbs -->
         <service
             android:name="com.baidu.location.f"
@@ -79,15 +79,18 @@
         </activity>
         <activity android:name=".activity.MyRedPocketActivity">
         </activity>
-        <!--<activity android:name=".activity.RegActivity">-->
-        <!--</activity>-->
-4
-<!--sns-->
+        <!-- <activity android:name=".activity.RegActivity"> -->
+        <!-- </activity> -->
+        4
+        <!-- sns -->
         <activity
             android:name="com.mob.tools.MobUIShell"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:configChanges="keyboardHidden|orientation|screenSize"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <activity android:name=".activity.Hint_viewActivity"
+            android:theme="@style/AppTheme.HintCard">
+        </activity>
     </application>
 
 </manifest>
