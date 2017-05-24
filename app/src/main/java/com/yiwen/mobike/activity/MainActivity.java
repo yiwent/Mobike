@@ -237,7 +237,8 @@ public class MainActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ic_menu:
-                Go2Login();
+          //      Go2Login();
+                Go2UserActivity();
                 break;
             case R.id.ic_search:
                 Go2Seach();
@@ -278,8 +279,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
     private void setMyClickable(TextView tv) {
         mTvAllmobike.setClickable(true);
         mTvMobike.setClickable(true);
@@ -315,7 +314,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+    private void Go2UserActivity() {
+        Intent intent=new Intent(MainActivity.this,UserActivity.class);
+        startActivity(intent);
+    }
     private void refreshData() {
         mRefresh.startAnimation(ra);
 

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.yiwen.mobike.activity.ModifyNickNameActivity">
+
+    <com.yiwen.mobike.views.TabTitleView
+        android:id="@+id/title_modify_nick_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rightText="保存"
+        app:rightTvColor="@color/red"
+        app:showRightTextView="true"
+        app:titleText="昵称"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:background="@color/bg"/>
+
+    <com.yiwen.mobike.views.ClearEditText
+        android:id="@+id/et_modify_nick_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:padding="5dip"
+        android:layout_margin="10dip"
+        android:textCursorDrawable="@color/red"
+        android:focusable="true"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg"/>
+</LinearLayout>

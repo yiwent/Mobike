@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.yiwen.mobike.activity.WalletActivity">
+
+    <com.yiwen.mobike.views.TabTitleView
+        android:id="@+id/title_wallet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rightText="明细"
+        app:showRightTextView="true"
+        app:titleText="我的钱包"/>
+
+    <TextView
+        android:id="@+id/tv_freeRide"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_below="@+id/title_wallet"
+        android:background="@color/tv_bg"
+        android:gravity="center"
+        android:text="您可免费骑行至2017/10/10"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_freeRide"
+        android:layout_centerHorizontal="true"
+        android:background="@color/tv_wallet_bg">
+
+        <TextView
+            android:id="@+id/tv_money_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="90dp"
+            android:text="100.0"
+            android:textColor="@color/white"
+            android:textSize="50sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_money_total"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="30dp"
+            android:text="车费余额（元）"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/wallet_bottom_bg">
+
+    </RelativeLayout>
+</RelativeLayout>

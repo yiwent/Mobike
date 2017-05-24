@@ -17,7 +17,7 @@ import com.yiwen.mobike.utils.MyConstains;
 import com.yiwen.mobike.utils.ToastUtils;
 import com.yiwen.mobike.views.ClearEditText;
 import com.yiwen.mobike.views.CountTimerView;
-import com.yiwen.mobike.views.MyToolBar;
+import com.yiwen.mobike.views.TabTitleView;
 
 import org.json.JSONObject;
 
@@ -36,7 +36,7 @@ import cn.smssdk.utils.SMSLog;
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     @BindView(R.id.toolbar_login)
-    MyToolBar     mToolbarLogin;
+    TabTitleView  mToolbarLogin;
     @BindView(R.id.et_phone)
     ClearEditText mEtPhone;
     @BindView(R.id.et_code)
@@ -86,12 +86,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void initEvent() {
-        mToolbarLogin.setOnLeftButtonClickListener(new MyToolBar.OnLeftButtonClickListener() {
+        mToolbarLogin.setOnLeftButtonClickListener(new TabTitleView.OnLeftButtonClickListener() {
             @Override
             public void onClick() {
                 Go2Main();
             }
         });
+
+
         mEtPhone.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

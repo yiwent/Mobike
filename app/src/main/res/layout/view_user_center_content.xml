@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical">
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_my_money"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="我的钱包"
+        app:rightTvText="28.7元"
+        app:showRightTv="true"/>
+
+    <include layout="@layout/divider"/>
+
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_my_youhui"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="我的优惠"
+        app:rightTvText="一张"
+        app:showRightTv="true"/>
+
+    <include layout="@layout/divider"/>
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_my_distance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="我的行程"
+        />
+
+    <include layout="@layout/divider_user_center"/>
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_my_mymassege"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="我的消息"
+        />
+
+    <include layout="@layout/divider"/>
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_my_invent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="邀请好友"
+        />
+
+    <include layout="@layout/divider"/>
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_my_guide"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="用户指南"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg"/>
+
+</LinearLayout>

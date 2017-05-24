@@ -7,4 +7,26 @@
         <attr name="myTitle" format="string"/>
 
     </declare-styleable>
+
+    <declare-styleable name="MySettingView">
+        <attr name="showIndicate" format="boolean"/>
+        <attr name="showRightImage" format="boolean"/>
+        <attr name="showDotImage" format="boolean"/>
+        <attr name="showRightTv" format="boolean"/>
+        <attr name="leftTvText" format="string"/>
+        <attr name="rightTvText" format="string"/>
+        <attr name="ringhtTvTextColor" format="reference"/>
+        <attr name="rightImageIcon" format="reference"/>
+
+    </declare-styleable>
+
+    <declare-styleable name="TabTitleView">
+        <attr name="showRightTextView" format="boolean"/>
+        <attr name="leftImageIcon" format="reference"/>
+        <attr name="rightTvColor" format="reference"/>
+        <attr name="titleText" format="string"/>
+        <attr name="rightText" format="string"/>
+
+    </declare-styleable>
+
 </resources>

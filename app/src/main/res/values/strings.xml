@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">mobike</string>
     <string name="title_activity_use_info">UseInfoActivity</string>
+    <string name="title_activity_User">个人中心</string>
     <string name="title_activity_message_detail">MessageDetailActivity</string>
 
     <string-array name="hint_title">

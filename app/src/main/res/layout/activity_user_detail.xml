@@ -1,10 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.yiwen.mobike.activity.UserDetailActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <com.yiwen.mobike.views.TabTitleView
+        android:id="@+id/title_use_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleText="个人信息"/>
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="头像"
+        app:showRightImage="true"
+        app:showRightTv="false"/>
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_nick_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="昵称"
+        app:rightTvText="182***2002"
+        app:showRightTv="true"
+        />
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="姓名"
+        app:rightTvText="张三"
+        app:showIndicate="false"
+        app:showRightTv="true"
+        />
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_is_realname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="实名认证"
+        app:rightTvText="已认证"
+        app:showIndicate="false"
+        app:showRightTv="true"
+        />
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_myphone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="手机号"
+        app:rightTvText="182***2002"
+        app:showRightTv="true"
+        />
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_weixin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="微信"
+        app:rightTvText="未绑定"
+        app:showRightTv="true"
+        />
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_qq"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="QQ"
+        app:rightTvText="未绑定"
+        app:showRightTv="true"
+        />
+
+    <include layout="@layout/divider_user_center"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_school"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ringhtTvTextColor="@color/red"
+        app:leftTvText="校园认证"
+        app:rightTvText="未认证"
+        app:showRightTv="true"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg"/>
+</LinearLayout>

@@ -9,9 +9,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
+        android:layout_marginLeft="1dp"
         android:minWidth="0dp"
         style="@android:style/Widget.Material.Toolbar.Button.Navigation"
-        android:layout_marginLeft="5dp"
         android:scaleType="centerInside"
         android:visibility="gone"/>
 

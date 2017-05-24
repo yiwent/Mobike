@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.yiwen.mobike.activity.MobileNumActivity">
+
+    <com.yiwen.mobike.views.TabTitleView
+        android:id="@+id/title_mobike_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleText="手机号"/>
+
+    <ImageView
+        android:id="@+id/iv_mobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_mobike_num"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="40dp"
+        android:background="@drawable/mobile_phone_ic"/>
+
+    <TextView
+        android:id="@+id/tv_mobike_curent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_mobile"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"
+        android:maxLines="1"
+        android:text="您当前手机号为："
+        android:textColor="@color/colorPrimaryDark"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_mobike_curent"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/dot"
+            android:text="原手机号退押金(2-7个工作日)"
+            android:textColor="@color/smssdk_gray"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/dot"
+            android:text="更好手机号，登录重新交押金"
+            android:textColor="@color/smssdk_gray"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/dot"
+            android:text="车费余额、行程信息不变"
+            android:textColor="@color/smssdk_gray"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bt_change_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/red"
+        android:text="更换手机"
+        android:textColor="@color/white"/>
+
+</RelativeLayout>

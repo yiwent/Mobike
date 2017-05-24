@@ -1,7 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="wrap_content"
+              android:layout_marginBottom="5dp"
+              android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:src="@drawable/text_cursor_line">
+
+        <com.yiwen.mobike.views.NumberAnimTextView
+            android:id="@+id/tv_ride"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:text="77.0"
+            android:textColor="@color/red"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="累计骑行（公里）"
+            android:textColor="@color/smssdk_gray"
+
+            android:textSize="10sp"/>
+    </LinearLayout>
+
+    <include layout="@layout/divider_satand"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.yiwen.mobike.views.NumberAnimTextView
+            android:id="@+id/tv_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:text="8.8"
+            android:textColor="@color/red"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="节约碳排放（千克）"
+            android:textColor="@color/smssdk_gray"
+            android:textSize="10sp"/>
+    </LinearLayout>
+
+    <include layout="@layout/divider_satand"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.yiwen.mobike.views.NumberAnimTextView
+            android:id="@+id/tv_kaluli"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:maxLines="1"
+            android:text="77.0"
+            android:textColor="@color/red"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="运动成就（大卡）"
+            android:textColor="@color/smssdk_gray"
+            android:textSize="10sp"/>
+    </LinearLayout>
 
 </LinearLayout>
