@@ -5,7 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-    <include layout="@layout/action_search_headerview"/>
 
+    <include
+        android:id="@+id/layou_header"
+        layout="@layout/action_search_headerview"/>
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_actionserch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layou_header">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/tv_dele"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_below="@+id/recycler_actionserch"
+        android:layout_marginTop="13dp"
+        android:gravity="center"
+        android:text="清空历史记录"/>
 </RelativeLayout>

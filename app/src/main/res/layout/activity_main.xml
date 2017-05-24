@@ -169,7 +169,7 @@
                 android:clickable="true"
                 android:src="@drawable/service_menu_btn"/>
 
-            <FrameLayout
+            <RelativeLayout
                 android:id="@+id/refreshAll"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -183,9 +183,9 @@
                     android:id="@+id/refresh"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/map_refresh_btn_arrow"
+                    android:background="@drawable/map_refresh_btn_arrow"
                     />
-            </FrameLayout>
+            </RelativeLayout>
 
 
             <ImageView

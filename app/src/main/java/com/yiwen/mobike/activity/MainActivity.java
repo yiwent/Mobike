@@ -17,7 +17,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -48,6 +47,7 @@ import butterknife.OnClick;
 import static com.yiwen.mobike.R.id.refresh;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
     @BindView(R.id.ic_menu)
     ImageView      mIcMenu;
     @BindView(R.id.ic_search)
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.hongbao)
     ImageView      mHongbao;
     @BindView(R.id.refreshAll)
-    FrameLayout    mRefreshAll;
+    RelativeLayout mRefreshAll;
     @BindView(R.id.scan_qrcode)
     LinearLayout   mScan_qrcode;
     @BindView(R.id.tv_location_info)
@@ -95,7 +95,8 @@ public class MainActivity extends AppCompatActivity {
     public  LocationClient mLocationClient;
     private BaiduMap       baiduMap;
     private boolean isFirstLocation = true;
-    private Animation ra;
+
+    private BDLocation mBDLocation;
     private static int MOBIKETYPE_ALL_MOBIKE = 0;//全部单车
     private static int MOBIKETYPE_MOBIKE     = 1;//MOBIKE
     private static int MOBIKETYPE_MOBIKELITE = 2;//MOBIKE_LITE
@@ -108,29 +109,56 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mLocationClient = new LocationClient(getApplicationContext());
         mLocationClient.registerLocationListener(new MylocationListener());
+
         ButterKnife.bind(this);
 
-        mapView.showScaleControl(false);// 隐藏比例尺控件
+        //  mapView.showScaleControl(false);// 隐藏比例尺控件
         mapView.showZoomControls(false);//隐藏缩放按钮
         baiduMap = mapView.getMap();
 
         baiduMap.setMyLocationEnabled(true);
 
         requesMisson();
+
         initViews();
-        intiAnimation();
+
         initData();
+
         initEvent();
 
     }
 
     private void intiAnimation() {
+        Animation ra;//动画
+        if (mRefreshAll.getVisibility() == View.GONE) {
+            mRefreshAll.setVisibility(View.VISIBLE);
+            mRefreshAll.setClickable(true);
+        }
         ra = new RotateAnimation(0, 360,
                 Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         ra.setFillAfter(true);
         ra.setDuration(500);
         ra.setRepeatCount(2);
 
+        mRefresh.startAnimation(ra);
+
+        ra.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                mRefreshAll.setVisibility(View.GONE);
+                mRefreshAll.setClickable(false);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
     }
 
     private void requesMisson() {
@@ -156,23 +184,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initEvent() {
-        ra.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
 
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                mRefreshAll.setVisibility(View.GONE);
-                mRefreshAll.setClickable(false);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
-            }
-        });
         initGPS();//检测GPS开启
     }
 
@@ -237,7 +249,6 @@ public class MainActivity extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ic_menu:
-          //      Go2Login();
                 Go2UserActivity();
                 break;
             case R.id.ic_search:
@@ -271,7 +282,8 @@ public class MainActivity extends AppCompatActivity {
                 Go2Login();
                 break;
             case R.id.scan_qrcode:
-                Go2Login();
+                mRefresh.setVisibility(View.VISIBLE);
+                //    Go2Login();
                 break;
             case R.id.layout_location_info:
                 break;
@@ -306,40 +318,43 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Go2myLotionAndRefresh() {
+        navigateTo(mBDLocation);
+        refreshData();
 
     }
-    private void Go2Seach() {
-        Intent intent=new Intent(MainActivity.this,ActionSearchActivity.class);
 
-        startActivity(intent);
+    private void Go2Seach() {
+        Intent intent = new Intent(MainActivity.this, ActionSearchActivity.class);
+        intent.putExtra("mylotion",mBDLocation);
+        startActivityForResult(intent,1);
     }
 
     private void Go2UserActivity() {
-        Intent intent=new Intent(MainActivity.this,UserActivity.class);
-        startActivity(intent);
+        if (isNeedLogin) {
+            Go2Login();
+        } else {
+            Intent intent = new Intent(MainActivity.this, UserActivity.class);
+            startActivity(intent);
+        }
     }
+
     private void refreshData() {
-        mRefresh.startAnimation(ra);
+        intiAnimation();
 
     }
 
     private void Go2Login() {
-        if (isNeedLogin) {
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-            startActivity(intent);
-            // MainActivity.this.finish();
-            return;
-        }
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+        // MainActivity.this.finish();
     }
+
     private void Go2Kefu() {
         if (isNeedLogin) {
             Intent intent = new Intent(MainActivity.this, Hint_viewActivity.class);
             startActivity(intent);
-            // MainActivity.this.finish();
-            return;
         }
     }
-
 
     private void initLotion() {
         LocationClientOption option = new LocationClientOption();
@@ -349,30 +364,33 @@ public class MainActivity extends AppCompatActivity {
         mLocationClient.setLocOption(option);
     }
 
+    /**
+     * bd地图监听，接收当前位置
+     */
     public class MylocationListener implements BDLocationListener {
 
         @Override
         public void onReceiveLocation(BDLocation location) {
+            mBDLocation = location;
             StringBuilder currentPosion = new StringBuilder();
             currentPosion.append("纬度：").append(location.getLatitude()).append("\n");
-            currentPosion.append("经度：").append(location.getLongitude()).append("\n");
             currentPosion.append("经度：").append(location.getLongitude()).append("\n");
             currentPosion.append("国家：").append(location.getCountry()).append("\n");
             currentPosion.append("省：").append(location.getProvince()).append("\n");
             currentPosion.append("市：").append(location.getCity()).append("\n");
             currentPosion.append("区：").append(location.getDirection()).append("\n");
             currentPosion.append("街道：").append(location.getStreet()).append("\n");
-            currentPosion.append("定位方式：");
-           // Log.d("currentPosion", "onReceiveLocation: " + currentPosion);
+//            currentPosion.append("定位方式：");
+            // Log.d("currentPosion", "onReceiveLocation: " + currentPosion);
             //            if (location.getLocType() == BDLocation.TypeGpsLocation) {
             //                currentPosion.append("GPS");
             //            } else if (location.getLocType() == BDLocation.TypeNetWorkLocation) {
             //                currentPosion.append("network");
             //            }
-            if (location.getLocType() == BDLocation.TypeGpsLocation ||
-                    location.getLocType() == BDLocation.TypeNetWorkLocation) {
-                navigateTo(location);
-            }
+            //            if (location.getLocType() == BDLocation.TypeGpsLocation ||
+            //                    location.getLocType() == BDLocation.TypeNetWorkLocation) {
+            //                navigateTo(location);
+            //            }
             // mTextView.setText(currentPosion);
         }
 
@@ -382,12 +400,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * des:地图跳到指定位置
+     *
+     * @param location
+     */
     private void navigateTo(BDLocation location) {
         if (isFirstLocation) {
             LatLng ll = new LatLng(location.getLatitude(), location.getLongitude());
             MapStatusUpdate update = MapStatusUpdateFactory.newLatLng(ll);
             baiduMap.animateMapStatus(update);
-            update = MapStatusUpdateFactory.zoomTo(16f);
+            update = MapStatusUpdateFactory.zoomTo(18f);
             baiduMap.animateMapStatus(update);
             isFirstLocation = false;
         }
@@ -397,6 +420,10 @@ public class MainActivity extends AppCompatActivity {
         MyLocationData data = builder.build();
         baiduMap.setMyLocationData(data);
     }
+
+    /**
+     * des:提示开启GPS
+     */
     private void initGPS() {
         LocationManager locationManager = (LocationManager) this
                 .getSystemService(Context.LOCATION_SERVICE);
@@ -427,6 +454,7 @@ public class MainActivity extends AppCompatActivity {
             }).show();
         }
     }
+
     @Override
     protected void onResume() {
         super.onResume();
