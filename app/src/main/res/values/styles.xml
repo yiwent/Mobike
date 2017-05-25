@@ -13,9 +13,12 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.HintCard" parent="Base.Theme.AppCompat.Light.Dialog.Alert">
+    <style name="AppTheme.HintCard" parent="Theme.AppCompat.Light.Dialog">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+
+
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
@@ -39,6 +42,19 @@
     <style name="use_activity_style" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorAccent</item>
         <item name="colorPrimaryDark">@color/colorAccent</item>
+    </style>
+
+
+
+    <!-- Login Dialog Theme -->
+    <!-- 这里使用的Theme.AppCompat.Light.Dialog是appcompat-v7-24.2.1 兼容包中的主题 -->
+    <!-- 如果使用android:style/Theme.Dialog，当跳转到这个login界面时程序会闪退 -->
+    <!-- 闪退是因为选择的编译api版本(24)太高，不兼容这个主题 -->
+    <style name="LoginDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowBackground">@drawable/dialog_login</item>
+        <item name="windowNoTitle">true</item>
+        <!-- 写android:windowNoTitle反而无效 -->
     </style>
 
 </resources>

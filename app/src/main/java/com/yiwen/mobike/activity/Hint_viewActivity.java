@@ -1,9 +1,9 @@
 package com.yiwen.mobike.activity;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +20,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Hint_viewActivity extends AppCompatActivity {
+public class Hint_viewActivity extends Activity {
 
     @BindView(R.id.viepager_hintview)
     ViewPager mViepagerHintview;

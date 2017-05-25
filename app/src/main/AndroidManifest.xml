@@ -94,7 +94,7 @@
             android:windowSoftInputMode="stateHidden|adjustResize"/>
         <activity
             android:name=".activity.Hint_viewActivity"
-            android:theme="@style/AppTheme.HintCard">
+            android:theme="@style/LoginDialog">
         </activity>
         <activity android:name=".activity.ModifyNickNameActivity">
         </activity>

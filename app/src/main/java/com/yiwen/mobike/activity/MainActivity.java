@@ -13,6 +13,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -381,7 +382,7 @@ public class MainActivity extends AppCompatActivity {
             currentPosion.append("区：").append(location.getDirection()).append("\n");
             currentPosion.append("街道：").append(location.getStreet()).append("\n");
 //            currentPosion.append("定位方式：");
-            // Log.d("currentPosion", "onReceiveLocation: " + currentPosion);
+            Log.d("currentPosion", "onReceiveLocation: " + currentPosion);
             //            if (location.getLocType() == BDLocation.TypeGpsLocation) {
             //                currentPosion.append("GPS");
             //            } else if (location.getLocType() == BDLocation.TypeNetWorkLocation) {
