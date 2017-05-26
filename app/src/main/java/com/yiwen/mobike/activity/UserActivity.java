@@ -105,6 +105,7 @@ public class UserActivity extends AppCompatActivity {
             case R.id.tv_credit:
                 break;
             case R.id.tv_my_money:
+                Go2wallet();
                 break;
             case R.id.tv_my_youhui:
                 break;
@@ -117,6 +118,11 @@ public class UserActivity extends AppCompatActivity {
             case R.id.tv_my_guide:
                 break;
         }
+    }
+
+    private void Go2wallet() {
+        Intent intent=new Intent(UserActivity.this,WalletActivity.class);
+        startActivity(intent);
     }
 
     private void Go2UserDetaiActivity() {

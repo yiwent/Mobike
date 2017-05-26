@@ -22,7 +22,7 @@ import com.yiwen.mobike.R;
  * User: Yiwen(https://github.com/yiwent)
  * Date: 2017-05-02
  * Time: 11:00
- * FIXME
+ * 自定义toolbar
  */
 public class MyToolBar extends Toolbar {
 

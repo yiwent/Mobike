@@ -44,30 +44,29 @@ public class Hint_viewActivity extends Activity {
         title = getApplicationContext().getResources().getStringArray(R.array.hint_title);
         contnet = getApplicationContext().getResources().getStringArray(R.array.hint_content);
         LayoutInflater inflater = getLayoutInflater();
-
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < title.length; i++) {
             View v = inflater.inflate(R.layout.hint_card_layout, null);
             ImageView imageView = (ImageView) v.findViewById(R.id.car_view);
             TextView tvTitle = (TextView) v.findViewById(R.id.tv_hint_card_title);
             TextView tvContent = (TextView) v.findViewById(R.id.tv_hint_card_content);
             TextView tvPargeSize = (TextView) v.findViewById(R.id.tv_hint_card_pagesize);
-            TextView tvTNext = (TextView) v.findViewById(R.id.tv_hint_card_next);
+            TextView tvNext = (TextView) v.findViewById(R.id.tv_hint_card_next);
             Glide.with(this).load(imageViewID[i]).into(imageView);
             //  imageView.setImageResource(imageViewID[i]);
             tvTitle.setText(title[i]);
             tvContent.setText(contnet[i]);
-            tvPargeSize.setText(i + 1 + "/5");
             final int temp = i + 1;
-            if (4 == i) {
-                tvTNext.setText("知道了");
-                tvTNext.setOnClickListener(new View.OnClickListener() {
+            tvPargeSize.setText(temp + "/5");
+            if (i==title.length-1) {
+                tvNext.setText("知道了");
+                tvNext.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         Hint_viewActivity.this.finish();
                     }
                 });
             } else {
-                tvTNext.setOnClickListener(new View.OnClickListener() {
+                tvNext.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         mViepagerHintview.setCurrentItem(temp);
@@ -77,6 +76,7 @@ public class Hint_viewActivity extends Activity {
             mViewList.add(v);
             v=null;
         }
+
         PagerAdapter mPagerAdapter = new Hint_card_PangerAdater();
         mViepagerHintview.setAdapter(mPagerAdapter);
         mViepagerHintview.setPageTransformer(true, new DepthPageTransformer());

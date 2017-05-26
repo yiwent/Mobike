@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/tv_bg"
     tools:context="com.yiwen.mobike.activity.WalletActivity">
 
     <com.yiwen.mobike.views.TabTitleView
@@ -20,16 +22,15 @@
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:layout_below="@+id/title_wallet"
-        android:background="@color/tv_bg"
+        android:background="@color/tv_wallet_bg"
         android:gravity="center"
         android:text="您可免费骑行至2017/10/10"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_freeRide"
         android:layout_centerHorizontal="true"
-        android:background="@color/tv_wallet_bg">
+        >
 
         <TextView
             android:id="@+id/tv_money_total"
@@ -58,5 +59,41 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/wallet_bottom_bg">
 
+        <LinearLayout
+            android:id="@+id/lo_wallet_tx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_marginBottom="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="押金299元"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/tv_cashfind"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="押金退款"
+                android:textColor="@color/red"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_wallet_charge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/lo_wallet_tx"
+            android:layout_margin="10dp"
+            android:background="@color/red"
+            android:text="充值"/>
+
     </RelativeLayout>
-</RelativeLayout>
+
+
+</LinearLayout>

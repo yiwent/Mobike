@@ -30,7 +30,8 @@ import butterknife.OnClick;
 
 public class UserDetailActivity extends AppCompatActivity {
 
-    private static final int IMAGE_PICKER = 1;
+    private static final int REQS_IMAGE_PICKER = 1;
+    private static final int REQS_NICKNAME     = 2;
     @BindView(R.id.title_use_detail)
     TabTitleView  mTitleUseDetail;
     @BindView(R.id.tv_head)
@@ -109,18 +110,34 @@ public class UserDetailActivity extends AppCompatActivity {
                 Go2MobileNumActivity();
                 break;
             case R.id.tv_weixin:
+                Go2BindOrDisbindWx();
                 break;
             case R.id.tv_qq:
+                Go2BindOrDisbindQQ();
                 break;
             case R.id.tv_school:
+                Go2BindOrDisbindSC();
                 break;
         }
+    }
+
+    private void Go2BindOrDisbindSC() {
+        Intent intent=new Intent(UserDetailActivity.this,CampusVerifyActivity.class);
+        startActivity(intent);
+    }
+
+    private void Go2BindOrDisbindQQ() {
+    }
+
+    private void Go2BindOrDisbindWx() {
+        Intent intent=new Intent(UserDetailActivity.this,SsoUserInfoActivity.class);
+        startActivity(intent);
     }
 
     private void Go2Imagepicker() {
         Intent intent = new Intent(this, ImageGridActivity.class);
         //        intent.putExtra(ImageGridActivity.EXTRAS_TAKE_PICKERS,true); // 是否是直接打开相机
-        startActivityForResult(intent, IMAGE_PICKER);
+        startActivityForResult(intent, REQS_IMAGE_PICKER);
 
     }
 
@@ -132,7 +149,7 @@ public class UserDetailActivity extends AppCompatActivity {
     private void Go2ModifyNickNameActivity() {
         Intent intent = new Intent(UserDetailActivity.this, ModifyNickNameActivity.class);
         intent.putExtra("nick_name", mTvNickName.getRigtTvText().toString());
-        startActivityForResult(intent, 2);
+        startActivityForResult(intent, REQS_NICKNAME);
     }
 
 
@@ -140,10 +157,10 @@ public class UserDetailActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d("onActivityResult", "requestCode: " + requestCode);
         switch (requestCode) {
-            case 1:
+            case REQS_IMAGE_PICKER:
                 uploadImage(requestCode, resultCode, data);
                 break;
-            case 2:
+            case REQS_NICKNAME:
                 upDateNickname(requestCode, resultCode, data);
                 break;
             case 3:

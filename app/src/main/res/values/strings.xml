@@ -4,6 +4,8 @@
     <string name="title_activity_User">个人中心</string>
     <string name="title_activity_message_detail">MessageDetailActivity</string>
 
+    <string name="scan_failed">Scan failed!</string>
+
     <string-array name="hint_title">
         <item>无桩停车</item>
         <item>预约与计费</item>
@@ -18,5 +20,6 @@
         <item>骑行结束后一定记得关锁来结束计费哦！（结费或受网络影响，稍等即可）</item>
         <item>寻找客服、举报违停或发行故障车，请点击首页右下角客服图标</item>
     </string-array>
+
 
 </resources>

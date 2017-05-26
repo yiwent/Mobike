@@ -6,8 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
@@ -16,13 +14,15 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.yiwen.mobike.R;
+import com.yiwen.mobike.utils.CommonUtils;
 import com.yiwen.mobike.utils.MyConstains;
 
+import static com.yiwen.mobike.utils.CommonUtils.isConn;
 import static com.yiwen.mobike.utils.MyConstains.IS_FIRST_RUN;
 
 public class SplashActivity extends AppCompatActivity {
     private boolean isNeedSetting;
-    private boolean isNeedLogin = false;// TODO: 2017/5/21  turn
+    private boolean isNeedLogin = true;//
     private boolean isFirstRun  = true;
 
     @Override
@@ -43,14 +43,14 @@ public class SplashActivity extends AppCompatActivity {
 
     private void initData() {
         isFirstRun = getSharedPreferences(MyConstains.SP_MOBIKE, MODE_PRIVATE).
-                getBoolean(IS_FIRST_RUN, true);
+                getBoolean(IS_FIRST_RUN, false);// TODO: 2017/5/26
         isNeedLogin = getSharedPreferences(MyConstains.SP_MOBIKE, MODE_PRIVATE).
-                getBoolean(MyConstains.IS_NEED_LOGIN, false);
-        //TODO 测试后改为false
+                getBoolean(MyConstains.IS_NEED_LOGIN, true);
+
     }
 
     private void initConnect() {
-        if (!isConn(this)) {
+        if (!CommonUtils.isConn(this)) {
             //提示对话框
             AlertDialog.Builder builder = new AlertDialog.Builder(SplashActivity.this);
             builder.setMessage("网络无法访问，请检查网络").setPositiveButton("确定",
@@ -64,7 +64,8 @@ public class SplashActivity extends AppCompatActivity {
                                 intent = new Intent(Settings.ACTION_HOME_SETTINGS);
                             } else {
                                 intent = new Intent();
-                                ComponentName component = new ComponentName("com.android.settings", "com.android.settings.WirelessSettings");
+                                ComponentName component = new ComponentName("com.android.settings",
+                                        "com.android.settings.WirelessSettings");
                                 intent.setComponent(component);
                                 intent.setAction("android.intent.action.VIEW");
                             }
@@ -82,21 +83,6 @@ public class SplashActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * 判断网络连接是否已开
-     * true 已打开  false 未打开
-     */
-    public static boolean isConn(Context context) {
-        if (context != null) {
-            ConnectivityManager mConnectivityManager = (ConnectivityManager) context
-                    .getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
-            if (mNetworkInfo != null) {
-                return mNetworkInfo.isAvailable();
-            }
-        }
-        return false;
-    }
 
     private void initGPS() {
         LocationManager locationManager = (LocationManager) this
@@ -130,8 +116,8 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onRestart() {
+        super.onRestart();
         if (isNeedSetting) {
             if (isConn(this)) {
                 checkFirstRun();
@@ -159,7 +145,7 @@ public class SplashActivity extends AppCompatActivity {
                         Go2Main();
                     }
                 }
-            }, 20);// TODO: 2017/5/21
+            }, 2000);
         }
 
     }

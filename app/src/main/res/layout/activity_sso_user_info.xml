@@ -13,5 +13,43 @@
         android:layout_height="wrap_content"
         app:titleText="微信绑定"/>
 
+    <ImageView
+        android:id="@+id/iv_wxhead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title_sso_user"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/avatar_default_login"/>
 
+
+    <TextView
+        android:id="@+id/tv_weixin_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_wxhead"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="zhangsan"
+        android:textColor="@color/black"/>
+    <TextView
+        android:id="@+id/tv_can"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_weixin_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="现在你可以用微信登陆了"/>
+
+    <TextView
+        android:id="@+id/tv_unbindWX"
+        android:text="解除绑定"
+        android:textColor="@color/red"
+        android:background="#ffffff"
+        android:clickable="true"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </RelativeLayout>

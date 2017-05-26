@@ -40,8 +40,8 @@ dependencies {
     compile name: 'SMSSDK-2.1.4', ext: 'aar'
     compile name: 'SMSSDKGUI-2.1.4', ext: 'aar'
 
-    //指定版本
 
+    compile 'com.google.zxing:core:3.2.1'
     compile 'com.android.support:appcompat-v7:25.1.1'
     compile 'com.android.support:design:25.1.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'

@@ -3,9 +3,9 @@
               android:id="@+id/bike_info_board"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:visibility="visible"
               android:background="@color/white"
-              android:orientation="vertical">
+              android:orientation="vertical"
+              android:visibility="visible">
 
     <LinearLayout
         android:id="@+id/layout_location_info"
@@ -29,10 +29,9 @@
             android:maxLines="1"
             android:text="广东省深圳市宝安区幻术路125号"/>
     </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:background="@color/gray"
-        android:layout_height="1dp"/>
+
+    <include layout="@layout/divider"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -97,13 +96,14 @@
         </LinearLayout>
 
     </LinearLayout>
-    <Button
 
-        android:text="立即登录即可骑车"
-        android:textColor="@color/white"
+    <Button
+        android:id="@+id/bt_loginOrorder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_margin="5dp"
         android:background="@color/red"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:text="立即登录即可骑车"
+        android:textColor="@color/white"/>
 
 </LinearLayout>

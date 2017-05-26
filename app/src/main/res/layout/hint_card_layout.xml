@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:background="@android:color/white"
-              android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:orientation="vertical">
 
     <ImageView
         android:id="@+id/car_view"
@@ -15,6 +15,8 @@
         android:id="@+id/tv_hint_card_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/car_view"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:gravity="center"
@@ -25,6 +27,7 @@
         android:id="@+id/tv_hint_card_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_hint_card_title"
         android:layout_gravity="center"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
@@ -32,30 +35,26 @@
         android:gravity="center"
         android:text="膜拜单车不需要固定车桩，请将单车停放合适区域内，方便他人使用"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/tv_hint_card_pagesize"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        >
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="20dp"
+        android:text="1/5"/>
 
-        <TextView
-            android:id="@+id/tv_hint_card_pagesize"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_margin="15dp"
-            android:text="1/5"/>
-
-        <TextView
-            android:id="@+id/tv_hint_card_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_margin="15dp"
-            android:clickable="true"
-            android:text="下一页"
-            android:textColor="@color/red"/>
-
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/tv_hint_card_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="20dp"
+        android:clickable="true"
+        android:text="下一页"
+        android:textColor="@color/red"/>
 
 
-</LinearLayout>
+</RelativeLayout>

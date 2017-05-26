@@ -49,8 +49,11 @@ public class LoginActivity extends AppCompatActivity {
     Button        mLoginQuery;
     @BindView(R.id.login_services)
     TextView      mLoginServices;
-    private boolean isNeedLogin = true;
-    private TextView       mTvCountryCode;
+    
+    private boolean isNeedLogin = true;//手机登陆
+    private boolean isNeedPaycash = true;//押金
+    private boolean isSendCode;//是否已发送了验证码
+    
     private CountTimerView mCountTimeView;
 
     private              int    phoneLength        = 0;
@@ -59,10 +62,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String DEFAULT_COUNTRY_ID = "42";
 
     private SmsEventHandler mEventHandler;
-
-    private boolean isSendCode;
-
-
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,14 +75,17 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void intView() {
-
-        ButterKnife.bind(this);
     }
 
     private void initDate() {
         SMSSDK.initSDK(this, "1dfed2cdde843", "4266d445a7c298caecfb04ecb165fde7");
         mEventHandler = new SmsEventHandler();
         SMSSDK.registerEventHandler(mEventHandler);
+
+        isNeedLogin = getSharedPreferences(MyConstains.SP_MOBIKE, MODE_PRIVATE).
+                getBoolean(MyConstains.IS_NEED_LOGIN, true);
+        isNeedPaycash = getSharedPreferences(MyConstains.SP_MOBIKE, MODE_PRIVATE).
+                getBoolean(MyConstains.IS_NEED_PAYCASH, false);// TODO: 2017/5/26  
     }
 
     private void initEvent() {
@@ -104,14 +107,14 @@ public class LoginActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 phoneLength = s.length();
                 if (phoneLength > 0) {
-                    setRed(mGetCode);
+                    setButtonRed(mGetCode);
                 } else {
-                    setGray(mGetCode);
+                    setButtonGray(mGetCode);
                 }
                 if (phoneLength > 0 && codeLength > 0) {
-                    setRed(mLoginQuery);
+                    setButtonRed(mLoginQuery);
                 } else {
-                    setGray(mLoginQuery);
+                    setButtonGray(mLoginQuery);
                 }
             }
 
@@ -130,9 +133,9 @@ public class LoginActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 codeLength = s.length();
                 if (phoneLength > 0 && codeLength > 0) {
-                    setRed(mLoginQuery);
+                    setButtonRed(mLoginQuery);
                 } else {
-                    setGray(mLoginQuery);
+                    setButtonGray(mLoginQuery);
                 }
             }
 
@@ -149,7 +152,7 @@ public class LoginActivity extends AppCompatActivity {
      *
      * @param bt
      */
-    private void setRed(Button bt) {
+    private void setButtonRed(Button bt) {
         bt.setClickable(true);
         bt.setBackgroundResource(R.color.red);
     }
@@ -159,7 +162,7 @@ public class LoginActivity extends AppCompatActivity {
      *
      * @param bt
      */
-    private void setGray(Button bt) {
+    private void setButtonGray(Button bt) {
         bt.setClickable(false);
         bt.setBackgroundResource(R.color.gray);
     }
@@ -210,12 +213,18 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         private void RegOK() {
-            //        ToastUtils.show(LoginActivity.this, "注册成功");
-            getSharedPreferences(MyConstains.IS_NEED_LOGIN, MODE_PRIVATE)
+            ToastUtils.show(LoginActivity.this, "登陆成功");
+            isNeedLogin=false;
+            getSharedPreferences(MyConstains.SP_MOBIKE, MODE_PRIVATE)
                     .edit()
-                    .putBoolean(MyConstains.IS_NEED_LOGIN, false)
+                    .putBoolean(MyConstains.IS_NEED_LOGIN, isNeedLogin)
                     .apply();
-            Go2Main();
+            if (isNeedPaycash){
+              // TODO: 2017/5/26  
+            }else {
+                Go2Main();
+            }
+           
         }
 
     }

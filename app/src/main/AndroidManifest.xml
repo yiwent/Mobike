@@ -19,6 +19,11 @@
     <uses-permission android:name="android.permission.RECEIVE_SMS"/>
     <uses-permission android:name="android.permission.READ_SMS"/>
     <uses-permission android:name="android.permission.GET_TASKS"/>
+    <!-- qrscan -->
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -94,7 +99,7 @@
             android:windowSoftInputMode="stateHidden|adjustResize"/>
         <activity
             android:name=".activity.Hint_viewActivity"
-            android:theme="@style/LoginDialog">
+            android:theme="@style/AppTheme.HintCard">
         </activity>
         <activity android:name=".activity.ModifyNickNameActivity">
         </activity>
@@ -107,6 +112,14 @@
             android:name="com.lzy.imagepicker.ui.ImagePreviewDelActivity"
             android:theme="@style/ImagePickerThemeFullScreen"/>
         <activity android:name=".activity.SsoUserInfoActivity">
+        </activity>
+        <activity android:name=".qrcode.CaptureActivity">
+        </activity>
+        <activity android:name=".activity.CampusVerifyActivity">
+        </activity>
+        <activity android:name=".activity.RechargeHistoryActivity">
+        </activity>
+        <activity android:name=".activity.CustomerServiceWebActivity">
         </activity>
     </application>
 
