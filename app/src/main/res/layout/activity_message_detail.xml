@@ -3,11 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     >
 
-    <include layout="@layout/tab_title"/>
+    <com.yiwen.mobike.views.TabTitleView
+        android:id="@+id/toolbar_massage_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rightText="分享"
+        app:showRightTextView="true"
+        app:titleText="title"/>
 
     <include layout="@layout/web_view"/>
 

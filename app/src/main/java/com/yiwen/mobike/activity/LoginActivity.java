@@ -32,6 +32,7 @@ import butterknife.OnClick;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 import cn.smssdk.utils.SMSLog;
+import dmax.dialog.SpotsDialog;
 
 public class LoginActivity extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
@@ -53,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
     private boolean isNeedLogin = true;//手机登陆
     private boolean isNeedPaycash = true;//押金
     private boolean isSendCode;//是否已发送了验证码
+    private SpotsDialog mDialog;
     
     private CountTimerView mCountTimeView;
 
@@ -75,6 +77,11 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void intView() {
+        mDialog=new SpotsDialog(LoginActivity.this);
+    }
+    private void DimissMyDialog(){
+        if (mDialog!=null&&mDialog.isShowing())
+            mDialog.dismiss();
     }
 
     private void initDate() {
@@ -185,7 +192,7 @@ public class LoginActivity extends AppCompatActivity {
                             afterVerificationCodeRequested((Boolean) data);
                             //提交验证码成功
                         } else if (event == SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE) {
-                            // ToastUtils.show(LoginActivity.this, "验证码已发送");
+
                             mEtCode.setText("");
 
                             RegOK();
@@ -213,6 +220,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         private void RegOK() {
+            DimissMyDialog();
             ToastUtils.show(LoginActivity.this, "登陆成功");
             isNeedLogin=false;
             getSharedPreferences(MyConstains.SP_MOBIKE, MODE_PRIVATE)
@@ -251,6 +259,7 @@ public class LoginActivity extends AppCompatActivity {
      * @param data
      */
     private void afterVerificationCodeRequested(Boolean data) {
+        DimissMyDialog();
         String phone = mEtPhone.getText().toString().trim().replace("\\s*", "");
         //        String countryCode = mTvCountryCode.getText().toString().trim();
         String countryCode = "86";
@@ -299,6 +308,7 @@ public class LoginActivity extends AppCompatActivity {
             SMSSDK.getVerificationCode(countryCode, phone);
             mCountTimeView = new CountTimerView(mGetCode);
             mCountTimeView.start();
+            mDialog.show();
         }
     }
 
@@ -339,6 +349,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void submitCode() {
+        mDialog.setMessage("正在验证...");
         String code = mEtCode.getText().toString().trim();
         String mPhone = mEtPhone.getText().toString().trim().replace("\\s*", "");
         if (TextUtils.isEmpty(code)) {

@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_height="wrap_content"
               android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_massage_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="7dp"
         android:layout_gravity="center"
         android:layout_margin="3dp"
         android:gravity="center"
-        android:text="2017-5-22 20:29:52"/>
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,11 +23,11 @@
         android:background="@drawable/my_message_body_bg"
         android:orientation="vertical">
 
-        <ImageView
+        <com.facebook.drawee.view.SimpleDraweeView
             android:id="@+id/iv_massage_photo"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/id_info_photo_left_press"/>
+            android:layout_height="120dp"
+            />
 
         <TextView
             android:id="@+id/tv_massage_content"
@@ -34,7 +36,6 @@
             android:layout_margin="15dp"
             android:drawableRight="@drawable/list_item_indicator"
             android:gravity="left|center_vertical"
-            android:text="一起和阳光玩游戏"
             android:textColor="@color/colorPrimary"/>
     </LinearLayout>
 </LinearLayout>

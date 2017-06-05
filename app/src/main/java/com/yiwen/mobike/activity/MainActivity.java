@@ -12,7 +12,6 @@ import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -37,6 +36,7 @@ import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.TextureMapView;
 import com.baidu.mapapi.model.LatLng;
 import com.yiwen.mobike.R;
+import com.yiwen.mobike.base.BaseActivity;
 import com.yiwen.mobike.qrcode.CaptureActivity;
 import com.yiwen.mobike.utils.MyConstains;
 
@@ -49,7 +49,7 @@ import butterknife.OnClick;
 
 import static com.yiwen.mobike.R.id.refresh;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
     private static final String TAG           = "MainActivity";
     private static final int    REQS_LOCATION = 1;
     @BindView(R.id.ic_menu)
@@ -262,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
                 Go2Seach();
                 break;
             case R.id.ic_message:
-                Go2Login();
+               startActivity(new Intent(MainActivity.this,MyMessagesActivity.class),true);
                 break;
             case R.id.tv_allmobike:
                 selectAllMobike();

@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     >
 
     <com.yiwen.mobike.views.MyToolBar
@@ -20,11 +20,25 @@
 
     </com.yiwen.mobike.views.MyToolBar>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_massage"
+
+    <com.cjj.MaterialRefreshLayout
+        android:id="@+id/id_refresh"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        app:overlay="true"
+        app:progress_colors="@array/material_colors"
+        app:wave_color="#90ffffff"
+        app:wave_height_type="higher"
+        app:wave_show="true"
+        >
 
-    </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_massage"
+            android:background="@color/bg_color"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
+        </android.support.v7.widget.RecyclerView>
+
+    </com.cjj.MaterialRefreshLayout>
 </LinearLayout>
