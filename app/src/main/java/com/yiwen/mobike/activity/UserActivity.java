@@ -44,6 +44,8 @@ public class UserActivity extends AppCompatActivity {
     MySettingView           mTvMyInvent;
     @BindView(R.id.tv_my_guide)
     MySettingView           mTvMyGuide;
+    @BindView(R.id.tv_my_setting)
+    MySettingView           mTvMysetting;
     @BindView(R.id.toolbar_use)
     MyToolBar               mToolbar_use;
     @BindView(R.id.collapsinglayout)
@@ -96,37 +98,44 @@ public class UserActivity extends AppCompatActivity {
         //        mCollapsinglayout.setTitle("个人中心");
     }
 
-    @OnClick({R.id.iv_avatar, R.id.tv_credit, R.id.tv_my_money, R.id.tv_my_youhui, R.id.tv_my_distance, R.id.tv_my_mymassege, R.id.tv_my_invent, R.id.tv_my_guide})
+    @OnClick({R.id.iv_avatar, R.id.tv_credit, R.id.tv_my_money, R.id.tv_my_youhui,
+            R.id.tv_my_distance, R.id.tv_my_mymassege, R.id.tv_my_invent,
+            R.id.tv_my_guide,R.id.tv_my_setting})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_avatar:
-                Go2UserDetaiActivity();
+                Go2Activity(UserDetailActivity.class);
                 break;
             case R.id.tv_credit:
+                Go2Activity(MyCreditActivity.class);
                 break;
             case R.id.tv_my_money:
-                Go2wallet();
+                Go2Activity(WalletActivity.class);
                 break;
             case R.id.tv_my_youhui:
+                Go2Activity(MyCouponsActivity.class);
                 break;
             case R.id.tv_my_distance:
+                Go2Activity(MyTripsActivity.class);
                 break;
             case R.id.tv_my_mymassege:
+                Go2Activity(MyMessagesActivity.class);
                 break;
             case R.id.tv_my_invent:
+                Go2Activity(InviteFriendActivity.class);
                 break;
             case R.id.tv_my_guide:
+                Go2Activity(UserManuelActivity.class);
+                break;
+            case R.id.tv_my_setting:
+                Go2Activity(SettingsActivity.class);
                 break;
         }
     }
 
-    private void Go2wallet() {
-        Intent intent=new Intent(UserActivity.this,WalletActivity.class);
+    private void Go2Activity(Class c) {
+        Intent intent=new Intent(UserActivity.this,c);
         startActivity(intent);
     }
 
-    private void Go2UserDetaiActivity() {
-        Intent intent=new Intent(UserActivity.this,UserDetailActivity.class);
-        startActivity(intent);
-    }
 }

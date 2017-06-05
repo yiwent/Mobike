@@ -12,23 +12,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"/>
 
-    <com.yiwen.mobike.qrcode.zxing.view.ViewfinderView
-        android:id="@+id/viewfinder_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        xdj:qr_angleColor="@color/white"
-        xdj:qr_errorHint="请允许访问摄像头后重试"
-        xdj:qr_hint="对准车上的二维码"
-        xdj:qr_offsetX="0"
-        xdj:qr_offsetY="0"
-        xdj:qr_showPossiblePoint="false"
-        xdj:qr_textErrorHintColor="@android:color/white"
-        xdj:qr_textHintColor="@android:color/darker_gray"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         >
+
 
         <com.yiwen.mobike.views.TabTitleView
             android:id="@+id/title_qrscan"
@@ -44,21 +33,32 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/title_qrscan"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="3dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
             android:src="@drawable/scan_qrcode_bike_img"
             />
-    </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_marginBottom="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_gravity="bottom">
+        <com.yiwen.mobike.qrcode.zxing.view.ViewfinderView
+            android:id="@+id/viewfinder_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="15dp"
+            xdj:qr_angleColor="@color/white"
+            xdj:qr_errorHint="请允许访问摄像头后重试"
+            xdj:qr_hint="对准车上的二维码"
+            xdj:qr_offsetX="0"
+            xdj:qr_offsetY="0"
+            xdj:qr_showPossiblePoint="false"
+            xdj:qr_textErrorHintColor="@android:color/white"
+            xdj:qr_textHintColor="@android:color/darker_gray"/>
+
 
         <LinearLayout
             android:id="@+id/lo_scan"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_alignParentBottom="true"
             android:gravity="center"
             android:orientation="horizontal">
@@ -78,10 +78,10 @@
                     android:src="@drawable/qrcode_input_btn"/>
 
                 <TextView
-                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="输入单车编号"/>
+                    android:text="输入单车编号"
+                    android:textColor="@color/white"/>
             </LinearLayout>
 
             <LinearLayout
@@ -99,15 +99,15 @@
                     android:src="@drawable/scan_qrcode_flash_light_off"/>
 
                 <TextView
-                    android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="打开手电筒"/>
+                    android:text="打开手电筒"
+                    android:textColor="@color/white"/>
             </LinearLayout>
 
         </LinearLayout>
 
-    </RelativeLayout>
 
+    </RelativeLayout>
 
 </FrameLayout>

@@ -102,6 +102,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
+        android:drawableRight="@drawable/right_arrow"
         android:background="@color/red"
         android:text="立即登录即可骑车"
         android:textColor="@color/white"/>

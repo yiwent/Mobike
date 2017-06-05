@@ -121,6 +121,26 @@
         </activity>
         <activity android:name=".activity.CustomerServiceWebActivity">
         </activity>
+        <activity android:name=".activity.MyCreditActivity">
+        </activity>
+        <activity android:name=".activity.MyCouponsActivity">
+        </activity>
+        <activity android:name=".activity.MyTripsActivity">
+        </activity>
+        <activity android:name=".activity.InviteFriendActivity">
+        </activity>
+        <activity android:name=".activity.UserManuelActivity">
+        </activity>
+        <activity android:name=".activity.ReportUnlockFailActivity">
+        </activity>
+        <activity android:name=".activity.BikeDamageReportActivity">
+        </activity>
+        <activity android:name=".activity.ReportViolationsActivity">
+        </activity>
+        <activity android:name=".activity.UserManuelAllQuestionActivity">
+        </activity>
+        <activity android:name=".activity.SettingsActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -256,9 +256,9 @@ public class CaptureActivity extends Activity implements Callback {
             @Override
             public void onClick(View v) {
                 if (flashLightOpen) {
-                    flashIbtn.setImageResource(R.drawable.ic_flash_off_white_24dp);
+                    flashIbtn.setImageResource(R.drawable.scan_qrcode_flash_light_off);
                 } else {
-                    flashIbtn.setImageResource(R.drawable.ic_flash_on_white_24dp);
+                    flashIbtn.setImageResource(R.drawable.scan_qrcode_flash_light_on);
                 }
                 toggleFlashLight();
             }

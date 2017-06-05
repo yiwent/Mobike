@@ -50,22 +50,22 @@ import butterknife.OnClick;
 import static com.yiwen.mobike.R.id.refresh;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG      = "MainActivity";
-    private static final int REQS_LOCATION = 1;
+    private static final String TAG           = "MainActivity";
+    private static final int    REQS_LOCATION = 1;
     @BindView(R.id.ic_menu)
-    ImageView    mIcMenu;
+    ImageView      mIcMenu;
     @BindView(R.id.ic_search)
-    ImageView    mIcSearch;
+    ImageView      mIcSearch;
     @BindView(R.id.ic_message)
-    ImageView    mIcMessage;
+    ImageView      mIcMessage;
     @BindView(R.id.tv_allmobike)
-    TextView     mTvAllmobike;
+    TextView       mTvAllmobike;
     @BindView(R.id.tv_mobike)
-    TextView     mTvMobike;
+    TextView       mTvMobike;
     @BindView(R.id.tv_mobikelite)
-    TextView     mTvMobikelite;
+    TextView       mTvMobikelite;
     @BindView(R.id.layout_selectmobike)
-    LinearLayout mLayoutSelectmobike;
+    LinearLayout   mLayoutSelectmobike;
     @BindView(R.id.bmapview)
     TextureMapView mapView;
     @BindView(R.id.main_login)
@@ -79,24 +79,24 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.refreshAll)
     RelativeLayout mRefreshAll;
     @BindView(R.id.scan_qrcode)
-    LinearLayout mScan_qrcode;
+    LinearLayout   mScan_qrcode;
     @BindView(R.id.tv_location_info)
-    TextView     mTvLocationInfo;
+    TextView       mTvLocationInfo;
     @BindView(R.id.layout_location_info)
-    LinearLayout mLayoutLocationInfo;
+    LinearLayout   mLayoutLocationInfo;
     @BindView(R.id.tv_prices)
-    TextView     mTvPrices;
+    TextView       mTvPrices;
     @BindView(R.id.tv_distance)
-    TextView     mTvDistance;
+    TextView       mTvDistance;
     @BindView(R.id.minute)
-    TextView     mMinute;
+    TextView       mMinute;
     @BindView(R.id.bike_info_board)
-    LinearLayout mBikeInfoBoard;
+    LinearLayout   mBikeInfoBoard;
     @BindView(R.id.refresh)
-    ImageView    mRefresh;
+    ImageView      mRefresh;
     @BindView(R.id.bt_loginOrorder)
-    Button       mBtLoginOrorder;
-    
+    Button         mBtLoginOrorder;
+
     private boolean isNeedLogin = true;
     private long    firstTime   = 0;
     public  LocationClient mLocationClient;
@@ -198,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
     private void initData() {
         isNeedLogin = getSharedPreferences(MyConstains.SP_MOBIKE, MODE_PRIVATE).
                 getBoolean(MyConstains.IS_NEED_LOGIN, true);
-        Log.d(TAG, "initData: "+isNeedLogin);
+        Log.d(TAG, "initData: " + isNeedLogin);
     }
 
     private void initViews() {
@@ -252,11 +252,11 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick({R.id.ic_menu, R.id.ic_search, R.id.ic_message, R.id.tv_allmobike, R.id.tv_mobike,
             R.id.tv_mobikelite, R.id.layout_selectmobike, R.id.main_login, R.id.dingwei, refresh,
-            R.id.kefu, R.id.hongbao, R.id.scan_qrcode, R.id.layout_location_info,R.id.bt_loginOrorder})
+            R.id.kefu, R.id.hongbao, R.id.scan_qrcode, R.id.layout_location_info, R.id.bt_loginOrorder})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ic_menu:
-                Go2UserActivity();
+                Go2otherActivityAndChackLogin(UserActivity.class);
                 break;
             case R.id.ic_search:
                 Go2Seach();
@@ -286,7 +286,7 @@ public class MainActivity extends AppCompatActivity {
                 Go2Kefu();
                 break;
             case R.id.hongbao:
-                Go2Login();
+                Go2hongbao();
                 break;
             case R.id.scan_qrcode:
                 Go2LoginOrScan();
@@ -300,7 +300,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-  
+
     private void setMyClickable(TextView tv) {
         mTvAllmobike.setClickable(true);
         mTvMobike.setClickable(true);
@@ -336,22 +336,43 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void Go2otherActivityAndChackLogin(Class c) {
+        if (isNeedLogin) {
+            Go2Login();
+        } else {
+            Intent intent = new Intent(MainActivity.this, c);
+            startActivity(intent);
+        }
+    }
+
     private void Go2Seach() {
         Intent intent = new Intent(MainActivity.this, ActionSearchActivity.class);
-        intent.putExtra("mylotion",mBDLocation);
-        startActivityForResult(intent,REQS_LOCATION);
+        intent.putExtra("mylotion", mBDLocation);
+        startActivityForResult(intent, REQS_LOCATION);
     }
+
     private void Go2LoginOrorder() {
         if (isNeedLogin) {
             Go2Login();
-        } else{
+        } else {
             GoforOrorder();
         }
     }
 
+    private void Go2hongbao() {
+        if (isNeedLogin) {
+            Go2Login();
+        } else {
+            Intent intent = new Intent(MainActivity.this, MyRedPocketActivity.class);
+            startActivity(intent);
+        }
+    }
+
+
     private void GoforOrorder() {
         // TODO: 2017/5/26  
     }
+
     private void Go2LoginOrScan() {
         if (isNeedLogin) {
             Go2Login();
@@ -379,21 +400,20 @@ public class MainActivity extends AppCompatActivity {
     private void Go2Login() {
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
-        // MainActivity.this.finish();
     }
 
     private void Go2Kefu() {
         if (isNeedLogin) {
             Intent intent = new Intent(MainActivity.this, Hint_viewActivity.class);
             startActivity(intent);
-        }else {
+        } else {
 
         }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        switch (requestCode){
+        switch (requestCode) {
             case REQS_LOCATION:
                 break;
 
@@ -424,8 +444,8 @@ public class MainActivity extends AppCompatActivity {
             currentPosion.append("市：").append(location.getCity()).append("\n");
             currentPosion.append("区：").append(location.getDirection()).append("\n");
             currentPosion.append("街道：").append(location.getStreet()).append("\n");
-//            currentPosion.append("定位方式：");
-//            Log.d("currentPosion", "onReceiveLocation: " + currentPosion);
+            //            currentPosion.append("定位方式：");
+            //            Log.d("currentPosion", "onReceiveLocation: " + currentPosion);
             //            if (location.getLocType() == BDLocation.TypeGpsLocation) {
             //                currentPosion.append("GPS");
             //            } else if (location.getLocType() == BDLocation.TypeNetWorkLocation) {
