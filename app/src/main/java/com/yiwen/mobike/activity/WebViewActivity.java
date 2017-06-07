@@ -46,7 +46,7 @@ public class WebViewActivity extends AppCompatActivity {
     private void initData() {
         Intent intent = getIntent();
         String url = intent.getStringExtra("url");
-        if (!CommonUtils.isConn(this)) {
+        if (!CommonUtils.isNetworkAvailable(this)) {
             mLo_webview.setVisibility(View.GONE);
             mLo_networt.setVisibility(View.VISIBLE);
         }else {

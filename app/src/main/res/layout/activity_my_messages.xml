@@ -21,24 +21,20 @@
     </com.yiwen.mobike.views.MyToolBar>
 
 
-    <com.cjj.MaterialRefreshLayout
+    <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
         android:id="@+id/id_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:overlay="true"
-        app:progress_colors="@array/material_colors"
-        app:wave_color="#90ffffff"
-        app:wave_height_type="higher"
-        app:wave_show="true"
+        app:direction="both"
         >
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_massage"
-            android:background="@color/bg_color"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/bg_color">
 
         </android.support.v7.widget.RecyclerView>
 
-    </com.cjj.MaterialRefreshLayout>
+    </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
 </LinearLayout>

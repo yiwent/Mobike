@@ -24,6 +24,12 @@
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.FLASHLIGHT"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- sharesdk 所需要的权限 -->
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_PROFILE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
     <application
         android:name=".MyApplication"
@@ -32,7 +38,24 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!-- sharesdk -->
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize">
 
+            <!-- QQ和QQ空间分享 QQ登录的回调必须要配置的 -->
+            <intent-filter>
+                <data android:scheme="tencent100371282"/>
+
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
         <!-- lbs -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
@@ -82,8 +105,7 @@
         </activity>
         <activity
             android:name=".activity.MessageDetailActivity"
-            android:label="@string/title_activity_message_detail"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme">
         </activity>
         <activity android:name=".activity.WebViewActivity">
         </activity>
@@ -91,13 +113,7 @@
         </activity>
         <!-- <activity android:name=".activity.RegActivity"> -->
         <!-- </activity> -->
-        4
         <!-- sns -->
-        <activity
-            android:name="com.mob.tools.MobUIShell"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:windowSoftInputMode="stateHidden|adjustResize"/>
         <activity
             android:name=".activity.Hint_viewActivity"
             android:theme="@style/AppTheme.HintCard">
@@ -142,8 +158,10 @@
         </activity>
         <activity android:name=".activity.SettingsActivity">
         </activity>
-        <!--<activity android:name=".TestActivity">-->
-    <!--</activity>-->
+        <!-- <activity android:name=".TestActivity"> -->
+        <!-- </activity> -->
+        <activity android:name=".activity.RegisterRechargeActivity">
+        </activity>
     </application>
 
 </manifest>

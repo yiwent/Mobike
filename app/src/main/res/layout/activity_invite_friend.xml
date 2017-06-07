@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.yiwen.mobike.activity.MyCreditActivity">
+
+    <com.yiwen.mobike.views.TabTitleView
+        android:id="@+id/title_invent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleText="邀请好友"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/share_mobike_img"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="谁邀请你一起骑行？"
+        android:textSize="20sp"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="13dp"
+        android:textSize="10sp"
+        android:text="输入朋友的邀请码，互赠信用"
+        android:textColor="@color/smssdk_gray"/>
+
+
+</LinearLayout>

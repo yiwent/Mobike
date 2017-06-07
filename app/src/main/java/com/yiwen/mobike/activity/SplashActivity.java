@@ -13,12 +13,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.yiwen.mobike.MyApplication;
 import com.yiwen.mobike.R;
-import com.yiwen.mobike.utils.CommonUtils;
+import com.yiwen.mobike.bean.MyUser;
 import com.yiwen.mobike.utils.MyConstains;
+import com.yiwen.mobike.utils.PreferencesUtils;
 
-import static com.yiwen.mobike.utils.CommonUtils.isConn;
-import static com.yiwen.mobike.utils.MyConstains.IS_FIRST_RUN;
+import static com.yiwen.mobike.utils.CommonUtils.isNetworkAvailable;
 
 public class SplashActivity extends AppCompatActivity {
     private boolean isNeedSetting;
@@ -42,15 +43,16 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void initData() {
-        isFirstRun = getSharedPreferences(MyConstains.SP_MOBIKE, MODE_PRIVATE).
-                getBoolean(IS_FIRST_RUN, false);// TODO: 2017/5/26
-        isNeedLogin = getSharedPreferences(MyConstains.SP_MOBIKE, MODE_PRIVATE).
-                getBoolean(MyConstains.IS_NEED_LOGIN, true);
-
+        MyApplication application = MyApplication.getInstance();
+        isFirstRun = PreferencesUtils.getBoolean(this, MyConstains.IS_FIRST_RUN, false);
+        MyUser  mUser = application.getUser();
+        if (mUser != null) {
+            isNeedLogin = false;
+        }
     }
 
     private void initConnect() {
-        if (!CommonUtils.isConn(this)) {
+        if (!isNetworkAvailable(this)) {
             //提示对话框
             AlertDialog.Builder builder = new AlertDialog.Builder(SplashActivity.this);
             builder.setMessage("网络无法访问，请检查网络").setPositiveButton("确定",
@@ -119,7 +121,7 @@ public class SplashActivity extends AppCompatActivity {
     protected void onRestart() {
         super.onRestart();
         if (isNeedSetting) {
-            if (isConn(this)) {
+            if (isNetworkAvailable(this)) {
                 checkFirstRun();
             } else {
                 initConnect();
@@ -129,11 +131,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private void checkFirstRun() {
         if (isFirstRun) {
-
-            getSharedPreferences(MyConstains.SP_MOBIKE, MODE_PRIVATE)
-                    .edit()
-                    .putBoolean(MyConstains.IS_FIRST_RUN, false)
-                    .apply();
+            PreferencesUtils.putBoolean(this, MyConstains.IS_FIRST_RUN, false);
             Go2Guide();
         } else {
             new Handler().postDelayed(new Runnable() {
@@ -145,7 +143,7 @@ public class SplashActivity extends AppCompatActivity {
                         Go2Main();
                     }
                 }
-            }, 20);
+            }, 200);
         }
 
     }

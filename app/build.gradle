@@ -14,7 +14,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        useLibrary"org.apache.http.legacy"
+        useLibrary "org.apache.http.legacy"
         ndk {
             //设置支持的SO库架构
             abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
@@ -38,26 +38,28 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testCompile 'junit:junit:4.12'
-    apt 'com.jakewharton:butterknife-compiler:8.4.0'
-
+//smssdk
     compile name: 'SMSSDK-2.1.4', ext: 'aar'
     compile name: 'SMSSDKGUI-2.1.4', ext: 'aar'
-
-    compile 'com.google.zxing:core:3.2.1'
     compile 'com.android.support:appcompat-v7:25.1.1'
     compile 'com.android.support:design:25.1.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'com.jakewharton:butterknife:8.4.0'
-    compile 'de.hdodenhof:circleimageview:2.1.0'
-    compile 'com.lzy.widget:imagepicker:0.5.5'
-    compile 'cn.bmob.android:bmob-sdk:3.5.5'//Bmob
-    compile 'cn.bmob.android:http-legacy:1.0'//Bmob
-    compile 'com.orhanobut:logger:2.1.0'//logger
     compile 'com.android.support:recyclerview-v7:25.1.1'
     compile 'com.android.support:cardview-v7:25.1.1'
-    compile 'com.cjj.materialrefeshlayout:library:1.3.0'
-    compile 'com.github.d-max:spots-dialog:0.7@aar'
+
+    compile 'com.google.zxing:core:3.2.1'//zxing
+
+    compile 'com.github.bumptech.glide:glide:3.7.0'//glide
+    compile 'de.hdodenhof:circleimageview:2.1.0'//circleimageview
+    compile 'com.lzy.widget:imagepicker:0.5.5'//imagepicker
+    compile 'cn.bmob.android:bmob-sdk:3.5.5' //Bmob
+    compile 'cn.bmob.android:http-legacy:1.0' //Bmob
+    compile 'com.orhanobut:logger:2.1.0'//logger
+ //   compile 'com.cjj.materialrefeshlayout:library:1.3.0'
+    compile 'com.github.orangegangsters:swipy:1.1.0@aar'//简单的上下拉刷新
+    compile 'com.github.d-max:spots-dialog:0.7@aar'//spots-dialog
     compile 'com.facebook.fresco:fresco:1.3.0'
+    testCompile 'junit:junit:4.12'
+    compile 'com.jakewharton:butterknife:8.4.0'//butterknife
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
 }

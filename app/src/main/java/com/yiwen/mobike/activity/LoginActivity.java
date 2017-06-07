@@ -2,7 +2,6 @@ package com.yiwen.mobike.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -12,8 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.yiwen.mobike.MyApplication;
 import com.yiwen.mobike.R;
-import com.yiwen.mobike.utils.MyConstains;
+import com.yiwen.mobike.base.BaseActivity;
+import com.yiwen.mobike.bean.MyUser;
 import com.yiwen.mobike.utils.ToastUtils;
 import com.yiwen.mobike.views.ClearEditText;
 import com.yiwen.mobike.views.CountTimerView;
@@ -29,12 +30,16 @@ import java.util.regex.Pattern;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.bmob.v3.BmobQuery;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.CountListener;
+import cn.bmob.v3.listener.SaveListener;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 import cn.smssdk.utils.SMSLog;
 import dmax.dialog.SpotsDialog;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
     private static final String TAG = "LoginActivity";
     @BindView(R.id.toolbar_login)
     TabTitleView  mToolbarLogin;
@@ -50,21 +55,24 @@ public class LoginActivity extends AppCompatActivity {
     Button        mLoginQuery;
     @BindView(R.id.login_services)
     TextView      mLoginServices;
-    
-    private boolean isNeedLogin = true;//手机登陆
+
+    private boolean isRegister;//是否注册
     private boolean isNeedPaycash = true;//押金
-    private boolean isSendCode;//是否已发送了验证码
+    private boolean     isSendCode;//是否已发送了验证码
     private SpotsDialog mDialog;
-    
+
     private CountTimerView mCountTimeView;
 
     private              int    phoneLength        = 0;
     private              int    codeLength         = 0;
     // 默认使用中国区号
     private static final String DEFAULT_COUNTRY_ID = "42";
+    private String mPhone;
 
     private SmsEventHandler mEventHandler;
-    
+    private MyUser          mUser;
+    private MyApplication mApplication = MyApplication.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,22 +85,21 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void intView() {
-        mDialog=new SpotsDialog(LoginActivity.this);
+        mDialog = new SpotsDialog(LoginActivity.this);
     }
-    private void DimissMyDialog(){
-        if (mDialog!=null&&mDialog.isShowing())
+
+    private void DismissMyDialog() {
+        if (mDialog != null && mDialog.isShowing())
             mDialog.dismiss();
     }
 
     private void initDate() {
         SMSSDK.initSDK(this, "1dfed2cdde843", "4266d445a7c298caecfb04ecb165fde7");
         mEventHandler = new SmsEventHandler();
+
         SMSSDK.registerEventHandler(mEventHandler);
 
-        isNeedLogin = getSharedPreferences(MyConstains.SP_MOBIKE, MODE_PRIVATE).
-                getBoolean(MyConstains.IS_NEED_LOGIN, true);
-        isNeedPaycash = getSharedPreferences(MyConstains.SP_MOBIKE, MODE_PRIVATE).
-                getBoolean(MyConstains.IS_NEED_PAYCASH, false);// TODO: 2017/5/26  
+
     }
 
     private void initEvent() {
@@ -220,21 +227,53 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         private void RegOK() {
-            DimissMyDialog();
+            cheackUser();
+            if (isRegister) {
+
+            } else {
+                mUser = new MyUser();
+                mUser.setMobilePhoneNumber(mPhone);
+                mUser.setNickName(mPhone.substring(0, 3) + "****" + mPhone.substring(7, 11));
+                mUser.save(new SaveListener<String>() {
+                    @Override
+                    public void done(String s, BmobException e) {
+                        if (e==null){
+                            mApplication.putUser(mUser);
+                            if (mApplication.getIntent()!=null){
+                                // TODO: 2017/6/6  
+                            }
+                                
+                        }
+                        DismissMyDialog();
+                    }
+                });
+            }
             ToastUtils.show(LoginActivity.this, "登陆成功");
-            isNeedLogin=false;
-            getSharedPreferences(MyConstains.SP_MOBIKE, MODE_PRIVATE)
-                    .edit()
-                    .putBoolean(MyConstains.IS_NEED_LOGIN, isNeedLogin)
-                    .apply();
-            if (isNeedPaycash){
-              // TODO: 2017/5/26  
-            }else {
+
+            if (isNeedPaycash) {
+                // TODO: 2017/5/26
+            } else {
                 Go2Main();
             }
-           
         }
 
+    }
+
+    private void cheackUser() {
+        BmobQuery<MyUser> query = new BmobQuery<MyUser>();
+        query.addWhereEqualTo("phone", mPhone);
+        query.count(MyUser.class, new CountListener() {
+            @Override
+            public void done(Integer count, BmobException e) {
+                if (e == null) {
+                    if (count == 1)
+                        isRegister = true;
+                    isRegister = false;
+                } else {
+                    Log.i("bmob", "失败：" + e.getMessage() + "," + e.getErrorCode());
+                }
+            }
+        });
     }
 
     /**
@@ -259,7 +298,8 @@ public class LoginActivity extends AppCompatActivity {
      * @param data
      */
     private void afterVerificationCodeRequested(Boolean data) {
-        DimissMyDialog();
+        DismissMyDialog();
+        ToastUtils.show(LoginActivity.this, "获取验证码成功");
         String phone = mEtPhone.getText().toString().trim().replace("\\s*", "");
         //        String countryCode = mTvCountryCode.getText().toString().trim();
         String countryCode = "86";
@@ -283,13 +323,13 @@ public class LoginActivity extends AppCompatActivity {
                 getCode();
                 break;
             case R.id.loin_voice:
-                ToastUtils.show(LoginActivity.this,"语音验证");
+                ToastUtils.show(LoginActivity.this, "语音验证");
                 break;
             case R.id.login_query:
                 submitCode();
                 break;
             case R.id.login_services:
-                ToastUtils.show(LoginActivity.this,"服务点击");
+                ToastUtils.show(LoginActivity.this, "服务点击");
                 break;
         }
     }
@@ -298,14 +338,14 @@ public class LoginActivity extends AppCompatActivity {
      * 获取验证码
      */
     private void getCode() {
-        String phone = mEtPhone.getText().toString().trim().replace("\\s*", "");
+        mPhone = mEtPhone.getText().toString().trim().replace("\\s*", "");
         //      String countryCode = mTvCountryCode.getText().toString().trim();
         String countryCode = "+86";
         // String countryCode = mTvCountryCode.getText().toString().trim();
-        if (checkPhoneNum(phone, countryCode)) {
+        if (checkPhoneNum(mPhone, countryCode)) {
         /*请求获得验证码*/
-            Log.d(TAG, "getCode: " + phone + "**" + countryCode);
-            SMSSDK.getVerificationCode(countryCode, phone);
+            Log.d(TAG, "getCode: " + mPhone + "**" + countryCode);
+            SMSSDK.getVerificationCode(countryCode, mPhone);
             mCountTimeView = new CountTimerView(mGetCode);
             mCountTimeView.start();
             mDialog.show();
@@ -324,15 +364,15 @@ public class LoginActivity extends AppCompatActivity {
         }
         if (TextUtils.isEmpty(phone)) {
             mEtPhone.setError("手机号格式有误");
-            //ToastUtils.show(this, "请输入手机号码");
-            //            dissmissDialog();
+            ToastUtils.show(this, "请输入手机号码");
+            DismissMyDialog();
             return false;
         }
         if (countryCode.equals("86")) {
             if (phone.length() != 11) {
                 mEtPhone.setError("手机号长度不正确");
-                // ToastUtils.show(this, "手机号长度不正确");
-                //                dissmissDialog();
+                ToastUtils.show(this, "手机号长度不正确");
+                DismissMyDialog();
                 return false;
             }
         }
@@ -341,8 +381,8 @@ public class LoginActivity extends AppCompatActivity {
         Matcher matcher = compile.matcher(phone);
         if (!matcher.matches()) {
             mEtPhone.setError("您输入的手机号码格式不正确");
-            // ToastUtils.show(this, "您输入的手机号码格式不正确");
-            // dissmissDialog();
+            ToastUtils.show(this, "您输入的手机号码格式不正确");
+            DismissMyDialog();
             return false;
         }
         return true;
@@ -350,11 +390,12 @@ public class LoginActivity extends AppCompatActivity {
 
     private void submitCode() {
         mDialog.setMessage("正在验证...");
+        mDialog.show();
         String code = mEtCode.getText().toString().trim();
-        String mPhone = mEtPhone.getText().toString().trim().replace("\\s*", "");
+        mPhone = mEtPhone.getText().toString().trim().replace("\\s*", "");
         if (TextUtils.isEmpty(code)) {
             mEtCode.setError("请输入验证码");
-            //            ToastUtils.show(this, "请输入验证码");
+            ToastUtils.show(this, "请输入验证码");
             return;
         }
         Log.d(TAG, "submitCode: " + mPhone + code);

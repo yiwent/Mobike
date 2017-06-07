@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.yiwen.mobike.activity.MyCreditActivity">
+
+    <com.yiwen.mobike.views.TabTitleView
+        android:id="@+id/title_user_manuel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleText="用户指南"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginLeft="15dp"
+            android:text="热点问题"
+            android:textColor="@color/black"/>
+    </RelativeLayout>
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_reportunlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="开不了锁"
+        />
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_bike_damage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="发现车辆故障"
+        />
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_yajin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="押金说明"
+        />
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_chongzhi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="充值协议"
+        />
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_ReportViolations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="举报违停"
+        />
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_notfindcar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="找不到车"
+        />
+
+    <include layout="@layout/divider_user_center"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_allproblem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="全部问题"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg"/>
+
+</LinearLayout>

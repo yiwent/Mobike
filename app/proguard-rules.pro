@@ -15,3 +15,6 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+#bd map
+-keep class com.baidu.**{*;}
+-keep class vi.com.gdi.bgl.**{*;}

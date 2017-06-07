@@ -7,8 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.cjj.MaterialRefreshLayout;
-import com.cjj.MaterialRefreshListener;
+import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout;
+import com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayoutDirection;
 import com.orhanobut.logger.Logger;
 import com.yiwen.mobike.R;
 import com.yiwen.mobike.adapter.BaseAdapter;
@@ -26,14 +26,16 @@ import cn.bmob.v3.exception.BmobException;
 import cn.bmob.v3.listener.FindListener;
 import dmax.dialog.SpotsDialog;
 
+
+
 public class MyMessagesActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar_massage)
-    MyToolBar             mToolbarMassage;
+    MyToolBar          mToolbarMassage;
     @BindView(R.id.recycler_massage)
-    RecyclerView          mRecyclerMassage;
+    RecyclerView       mRecyclerMassage;
     @BindView(R.id.id_refresh)
-    MaterialRefreshLayout mRefreshLayout;
+    SwipyRefreshLayout mRefreshLayout;
 
     private List<MyMessage>  mMyMessages;
     private MyMessageAdapter mAdapter;
@@ -52,27 +54,38 @@ public class MyMessagesActivity extends AppCompatActivity {
     }
 
     private void initRefreshLayout() {
-        mRefreshLayout.setLoadMore(true);
-        mRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
+//        mRefreshLayout.setLoadMore(true);
+//        mRefreshLayout.setMaterialRefreshListener(new MaterialRefreshListener() {
+//            @Override
+//            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
+//                requestMassage();
+//                mRecyclerMassage.scrollToPosition(0);
+//                mRefreshLayout.finishRefresh();
+//            }
+//
+//            @Override
+//            public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
+//                requestMassage();//实际活动较少，上下拉刷新不需要分页
+//                mRefreshLayout.finishRefreshLoadMore();
+//            }
+//
+//        });
+
+        mRefreshLayout.setOnRefreshListener(new SwipyRefreshLayout.OnRefreshListener() {
             @Override
-            public void onRefresh(MaterialRefreshLayout materialRefreshLayout) {
+            public void onRefresh(SwipyRefreshLayoutDirection direction) {
                 requestMassage();
-                mRecyclerMassage.scrollToPosition(0);
-                mRefreshLayout.finishRefresh();
-            }
+                if (mRefreshLayout.isRefreshing())
+                    mRefreshLayout.setRefreshing(false);
 
-            @Override
-            public void onRefreshLoadMore(MaterialRefreshLayout materialRefreshLayout) {
-                requestMassage();//实际活动较少，上下拉刷新不需要分页
-                mRefreshLayout.finishRefreshLoadMore();
             }
-
         });
     }
 
     private void requestMassage() {
         BmobQuery<MyMessage> query = new BmobQuery<>("MyMessage");
-        //   query.setLimit(4);
+        query.order("-updatedAt");
+           //query.setLimit(4);
         if (isFirstin) {
             mDialog = new SpotsDialog(MyMessagesActivity.this, "正在加载...");
             mDialog.show();
@@ -116,8 +129,9 @@ public class MyMessagesActivity extends AppCompatActivity {
                     String url = mMyMessages.get(position).getClickUrl();
                     String title = mMyMessages.get(position).getDecrdescription();
                     Intent intent = new Intent(MyMessagesActivity.this, MessageDetailActivity.class);
-                    intent.putExtra(MessageDetailActivity.URL, url);
-                    intent.putExtra(MessageDetailActivity.TITLE, title);
+//                    intent.putExtra(MessageDetailActivity.URL, url);
+//                    intent.putExtra(MessageDetailActivity.TITLE, title);
+                    intent.putExtra(MessageDetailActivity.MESSAGE,mMyMessages.get(position));
                     startActivity(intent);
                 }
             });
