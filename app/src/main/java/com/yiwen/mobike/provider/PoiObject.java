@@ -2,7 +2,7 @@ package com.yiwen.mobike.provider;
 
 import java.io.Serializable;
 
-public class PoiObject implements Serializable{
+public class PoiObject implements Serializable {
 
 	public String address;
 	public String lattitude;

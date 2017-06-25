@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -39,11 +40,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static com.yiwen.mobike.R.id.lo_first_address;
 
 public class ActionSearchActivity extends AppCompatActivity implements
         OnGetSuggestionResultListener, PoiSuggestionAdapter.OnItemClickListener
         , PoiHostoryAdapter.OnHistoryItemClickListener {
+
     @BindView(R.id.et_action_search)
     ClearEditText mEtActionSearch;
     @BindView(R.id.tv_search_cancel)
@@ -59,12 +60,14 @@ public class ActionSearchActivity extends AppCompatActivity implements
     private static final String SENCOND_ADDRESS = "address1";
     @BindView(R.id.id_iv_star)
     ImageView      mStar;
-    @BindView(lo_first_address)
+    @BindView(R.id.new_first_address)
     RelativeLayout mLoFirstAddress;
     @BindView(R.id.id_iv_star1)
     ImageView      mStar1;
-    @BindView(R.id.lo_second_address)
+    @BindView(R.id.new_second_address)//
     RelativeLayout mLoSecondAddress;
+    @BindView(R.id.all_address)
+    LinearLayout   mAllAddress;
     @BindView(R.id.address)
     TextView       mAddress;
     @BindView(R.id.address1)
@@ -134,6 +137,7 @@ public class ActionSearchActivity extends AppCompatActivity implements
                 /**
                  * 使用建议搜索服务获取建议列表，结果在onSuggestionResult()中更新
                  */
+                Log.d("yiwen", "onTextChanged: " + s);
                 mSuggestionSearch
                         .requestSuggestion((new SuggestionSearchOption())
                                 .keyword(s.toString()).city("深圳"));
@@ -152,36 +156,40 @@ public class ActionSearchActivity extends AppCompatActivity implements
             PoiObject poiObject = JSONUtil.fromJson(PreferencesUtils.
                     getString(this, FIRST_ADDRESS, null), new TypeToken<PoiObject>() {
             }.getType());
-            first=poiObject;
+            first = poiObject;
+            mLoFirstAddress.setVisibility(View.VISIBLE);
             mAddress.setText(poiObject.address);
             mDistrict.setText(poiObject.district);
         } else {
-            mLoFirstAddress.setVisibility(View.GONE);
+          mLoFirstAddress.setVisibility(View.GONE);
         }
         if (PreferencesUtils.getString(this, SENCOND_ADDRESS, null) != null) {
             PoiObject poiObject = JSONUtil.fromJson(PreferencesUtils.
                     getString(this, SENCOND_ADDRESS, null), new TypeToken<PoiObject>() {
             }.getType());
-            second=poiObject;
+            second = poiObject;
+            mLoSecondAddress.setVisibility(View.VISIBLE);
             mAddress1.setText(poiObject.address);
             mDistrict1.setText(poiObject.district);
         } else {
-            mLoSecondAddress.setVisibility(View.GONE);
+           mLoSecondAddress.setVisibility(View.GONE);
         }
+        if (mLoFirstAddress.getVisibility()==View.GONE&&mLoSecondAddress.getVisibility()==View.GONE)
+            mAllAddress.setVisibility(View.GONE);
         showHistoryPOI();
     }
 
-    @OnClick({R.id.tv_search_cancel, R.id.lo_first_address, R.id.lo_second_address})
+    @OnClick({R.id.tv_search_cancel, R.id.new_first_address, R.id.new_second_address})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_search_cancel:
                 ActionSearchActivity.this.finish();
                 break;
-            case R.id.lo_first_address:
+            case R.id.new_first_address:
                 if (first != null)
                     getLocation(first);
                 break;
-            case R.id.lo_second_address:
+            case R.id.new_second_address:
                 if (second != null)
                     getLocation(second);
                 break;
@@ -200,11 +208,13 @@ public class ActionSearchActivity extends AppCompatActivity implements
 
     @Override
     public void onGetSuggestionResult(SuggestionResult res) {
+
         if (res == null || res.getAllSuggestions() == null) {
             return;
         }
         recyclerview_poi_history.setVisibility(View.GONE);
         suggestionInfoList = res.getAllSuggestions();
+        Log.d("yiwen", "onGetSuggestionResult: "+suggestionInfoList.size());
         if (firstSetAdapter) {
             String from = "detination";//isStartPoi == true ? "start" : "detination";
             sugAdapter = new PoiSuggestionAdapter(this, suggestionInfoList, from);
@@ -227,8 +237,8 @@ public class ActionSearchActivity extends AppCompatActivity implements
     public void onItemClick(View v, int position, String flag, SuggestionResult.SuggestionInfo info) {
         end = info.district;
         providerUtil.addData(info.key, info.district, info.pt.latitude + "", info.pt.longitude + "");
-
-        //  getLocation(info.pt);
+        PoiObject p=new PoiObject(info.key,info.pt.latitude+ "" , info.pt.longitude+ "", info.district);
+          getLocation(p);
     }
 
     private void getLocation(PoiObject info) {

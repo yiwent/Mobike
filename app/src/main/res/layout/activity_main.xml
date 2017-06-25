@@ -142,6 +142,11 @@
                 android:layout_margin="8dp"
                 android:clickable="true"
                 android:src="@drawable/map_location_btn"/>
+            <ImageView
+                android:layout_centerInParent="true"
+                android:src="@drawable/search_center_ic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
             <ImageView
                 android:id="@+id/kefu"

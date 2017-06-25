@@ -173,8 +173,8 @@ public class MainActivity extends AppCompatActivity implements OnGetRoutePlanRes
     private long    firstTime   = 0;//首次进入时间
     public  LocationClient mlocationClient;
     private BaiduMap       baiduMap;
-    private boolean isFirstLocation = true;//首次定位
-    private boolean isNeedCurrentlocation=true;
+    private boolean isFirstLocation       = true;//首次定位
+    private boolean isNeedCurrentlocation = false;
 
     private BDLocation mBDLocation;
     private static int MOBIKETYPE_ALL_MOBIKE = 0;//全部单车
@@ -234,6 +234,7 @@ public class MainActivity extends AppCompatActivity implements OnGetRoutePlanRes
             Utils.showDialog(this);
             return;
         }
+        isNeedCurrentlocation = true;
         mScan_qrcode.setVisibility(View.GONE);
         mTvLocationInfo.setVisibility(View.GONE);
         mBikeInfoBoard.setVisibility(View.VISIBLE);
@@ -355,6 +356,19 @@ public class MainActivity extends AppCompatActivity implements OnGetRoutePlanRes
             startNodeStr = PlanNode.withLocation(changeLL);
             Log.d(TAG, "changeLatitude-----change--------" + changeLatitude);
             Log.d(TAG, "changeLongitude-----change--------" + changeLongitude);
+            if (!isNeedCurrentlocation) {
+                MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(changeLL);
+                baiduMap.setMapStatus(u);
+                if (Math.hypot((changeLatitude - currentLatitude),
+                        (changeLongitude - currentLongitude)) > 0.00001) {
+                    Logger.d(Math.hypot((changeLatitude - currentLatitude),
+                            (changeLongitude - currentLongitude)));
+                    if (routeOverlay != null)
+                        routeOverlay.removeFromMap();
+                    addOverLayout(changeLatitude, changeLongitude);
+                }
+
+            }
         }
 
         public void onMapStatusChange(MapStatus mapStatus) {
@@ -545,7 +559,7 @@ public class MainActivity extends AppCompatActivity implements OnGetRoutePlanRes
     }
 
     public void getMyLocation() {
-        isNeedCurrentlocation=true;
+        isNeedCurrentlocation = true;
         LatLng latLng = new LatLng(currentLatitude, currentLongitude);
         MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
         baiduMap.setMapStatus(msu);
@@ -827,9 +841,9 @@ public class MainActivity extends AppCompatActivity implements OnGetRoutePlanRes
                 if (RESULT_OK == resultCode) {
                     PoiObject info = (PoiObject) data.getSerializableExtra("PoiObject");
                     Logger.d(info);
-                    LatLng latLng=new LatLng(Double.parseDouble(info.lattitude),
+                    LatLng latLng = new LatLng(Double.parseDouble(info.lattitude),
                             Double.parseDouble(info.longitude));
-                    isNeedCurrentlocation=false;
+                    isNeedCurrentlocation = false;
                     MyLocationData.Builder builder = new MyLocationData.Builder();
                     builder.latitude(latLng.latitude);
                     builder.longitude(latLng.longitude);
@@ -936,8 +950,8 @@ public class MainActivity extends AppCompatActivity implements OnGetRoutePlanRes
             beginService();
             return;
         }
-       // if (RouteDetailActivity.completeRoute)
-           backFromRouteDetail();
+        // if (RouteDetailActivity.completeRoute)
+        backFromRouteDetail();
     }
 
     private void backFromRouteDetail() {
@@ -1058,7 +1072,7 @@ public class MainActivity extends AppCompatActivity implements OnGetRoutePlanRes
                     .latitude(bdLocation.getLatitude())
                     .longitude(bdLocation.getLongitude()).build();
             if (isNeedCurrentlocation)
-            baiduMap.setMyLocationData(locData);
+                baiduMap.setMyLocationData(locData);
             currentLatitude = bdLocation.getLatitude();
             currentLongitude = bdLocation.getLongitude();
             mTvLocationInfo.setText(bdLocation.getAddrStr());
