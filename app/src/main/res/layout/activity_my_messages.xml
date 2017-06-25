@@ -8,18 +8,12 @@
     android:orientation="vertical"
     >
 
-    <com.yiwen.mobike.views.MyToolBar
+    <com.yiwen.mobike.views.TabTitleView
         android:id="@+id/toolbar_massage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
-        app:leftButtonIcon="@drawable/up_arrow"
-        app:showSearchView="false"
-        app:title="我的消息">
-
-    </com.yiwen.mobike.views.MyToolBar>
-
+        app:titleText="我的消息"
+        />
 
     <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
         android:id="@+id/id_refresh"

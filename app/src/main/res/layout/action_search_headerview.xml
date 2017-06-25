@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
         android:gravity="center_vertical"
+        android:minHeight="?attr/actionBarSize"
         android:orientation="horizontal"
         >
 
@@ -20,13 +20,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
-            android:textColor="@color/white"
-            android:maxLines="1"
             android:layout_weight="5"
             android:background="@null"
-            android:drawableLeft="@drawable/icon_actionbar_search"
+            android:drawableLeft="@mipmap/icon_search"
+            android:gravity="center"
             android:hint="去哪找我"
-            android:textColorHint="@color/white"/>
+            android:maxLines="1"
+            android:paddingLeft="8dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/smssdk_gray"/>
+
 
         <TextView
             android:id="@+id/tv_search_cancel"
@@ -39,23 +42,123 @@
             android:textColor="@color/white"/>
 
     </LinearLayout>
+
     <LinearLayout
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
         android:layout_width="match_parent"
-        android:layout_height="23dp">
+        android:layout_height="23dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
         <TextView
-            android:text="我的位置"
-            android:layout_marginLeft="3dp"
-            android:textColor="@color/colorPrimaryDark"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="我的位置"
+            android:textColor="@color/colorPrimaryDark"/>
+
         <TextView
             android:id="@+id/tv_actionsech_mylotion"
-            android:text="广东省深圳市宝安区"
-            android:layout_marginLeft="3dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="广东省深圳市宝安区"/>
+    </LinearLayout>
+
+    <include layout="@layout/divider"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/lo_first_address"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_margin="10dp"
+            android:layout_marginLeft="2dp"
+            android:layout_weight="1"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/id_iv_star"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/address_star_selected"/>
+
+            <TextView
+                android:id="@+id/address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/id_iv_star"
+                android:text="凤凰塔"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/district"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/id_iv_star"
+                android:text="宝安区"
+                android:textSize="11sp"/>
+
+        </RelativeLayout>
+
+        <include layout="@layout/divider_satand"/>
+
+        <RelativeLayout
+            android:id="@+id/lo_second_address"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_margin="10dp"
+            android:layout_marginLeft="2dp"
+            android:visibility="visible"
+            android:layout_weight="1"
+            android:clickable="true">
+
+            <ImageView
+                android:id="@+id/id_iv_star1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/address_star_selected"/>
+
+            <TextView
+                android:id="@+id/address1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/id_iv_star1"
+                android:text="凤凰塔"
+                android:textColor="@color/black"
+                android:textSize="13sp"/>
+
+            <TextView
+                android:id="@+id/district1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/id_iv_star1"
+                android:text="宝安区"
+                android:textSize="11sp"/>
+
+        </RelativeLayout>
+
     </LinearLayout>
     <include layout="@layout/divider"/>
 

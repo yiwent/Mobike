@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:id="@+id/layout_main"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
@@ -13,8 +14,8 @@
 
         <ImageView
             android:id="@+id/ic_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignParentStart="true"
             android:layout_centerInParent="true"
             android:layout_marginLeft="5dp"
@@ -30,20 +31,20 @@
 
         <ImageView
             android:id="@+id/ic_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginRight="15dp"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="8dp"
             android:layout_toLeftOf="@+id/ic_message"
             android:clickable="true"
             android:src="@drawable/icon_actionbar_search"/>
 
         <ImageView
             android:id="@+id/ic_message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
             android:layout_alignParentEnd="true"
-            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
             android:clickable="true"
             android:src="@drawable/notification"/>
@@ -106,49 +107,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.baidu.mapapi.map.TextureMapView
+        <com.baidu.mapapi.map.MapView
             android:id="@+id/bmapview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clickable="true">
 
-        </com.baidu.mapapi.map.TextureMapView>
+        </com.baidu.mapapi.map.MapView>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
-            <RelativeLayout
-                android:id="@+id/main_login"
+            <Button
+                android:id="@+id/id_bt_login"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 android:background="@color/red"
-                android:clickable="true"
-                android:orientation="horizontal"
-                android:visibility="visible">
+                android:paddingLeft="15dp"
+                android:gravity="left|center_vertical"
+                android:maxLines="1"
+                android:paddingRight="15dp"
+                android:drawableRight="@drawable/right_arrow"
+                android:text="你尚未完成手机验证，请先进行手机验证"
+                android:textColor="@color/white"
+                android:visibility="gone"
+                android:textSize="15dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="10dp"
-                    android:gravity="center"
-                    android:maxLines="1"
-                    android:text="你尚未完成手机验证，请先进行手机验证"
-                    android:textColor="@color/white"
-                    android:textSize="15dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="8dp"
-                    android:gravity="center"
-                    android:text=">"
-                    android:textColor="@color/white"
-                    android:textSize="20dp"
-                    />
-            </RelativeLayout>
             <ImageView
                 android:id="@+id/dingwei"
                 android:layout_width="wrap_content"
@@ -210,12 +194,10 @@
                 android:gravity="center"
                 android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/report_issue_scan_qrcode"/>
                 <TextView
                     android:text="扫码开锁"
+                    android:gravity="center"
+                    android:drawableLeft="@drawable/report_issue_scan_qrcode"
                     android:textColor="@color/white"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>

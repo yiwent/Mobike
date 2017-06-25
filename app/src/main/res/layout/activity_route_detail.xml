@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:gravity="bottom"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <ImageView
+                android:id="@+id/menu_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_centerVertical="true"
+                android:clickable="true"
+                android:onClick="finishActivity"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:src="@mipmap/return_icon"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/route_detail"
+                android:textColor="@color/white"
+                android:textSize="16sp"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title_layout"
+        android:layout_margin="10dp"
+        android:background="@color/bg"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <com.baidu.mapapi.map.MapView
+            android:id="@+id/route_detail_mapview"
+            android:layout_width="fill_parent"
+            android:layout_height="240dp"
+            android:clickable="true"/>
+
+        <TextView
+            android:id="@+id/total_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="14dp"
+            android:text="@string/route_detail"
+            android:textColor="@color/black"
+            android:textSize="18sp"/>
+
+        <include layout="@layout/divider"/>
+
+        <TextView
+            android:id="@+id/total_distance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="14dp"
+            android:text="@string/route_detail"
+            android:textColor="@color/black"
+
+            android:textSize="18sp"/>
+
+        <include layout="@layout/divider"/>
+
+        <TextView
+            android:id="@+id/total_pricce"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_margin="14dp"
+            android:text="@string/route_detail"
+            android:textColor="@color/black"
+
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

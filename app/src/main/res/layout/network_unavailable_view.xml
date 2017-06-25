@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.yiwen.mobike.views.NetworkUnavailableView xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:gravity="center"
-              android:id="@+id/lo_networt"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
     <ImageView
@@ -16,4 +15,4 @@
         android:layout_height="wrap_content"/>
 
 
-</LinearLayout>
+</com.yiwen.mobike.views.NetworkUnavailableView>

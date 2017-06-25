@@ -25,7 +25,7 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Finishes an activity after a period of inactivity.
+ * Finishes an activity after getUrl period of inactivity.
  */
 public final class InactivityTimer {
 

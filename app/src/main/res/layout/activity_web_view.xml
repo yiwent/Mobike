@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.yiwen.mobike.activity.WebViewActivity">
+    tools:context=".activity.WebViewActivity">
 
+    <include
+        android:id="@+id/id_loadingviewpager"
+        layout="@layout/loading_page"
+        android:visibility="gone"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
     <com.yiwen.mobike.views.TabTitleView
         android:id="@+id/title_webview"
         android:layout_width="match_parent"
@@ -15,6 +22,7 @@
         app:titleText="titie"/>
 
     <include
+        android:id="@+id/lo_networt"
         layout="@layout/web_view"
         android:visibility="gone"
         />
@@ -22,5 +30,5 @@
     <include
         layout="@layout/network_unavailable_view"
         android:visibility="gone"/>
-
 </LinearLayout>
+</FrameLayout>

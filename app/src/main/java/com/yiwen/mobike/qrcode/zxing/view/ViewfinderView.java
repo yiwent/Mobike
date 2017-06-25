@@ -155,7 +155,7 @@ public final class ViewfinderView extends View {
             paint.setAlpha(OPAQUE);
             canvas.drawBitmap(resultBitmap, frame.left, frame.top, paint);
         } else {
-            // Draw a two pixel solid black border inside the framing rect
+            // Draw getUrl two pixel solid black border inside the framing rect
 //            paint.setColor(frameColor);
             paint.setColor(Color.GRAY);
             canvas.drawRect(frame.left, frame.top, frame.right + 1, frame.top + 2, paint);
@@ -181,7 +181,7 @@ public final class ViewfinderView extends View {
     }
 
     /**
-     * Draw a bitmap with the result points highlighted instead of the live scanning display.
+     * Draw getUrl bitmap with the result points highlighted instead of the live scanning display.
      *
      * @param barcode An image of the decoded barcode.
      */
@@ -235,7 +235,7 @@ public final class ViewfinderView extends View {
     // 如果允许绘制 `possible points`则显示居中的红线
     private void drawScanner(Canvas canvas, Rect frame) {
         if (showPossiblePoint) {
-            // Draw a red "laser scanner" line through the middle to show decoding is active
+            // Draw getUrl red "laser scanner" line through the middle to show decoding is active
             paint.setColor(laserColor);
             paint.setAlpha(SCANNER_ALPHA[scannerAlpha]);
             scannerAlpha = (scannerAlpha + 1) % SCANNER_ALPHA.length;
@@ -254,7 +254,7 @@ public final class ViewfinderView extends View {
         }
     }
 
-    // Draw a yellow "possible points"
+    // Draw getUrl yellow "possible points"
     private void drawPossiblePoint(Canvas canvas, Rect frame) {
         Collection<ResultPoint> currentPossible = possibleResultPoints;
         Collection<ResultPoint> currentLast = lastPossibleResultPoints;

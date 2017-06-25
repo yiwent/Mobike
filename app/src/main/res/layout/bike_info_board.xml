@@ -5,34 +5,25 @@
               android:layout_height="wrap_content"
               android:background="@color/white"
               android:orientation="vertical"
-              android:visibility="visible">
+              android:visibility="gone">
 
-    <LinearLayout
-        android:id="@+id/layout_location_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="3dp"
-            android:background="@drawable/bike_info_board_location"/>
-
-        <TextView
-            android:id="@+id/tv_location_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:maxLines="1"
-            android:text="广东省深圳市宝安区幻术路125号"/>
-    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_location_info"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginLeft="5dp"
+        android:drawableLeft="@drawable/bike_info_board_location"
+        android:gravity="center"
+        android:maxLines="1"
+        android:padding="2dp"
+        android:text="广东省深圳市宝安区幻术路125号"/>
 
     <include layout="@layout/divider"/>
 
+    <include layout="@layout/booking_unlock_board"/>
+
     <LinearLayout
+        android:id="@+id/id_lo_bike_distance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -52,6 +43,7 @@
                 android:text="0.5元"/>
 
             <TextView
+                android:id="@+id/tv_prices1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="每30分钟"/>
@@ -71,6 +63,7 @@
                 android:text="8米"/>
 
             <TextView
+                android:id="@+id/tv_distance1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="距离起始位置"/>
@@ -90,6 +83,7 @@
                 android:text="4分钟"/>
 
             <TextView
+                android:id="@+id/minute1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="步行可到达"/>
@@ -102,9 +96,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:drawableRight="@drawable/right_arrow"
         android:background="@color/red"
-        android:text="立即登录即可骑车"
+        android:drawableRight="@drawable/right_arrow"
+        android:paddingRight="8dp"
+        android:text="预约骑车"
         android:textColor="@color/white"/>
 
 </LinearLayout>

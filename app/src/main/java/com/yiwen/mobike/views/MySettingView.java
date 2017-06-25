@@ -64,6 +64,7 @@ public class MySettingView extends RelativeLayout {
 
             int rightTvcolor = a.getColor(R.styleable.MySettingView_ringhtTvTextColor, getResources()
                     .getColor(R.color.smssdk_gray));
+
             setRigtTvColor(rightTvcolor);
 
             right_ImagViewDrawble = a.getDrawable(R.styleable.MySettingView_rightImageIcon);
@@ -123,6 +124,12 @@ public class MySettingView extends RelativeLayout {
         if (mDotImagView != null)
             mDotImagView.setVisibility(visiable);
 
+    }
+
+    public void setShowIndicator(boolean isShow){
+        if (mIndicatorImagView!=null){
+            mIndicatorImagView.setVisibility(true==isShow?View.VISIBLE : View.GONE);
+        }
     }
 
     private void checkVisible() {

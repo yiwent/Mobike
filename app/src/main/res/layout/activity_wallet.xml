@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/tv_bg"
-    tools:context="com.yiwen.mobike.activity.WalletActivity">
+    tools:context="com.yiwen.mobike.activity.pay.WalletActivity">
 
     <com.yiwen.mobike.views.TabTitleView
         android:id="@+id/title_wallet"
@@ -24,6 +24,7 @@
         android:layout_below="@+id/title_wallet"
         android:background="@color/tv_wallet_bg"
         android:gravity="center"
+        android:visibility="gone"
         android:text="您可免费骑行至2017/10/10"/>
 
     <RelativeLayout
@@ -69,6 +70,7 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/iscash"
                 android:layout_marginBottom="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

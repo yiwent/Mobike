@@ -3,6 +3,7 @@ package com.yiwen.mobike;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Environment;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
@@ -11,6 +12,8 @@ import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.yiwen.mobike.bean.MyUser;
 import com.yiwen.mobike.utils.UserLocalData;
+
+import java.io.File;
 
 import cn.bmob.v3.Bmob;
 
@@ -23,6 +26,8 @@ import cn.bmob.v3.Bmob;
 
 public class MyApplication extends Application {
     private static MyApplication sInstance;
+    public static String mSDCardPath;
+    public static final String APP_FOLDER_NAME = "BiuBike";
 
     @Override
     public void onCreate() {
@@ -55,7 +60,10 @@ public class MyApplication extends Application {
     public MyUser getUser() {
         return mUser;
     }
-
+    public void upDataUser(MyUser localuser,MyUser newUser) {
+        this.mUser = localuser;
+        UserLocalData.upDataUser(this, localuser,newUser);
+    }
 
     public void putUser(MyUser user) {
         this.mUser = user;
@@ -80,6 +88,23 @@ public class MyApplication extends Application {
     public void jumpToTargetActivity(Context context) {
         context.startActivity(intent);
         this.intent = null;
+    }
+
+    private boolean initDirs() {
+        mSDCardPath = Environment.getExternalStorageDirectory().toString();
+        if (mSDCardPath == null) {
+            return false;
+        }
+        File f = new File(mSDCardPath, APP_FOLDER_NAME);
+        if (!f.exists()) {
+            try {
+                f.mkdirs();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+        return true;
     }
 
 }

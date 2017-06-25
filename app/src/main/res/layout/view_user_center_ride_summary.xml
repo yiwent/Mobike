@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
+              android:id="@+id/id_lo_ride_summary"
               android:layout_height="wrap_content"
-              android:layout_marginBottom="5dp"
+              android:paddingTop="10dp"
+              android:paddingBottom="10dp"
               android:orientation="horizontal">
 
     <LinearLayout
@@ -19,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:maxLines="1"
-            android:text="77.0"
+            android:text="0"
             android:textColor="@color/red"
             android:textSize="20sp"/>
 
@@ -49,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:maxLines="1"
-            android:text="8.8"
+            android:text="0"
             android:textColor="@color/red"
             android:textSize="20sp"/>
 
@@ -78,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:maxLines="1"
-            android:text="77.0"
+            android:text="0"
             android:textColor="@color/red"
             android:textSize="20sp"/>
 

@@ -11,26 +11,17 @@ import cn.bmob.v3.BmobObject;
  */
 
 public class RideSummary extends BmobObject implements Serializable {
-    private String phone;
+    private MyUser mMyUser;
     private String ride;
     private String save;
     private String kaluli;
-    private MyUser myuser;
 
-    public MyUser getMyuser() {
-        return myuser;
+    public MyUser getMyUser() {
+        return mMyUser;
     }
 
-    public void setMyuser(MyUser myuser) {
-        this.myuser = myuser;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setMyUser(MyUser myUser) {
+        mMyUser = myUser;
     }
 
     public String getRide() {

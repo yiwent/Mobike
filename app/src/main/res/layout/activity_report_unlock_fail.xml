@@ -1,10 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yiwen.mobike.activity.ReportUnlockFailActivity">
+    android:orientation="vertical"
+    tools:context=".activity.usercenter.SettingsActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <com.yiwen.mobike.views.TabTitleView
+        android:id="@+id/title_unlock_fail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleText="客户服务"/>
+
+    <com.yiwen.mobike.views.NonFocusingScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:gravity="left"
+                android:text="开不了锁"
+                android:textColor="@color/black"/>
+
+            <LinearLayout
+                android:id="@+id/lo_report_unlock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:background="@drawable/report_unlock"
+                android:clickable="true"
+                android:orientation="horizontal"
+                android:paddingBottom="8dp"
+                android:paddingLeft="15dp"
+                android:paddingTop="8dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/report_issue_scan_qrcode"/>
+
+                <TextView
+                    android:id="@+id/id_tv_carnub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:text="扫描二维码或者手动输入"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="15dp"
+                android:text="1.观察车锁是否灯亮"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:text="2.app提示我正在休息，请换其他膜拜单车"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:text="3.app提示开锁超时"/>
+
+            <EditText
+                android:id="@+id/et_report_unlock"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="8dp"
+                android:gravity="start"
+                android:hint="备注"
+                android:padding="8dp"
+                android:background="@color/bg"
+                android:maxLength="240"
+                android:maxLines="4"/>
+
+            <TextView
+                android:id="@+id/id_tv_desc_nub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:gravity="end"
+                android:text="140/140"/>
+
+            <Button
+                android:id="@+id/id_bt_query"
+                android:clickable="false"
+                android:background="@color/bg_color"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="提交"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+    </com.yiwen.mobike.views.NonFocusingScrollView>
+</LinearLayout>

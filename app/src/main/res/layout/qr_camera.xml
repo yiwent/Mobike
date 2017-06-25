@@ -43,13 +43,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="15dp"
             xdj:qr_angleColor="@color/white"
             xdj:qr_errorHint="请允许访问摄像头后重试"
             xdj:qr_hint="对准车上的二维码"
             xdj:qr_offsetX="0"
-            xdj:qr_offsetY="0"
+            xdj:qr_offsetY="-120"
             xdj:qr_showPossiblePoint="false"
             xdj:qr_textErrorHintColor="@android:color/white"
             xdj:qr_textHintColor="@android:color/darker_gray"/>
@@ -61,6 +59,7 @@
             android:layout_height="70dp"
             android:layout_alignParentBottom="true"
             android:gravity="center"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
             <LinearLayout

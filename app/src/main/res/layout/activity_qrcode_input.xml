@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/input_qrcode_background"
+    android:orientation="vertical"
+    tools:context=".activity.pay.RechargeHistoryActivity">
+
+    <com.yiwen.mobike.views.TabTitleView
+        android:id="@+id/title_wallet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:rightText="使用帮助"
+        app:showRightTextView="true"
+        app:titleText="输入编号开锁"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/input_qrcode_bike_img"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/input_qrcode_arrow_img"/>
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/input_qrcode_zoom_img"/>
+        <ImageView
+            android:id="@+id/id_iv_flash"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
+            android:clickable="true"
+            android:padding="15dp"
+            android:src="@drawable/scan_qrcode_flash_light_off"/>
+    </LinearLayout>
+
+    <com.jungly.gridpasswordview.GridPasswordView
+        android:id="@+id/pswView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        app:gpvTextColor="@color/white"
+        app:gpvTextSize="25sp"
+        app:gpvLineColor="#6C6D70"
+        app:gpvLineWidth="1dp"
+        app:gpvGridColor="#47494C"
+        app:gpvPasswordLength="10"
+        app:gpvPasswordType="textVisiblePassword"/>
+
+    <TextView
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:text="请确认输入正确的自行车编号"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/id_bt_query"
+        android:textColor="@color/white"
+        android:text="确认"
+        android:padding="10dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/smssdk_gray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

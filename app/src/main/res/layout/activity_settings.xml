@@ -1,10 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yiwen.mobike.activity.SettingsActivity">
+    android:orientation="vertical"
+    tools:context=".activity.usercenter.SettingsActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <com.yiwen.mobike.views.TabTitleView
+        android:id="@+id/title_use_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleText="设置"/>
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_useaddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="常用地址"
+        />
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_findnew"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="检查新版本"
+        />
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_aboutus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="关于我们"
+        />
+
+    <include layout="@layout/divider_user_center"/>
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_useprtool"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="用户协议"
+        />
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_cashexplain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="押金说明"
+        />
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_payprtool"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="充值协议"
+        />
+
+    <include layout="@layout/divider_user_center"/>
+
+    <include layout="@layout/divider_user_center"/>
+
+    <Button
+        android:id="@+id/bt_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/red"
+        android:text="退出登录"
+        android:textColor="@color/white"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg"/>
+</LinearLayout>

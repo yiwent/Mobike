@@ -64,7 +64,7 @@ public final class CaptureActivityHandler extends Handler {
         if (message.what == R.id.auto_focus) {
             //Log.d(TAG, "Got auto-focus message");
             // When one auto focus pass finishes, start another. This is the closest thing to
-            // continuous AF. It does seem to hunt a bit, but I'm not sure what else to do.
+            // continuous AF. It does seem to hunt getUrl bit, but I'm not sure what else to do.
             if (state == State.PREVIEW) {
                 CameraManager.get().requestAutoFocus(this, R.id.auto_focus);
             }

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.yiwen.mobike.activity.CampusVerifyActivity">
+    tools:context="com.yiwen.mobike.activity.login.CampusVerifyActivity">
 
     <com.yiwen.mobike.views.TabTitleView
         android:id="@+id/title_school"
@@ -30,6 +30,7 @@
             android:textColor="@color/black"/>
 
         <TextView
+            android:id="@+id/id_iv_myname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp"
@@ -56,6 +57,9 @@
         <com.yiwen.mobike.views.ClearEditText
             android:id="@+id/et_schoolnub"
             android:layout_width="match_parent"
+            android:padding="10dp"
+            android:hint="请输入校园证号"
+            android:background="@null"
             android:layout_height="wrap_content"
             android:textColor="@color/black"/>
     </LinearLayout>
@@ -63,7 +67,8 @@
     <RelativeLayout
         android:id="@+id/lo_school_select"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="wrap_content"
+        android:padding="13dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="10dp"
@@ -114,6 +119,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
+        android:clickable="false"
         android:layout_marginRight="10dp"
         android:text="提交"/>
 </LinearLayout>

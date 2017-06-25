@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.yiwen.mobike.MyApplication;
-import com.yiwen.mobike.activity.LoginActivity;
+import com.yiwen.mobike.activity.login.LoginActivity;
 import com.yiwen.mobike.bean.MyUser;
 
 

@@ -111,9 +111,12 @@ public class TabTitleView extends RelativeLayout {
 
     public void setTitleText(String titletext) {
         if (mTitleTextView != null)
-            mTitleTextView.setText(titletext);
+            mTitleTextView.setText(titletext);//CharSequence
     }
-
+    public void setTitleText(CharSequence titletext) {
+        if (mTitleTextView != null)
+            mTitleTextView.setText(titletext);//CharSequence
+    }
     public void setRigtTvVisiable(int visiable) {
         if (mRightTextView != null)
             mRightTextView.setVisibility(visiable);

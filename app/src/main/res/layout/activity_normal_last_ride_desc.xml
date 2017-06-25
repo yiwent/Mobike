@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.usercenter.MyCreditActivity">
+
+    <com.yiwen.mobike.views.TabTitleView
+        android:id="@+id/title_nomallasttrip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleText="客户服务"/>
+
+    <LinearLayout
+        android:id="@+id/lo_car_nub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/icon_funnel"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp">
+
+                <TextView
+                    android:id="@+id/iv_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="单车编号"
+                    android:textColor="@color/bg_color"/>
+
+                <TextView
+                    android:id="@+id/id_tv_carnub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@+id/iv_card"
+                    android:text="123344556"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/iv_tim_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_card"
+                    android:text="开始时间"
+                    android:textColor="@color/bg_color"/>
+
+                <TextView
+                    android:id="@+id/id_tv_time"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/id_tv_carnub"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@+id/iv_tim_start"
+                    android:text="123344556"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:id="@+id/iv_tem_end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_tim_start"
+                    android:text="骑行时长"
+                    android:textColor="@color/bg_color"/>
+
+                <TextView
+                    android:id="@+id/id_tv_timetotal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/id_tv_time"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@+id/iv_tem_end"
+                    android:text="123344556"
+                    android:textColor="@color/white"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_marginLeft="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="遇到什么问题？"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/findcar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="发现车辆故障"/>
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/other"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="其他"/>
+
+    <include layout="@layout/divider"/>
+</LinearLayout>

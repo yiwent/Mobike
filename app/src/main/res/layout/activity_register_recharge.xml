@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".activity.RegisterRechargeActivity">
+    >
+
+    <com.yiwen.mobike.views.TabTitleView
+        android:id="@+id/toolbar_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftImageIcon="@drawable/ic_close"
+        app:titleText="押金充值"/>
 
 
-</LinearLayout>
+</RelativeLayout>

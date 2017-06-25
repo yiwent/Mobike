@@ -3,6 +3,7 @@ package com.yiwen.mobike.qrcode;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -36,6 +37,8 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
 import com.yiwen.mobike.BuildConfig;
 import com.yiwen.mobike.R;
+import com.yiwen.mobike.activity.HelpCardActivity;
+import com.yiwen.mobike.activity.QRCodeInputActivity;
 import com.yiwen.mobike.qrcode.common.ActionUtils;
 import com.yiwen.mobike.qrcode.common.QrUtils;
 import com.yiwen.mobike.qrcode.zxing.camera.CameraManager;
@@ -58,6 +61,7 @@ public class CaptureActivity extends Activity implements Callback {
 
     private static final int REQUEST_PERMISSION_CAMERA = 1000;
     private static final int REQUEST_PERMISSION_PHOTO = 1001;
+    private static final int REQEST_CARNUB = 22;//yiwen add
 
     private CaptureActivity mActivity;
 
@@ -75,6 +79,7 @@ public class CaptureActivity extends Activity implements Callback {
     private TabTitleView backIbtn;
     private ImageButton  flashIbtn;
     private ImageButton     bt_input;
+    private boolean isOnlyNub      = false;//yiwen add
 
     /**
      * Called when the activity is first created.
@@ -131,7 +136,7 @@ public class CaptureActivity extends Activity implements Callback {
             handler = null;
         }
         if (flashIbtn != null) {
-            flashIbtn.setImageResource(R.drawable.ic_flash_off_white_24dp);
+            flashIbtn.setImageResource(R.drawable.scan_qrcode_flash_light_off);
         }
         CameraManager.get().closeDriver();
     }
@@ -177,6 +182,14 @@ public class CaptureActivity extends Activity implements Callback {
                 if (BuildConfig.DEBUG) Log.e(TAG, "image path not found");
                 Toast.makeText(mActivity, "图片路径未找到", Toast.LENGTH_SHORT).show();
             }
+        }else {//yiwen add
+            if (requestCode==REQEST_CARNUB&&RESULT_OK==resultCode){
+                Intent intent = new Intent();
+                intent.putExtra("result",data.getStringExtra("result") );
+                setResult(RESULT_OK, intent);
+                finish();
+            }
+
         }
     }
 
@@ -237,6 +250,9 @@ public class CaptureActivity extends Activity implements Callback {
     }
 
     protected void initView() {
+        Intent intent = getIntent();
+        if (intent != null)
+            isOnlyNub = intent.getBooleanExtra("isOnlyNub", false);//yiwen add
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.qr_camera);
@@ -250,6 +266,13 @@ public class CaptureActivity extends Activity implements Callback {
             @Override
             public void onClick() {
                 mActivity.finish();
+            }
+        });
+        backIbtn.setOnRightTextViewClickListener(new TabTitleView.OnRightButtonClickListener() {
+            @Override
+            public void onClick() {
+                Intent intent = new Intent(CaptureActivity.this, HelpCardActivity.class);
+                startActivity(intent);
             }
         });
         flashIbtn.setOnClickListener(new View.OnClickListener() {
@@ -266,7 +289,9 @@ public class CaptureActivity extends Activity implements Callback {
         bt_input.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openGallery();
+               // openGallery();
+                startActivityForResult(QRCodeInputActivity.
+                        getMyIntent(CaptureActivity.this, isOnlyNub), REQEST_CARNUB);
             }
         });
     }
@@ -417,5 +442,18 @@ public class CaptureActivity extends Activity implements Callback {
             mediaPlayer.seekTo(0);
         }
     };
+
+    /**
+     * yiwen add
+     * @param context
+     * @param isOnlyNub
+     * @return
+     */
+
+    public static Intent getMyIntent(Context context, boolean isOnlyNub) {
+        Intent intent = new Intent(context, CaptureActivity.class);
+        intent.putExtra("isOnlyNub", isOnlyNub);
+        return intent;
+    }
 
 }

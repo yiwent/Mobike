@@ -5,8 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_color"
     android:orientation="vertical"
-    tools:context="com.yiwen.mobike.activity.MyCreditActivity">
+    tools:context="com.yiwen.mobike.activity.usercenter.MyCreditActivity">
 
     <com.yiwen.mobike.views.TabTitleView
         android:id="@+id/title_coupons"
@@ -16,8 +17,6 @@
         app:showRightTextView="true"
         app:titleText="我的优惠"/>
 
-
-
     <EditText
         android:id="@+id/et_coupons"
         android:layout_width="match_parent"
@@ -26,7 +25,8 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="10dp"
-        android:background="@null"
+        android:background="@drawable/edit_bg"
+        android:visibility="gone"
         android:gravity="center"
         android:padding="8dp"
         android:maxLines="1"
@@ -41,13 +41,13 @@
         android:layout_marginRight="8dp"
         android:layout_marginTop="10dp"
         android:background="@color/red"
-        android:text="优惠吗兑换"
+        android:text="优惠码兑换"
         android:visibility="visible"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_coupons"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
     </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

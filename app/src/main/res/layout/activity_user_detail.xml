@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.yiwen.mobike.activity.UserDetailActivity">
+    tools:context="com.yiwen.mobike.activity.usercenter.UserDetailActivity">
 
     <com.yiwen.mobike.views.TabTitleView
         android:id="@+id/title_use_detail"
@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:leftTvText="昵称"
-        app:rightTvText="182***2002"
+        app:rightTvText=""
         app:showRightTv="true"
         />
 
@@ -66,7 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:leftTvText="手机号"
-        app:rightTvText="182***2002"
+        app:rightTvText="123***4567"
         app:showRightTv="true"
         />
 

@@ -15,6 +15,7 @@ import android.view.WindowManager;
 
 import com.yiwen.mobike.MyApplication;
 import com.yiwen.mobike.R;
+import com.yiwen.mobike.activity.login.LoginActivity;
 import com.yiwen.mobike.bean.MyUser;
 import com.yiwen.mobike.utils.MyConstains;
 import com.yiwen.mobike.utils.PreferencesUtils;

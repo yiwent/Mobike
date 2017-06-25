@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.usercenter.SettingsActivity">
+
+    <com.yiwen.mobike.views.TabTitleView
+        android:id="@+id/title_other"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleText="客户服务"/>
+    <TextView
+        android:id="@+id/id_tv_netfail"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/red"
+        android:drawableStart="@drawable/network_unavailable_ic"
+        android:gravity="center"
+        android:paddingLeft="50dp"
+        android:text="网络无法连接，请检查网络连接"
+        android:textColor="@color/white"
+        android:visibility="gone"/>
+    <LinearLayout
+        android:id="@+id/lo_car_nub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@color/colorPrimary"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="上次行程"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/id_tv_needhelp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="20dp"
+                android:clickable="true"
+                android:text="需要帮助"
+                android:textColor="@color/red"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/icon_funnel"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp">
+
+                <TextView
+                    android:id="@+id/iv_card"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="单车编号"
+                    android:textColor="@color/bg_color"/>
+
+                <TextView
+                    android:id="@+id/iv_card_nub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@+id/iv_card"
+                    android:text="123344556"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:layout_marginTop="15dp"
+                    android:id="@+id/iv_tim_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_card"
+                    android:text="开始时间"
+                    android:textColor="@color/bg_color"/>
+
+                <TextView
+                    android:id="@+id/iv_time_start"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_card_nub"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@+id/iv_tim_start"
+                    android:text="123344556"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:id="@+id/iv_tem_end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_tim_start"
+                    android:text="骑行时长"
+                    android:textColor="@color/bg_color"/>
+
+                <TextView
+                    android:id="@+id/iv_teme_end"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/iv_time_start"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@+id/iv_tem_end"
+                    android:text="123344556"
+                    android:textColor="@color/white"/>
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <include layout="@layout/divider"/>
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_history"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="历史行程"
+        />
+    <include layout="@layout/divider"/>
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_find_car_problem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="发现车辆故障"
+        />
+    <include layout="@layout/divider"/>
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_unlock_fail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="开不了锁"
+        />
+    <include layout="@layout/divider"/>
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_register_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="注册与登陆"
+        />
+    <include layout="@layout/divider"/>
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_cash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="车费与押金"
+        />
+    <include layout="@layout/divider"/>
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_credit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="我的膜拜信用问题"
+        />
+    <include layout="@layout/divider"/>
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_return_car"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="还车相关"
+        />
+    <include layout="@layout/divider_user_center"/>
+    <include layout="@layout/divider"/>
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_services"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="客户服务进度"
+        />
+    <View
+        android:background="@color/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

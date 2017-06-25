@@ -3,9 +3,11 @@ package com.yiwen.mobike.utils;
 import android.content.Context;
 import android.text.TextUtils;
 
+import com.orhanobut.logger.Logger;
 import com.yiwen.mobike.bean.MyUser;
 
-
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.UpdateListener;
 
 
 public class UserLocalData {
@@ -29,4 +31,13 @@ public class UserLocalData {
     }
 
 
+    public static void upDataUser(Context context, MyUser localuser,MyUser newUser) {
+        putUser(context,localuser);
+        newUser.update(localuser.getObjectId(), new UpdateListener() {
+            @Override
+            public void done(BmobException e) {
+                Logger.d(e);
+            }
+        });
+    }
 }

@@ -6,19 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".activity.UserActivity">
+    tools:context=".activity.usercenter.UserActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:background="@color/colorAccent"
-        android:layout_height="240dp"
+        android:layout_height="wrap_content"
         android:fitsSystemWindows="true"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/collapsinglayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
             app:titleEnabled="false"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"

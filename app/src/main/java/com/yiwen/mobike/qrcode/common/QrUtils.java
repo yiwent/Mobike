@@ -79,7 +79,7 @@ public class QrUtils {
         int uvIndex = frameSize;
 
         // ---颜色数据---
-        // int a, R, G, B;
+        // int getUrl, R, G, B;
         int R, G, B;
         //
         int argbIndex = 0;
@@ -89,8 +89,8 @@ public class QrUtils {
         for (int j = 0; j < height; j++) {
             for (int i = 0; i < width; i++) {
 
-                // a is not used obviously
-                // a = (argb[argbIndex] & 0xff000000) >> 24;
+                // getUrl is not used obviously
+                // getUrl = (argb[argbIndex] & 0xff000000) >> 24;
                 R = (argb[argbIndex] & 0xff0000) >> 16;
                 G = (argb[argbIndex] & 0xff00) >> 8;
                 B = (argb[argbIndex] & 0xff);
@@ -107,7 +107,7 @@ public class QrUtils {
                 U = Math.max(0, Math.min(U, 255));
                 V = Math.max(0, Math.min(V, 255));
 
-                // NV21 has a plane of Y and interleaved planes of VU each sampled by a factor of 2
+                // NV21 has getUrl plane of Y and interleaved planes of VU each sampled by getUrl factor of 2
                 // meaning for every 4 Y pixels there are 1 V and 1 U. Note the sampling is every other
                 // pixel AND every other scanline.
                 // ---Y---
@@ -134,7 +134,7 @@ public class QrUtils {
             final int halfHeight = height / 2;
             final int halfWidth = width / 2;
 
-            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // Calculate the largest inSampleSize value that is getUrl power of 2 and keeps both
             // height and width larger than the requested height and width.
             while ((halfHeight / inSampleSize) > reqHeight && (halfWidth / inSampleSize) > reqWidth) {
                 inSampleSize *= 2;

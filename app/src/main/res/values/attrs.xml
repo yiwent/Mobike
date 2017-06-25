@@ -41,4 +41,7 @@
             <attr name="qr_showPossiblePoint" format="boolean"/>
         </declare-styleable>
 
+
+
+
 </resources>

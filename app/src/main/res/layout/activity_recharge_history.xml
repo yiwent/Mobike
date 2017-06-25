@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.yiwen.mobike.activity.RechargeHistoryActivity">
+    tools:context=".activity.pay.RechargeHistoryActivity">
 
     <com.yiwen.mobike.views.TabTitleView
         android:id="@+id/title_wallet"
@@ -15,10 +15,14 @@
         app:rightText="退款说明"
         app:showRightTextView="true"
         app:titleText="明细"/>
-
-    <android.support.v4.widget.SwipeRefreshLayout
+    <include
+        android:id="@+id/lo_networt"
+        layout="@layout/network_unavailable_view"
+        android:visibility="gone"/>
+    <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
         android:id="@+id/swipeRefresg_charge_history"
         android:layout_width="match_parent"
+        app:direction="both"
         android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
@@ -27,6 +31,6 @@
             android:layout_height="match_parent">
 
         </android.support.v7.widget.RecyclerView>
-    </android.support.v4.widget.SwipeRefreshLayout>
+    </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
 
 </LinearLayout>

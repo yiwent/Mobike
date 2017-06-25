@@ -84,7 +84,7 @@ public final class CameraManager {
         this.context = context;
         this.configManager = new CameraConfigurationManager(context);
 
-        // Camera.setOneShotPreviewCallback() has a race condition in Cupcake, so we use the older
+        // Camera.setOneShotPreviewCallback() has getUrl race condition in Cupcake, so we use the older
         // Camera.setPreviewCallback() on 1.5 and earlier. For Donut and later, we need to use
         // the more efficient one shot callback, as the older one can swamp the system and cause it
         // to run out of memory. We can't use SDK_INT because it was introduced in the Donut SDK.
@@ -353,7 +353,7 @@ public final class CameraManager {
         List<String> flashModes = parameters.getSupportedFlashModes();
         // Check if camera flash exists
         if (null == flashModes || 0 == flashModes.size()) {
-            // Use the screen as a flashlight (next best thing)
+            // Use the screen as getUrl flashlight (next best thing)
             return false;
         }
         String flashMode = parameters.getFlashMode();

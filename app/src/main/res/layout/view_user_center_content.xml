@@ -5,6 +5,18 @@
               android:layout_height="wrap_content"
               android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/id_tv_netfail"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/red"
+        android:drawableStart="@drawable/network_unavailable_ic"
+        android:gravity="center"
+        android:paddingLeft="50dp"
+        android:text="网络无法连接，请检查网络连接"
+        android:textColor="@color/white"
+        android:visibility="gone"/>
+
     <include layout="@layout/divider"/>
 
     <com.yiwen.mobike.views.MySettingView
@@ -12,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:leftTvText="我的钱包"
-        app:rightTvText="28.7元"
+        app:rightTvText="0.0元"
         app:showRightTv="true"/>
 
     <include layout="@layout/divider"/>
@@ -23,10 +35,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:leftTvText="我的优惠"
-        app:rightTvText="一张"
+        app:rightTvText=""
         app:showRightTv="true"/>
 
     <include layout="@layout/divider"/>
+
     <com.yiwen.mobike.views.MySettingView
         android:id="@+id/tv_my_distance"
         android:layout_width="match_parent"
@@ -35,6 +48,7 @@
         />
 
     <include layout="@layout/divider_user_center"/>
+
     <com.yiwen.mobike.views.MySettingView
         android:id="@+id/tv_my_mymassege"
         android:layout_width="match_parent"
@@ -43,6 +57,7 @@
         />
 
     <include layout="@layout/divider"/>
+
     <com.yiwen.mobike.views.MySettingView
         android:id="@+id/tv_my_invent"
         android:layout_width="match_parent"
@@ -51,20 +66,23 @@
         />
 
     <include layout="@layout/divider"/>
+
     <com.yiwen.mobike.views.MySettingView
         android:id="@+id/tv_my_guide"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:leftTvText="用户指南"
         />
+
     <include layout="@layout/divider"/>
+
     <com.yiwen.mobike.views.MySettingView
         android:id="@+id/tv_my_setting"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:leftTvText="设置"
         />
-
+    <include layout="@layout/divider"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"

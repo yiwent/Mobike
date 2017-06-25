@@ -1,10 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yiwen.mobike.activity.CustomerServiceWebActivity">
+    tools:context=".activity.WebViewActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <com.yiwen.mobike.views.TabTitleView
+            android:id="@+id/title_webview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="网络未连接"/>
+        <include
+            layout="@layout/web_view"
+            android:visibility="visible"
+            />
+    </LinearLayout>
+    <include
+        android:id="@+id/id_loadingviewpager"
+        layout="@layout/loading_page"
+        android:visibility="visible"/>
+    <include
+        android:id="@+id/lo_networt"
+        layout="@layout/network_unavailable_view"
+        android:visibility="visible"/>
+</FrameLayout>

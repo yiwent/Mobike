@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yiwen.mobike.activity.SsoUserInfoActivity">
+    tools:context="com.yiwen.mobike.activity.login.SsoUserInfoActivity">
 
     <com.yiwen.mobike.views.TabTitleView
         android:id="@+id/title_sso_user"
@@ -15,8 +15,8 @@
 
     <ImageView
         android:id="@+id/iv_wxhead"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
         android:layout_below="@+id/title_sso_user"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
@@ -30,6 +30,7 @@
         android:layout_below="@+id/iv_wxhead"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
+        android:textSize="15sp"
         android:text="zhangsan"
         android:textColor="@color/black"/>
     <TextView
@@ -48,6 +49,7 @@
         android:background="#ffffff"
         android:clickable="true"
         android:layout_marginBottom="10dp"
+        android:textSize="12sp"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
         android:layout_width="wrap_content"

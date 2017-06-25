@@ -1,10 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yiwen.mobike.activity.UserManuelAllQuestionActivity">
+    android:orientation="vertical"
+    tools:context=".activity.usercenter.SettingsActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <com.yiwen.mobike.views.TabTitleView
+        android:id="@+id/title_allproblem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleText="用户指南"/>
+    <TextView
+        android:text="问题类型"
+        android:padding="10dp"
+        android:background="@color/bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_regest_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="注册与账户"
+        />
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_planunlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="预约与开锁"
+        />
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_cash"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="车费与押金"
+        />
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_return_car"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="还车相关"
+        />
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_aboutcar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="关于单车"
+        />
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_aboutmobike"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="关于膜拜"
+        />
+    <include layout="@layout/divider"/>
+
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_credit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="膜拜信用积分"
+        />
+    <View
+        android:background="@color/bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

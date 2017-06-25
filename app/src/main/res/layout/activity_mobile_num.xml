@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yiwen.mobike.activity.MobileNumActivity">
+    tools:context="com.yiwen.mobike.activity.usercenter.MobileNumActivity">
 
     <com.yiwen.mobike.views.TabTitleView
         android:id="@+id/title_mobike_num"

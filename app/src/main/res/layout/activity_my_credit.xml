@@ -1,15 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.yiwen.mobike.activity.MyCreditActivity">
-<com.yiwen.mobike.views.TabTitleView
-    android:id="@+id/title_credit"
-    android:layout_width="match_parent"
-    app:titleText="我的信用"
-    android:layout_height="wrap_content"/>
-</RelativeLayout>
+
+    tools:context="com.yiwen.mobike.activity.usercenter.MyCreditActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.yiwen.mobike.views.TabTitleView
+            android:id="@+id/title_credit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleText="我的信用"/>
+
+        <include layout="@layout/web_view"/>
+
+
+    </LinearLayout>
+    <include
+        android:id="@+id/id_loading"
+        layout="@layout/loading_page"
+        android:visibility="visible"/>
+    <include
+        android:id="@+id/id_network"
+        layout="@layout/network_unavailable_view"
+        android:visibility="visible"/>
+</FrameLayout>

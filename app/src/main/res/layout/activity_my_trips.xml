@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.yiwen.mobike.activity.MyCreditActivity">
+    tools:context="com.yiwen.mobike.activity.usercenter.MyCreditActivity">
 
     <com.yiwen.mobike.views.TabTitleView
         android:id="@+id/title_trips"
@@ -16,10 +16,16 @@
         app:showRightTextView="true"
         app:titleText="我的行程"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_trips"
+    <com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout
+        android:id="@+id/id_refresh"
+        app:direction="both"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-    </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_trips"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+    </com.orangegangsters.github.swipyrefreshlayout.library.SwipyRefreshLayout>
 </LinearLayout>

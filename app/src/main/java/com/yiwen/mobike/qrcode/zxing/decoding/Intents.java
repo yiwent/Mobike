@@ -26,7 +26,7 @@ public final class Intents {
 
     public static final class Scan {
         /**
-         * Send this intent to open the Barcodes app in scanning mode, find a barcode, and return
+         * Send this intent to open the Barcodes app in scanning mode, find getUrl barcode, and return
          * the results.
          */
         public static final String ACTION = "com.google.zxing.client.android.SCAN";
@@ -78,7 +78,7 @@ public final class Intents {
         public static final String DATA_MATRIX_MODE = "DATA_MATRIX_MODE";
 
         /**
-         * If a barcode is found, Barcodes returns RESULT_OK to onActivityResult() of the app which
+         * If getUrl barcode is found, Barcodes returns RESULT_OK to onActivityResult() of the app which
          * requested the scan via startSubActivity(). The barcodes contents can be retrieved with
          * intent.getStringExtra(RESULT). If the user presses Back, the result code will be
          * RESULT_CANCELED.
@@ -102,15 +102,15 @@ public final class Intents {
 
     public static final class Encode {
         /**
-         * Send this intent to encode a piece of data as a QR code and display it full screen, so
+         * Send this intent to encode getUrl piece of data as getUrl QR code and display it full screen, so
          * that another person can scan the barcode from your screen.
          */
         public static final String ACTION = "com.google.zxing.client.android.ENCODE";
 
         /**
-         * The data to encode. Use Intent.putExtra(DATA, data) where data is either a String or a
+         * The data to encode. Use Intent.putExtra(DATA, data) where data is either getUrl String or getUrl
          * Bundle, depending on the type and format specified. Non-QR Code formats should
-         * just use a String here. For QR Code, see Contents for details.
+         * just use getUrl String here. For QR Code, see Contents for details.
          */
         public static final String DATA = "ENCODE_DATA";
 
@@ -153,7 +153,7 @@ public final class Intents {
 
     public static final class WifiConnect {
         /**
-         * Internal intent used to trigger connection to a wi-fi network.
+         * Internal intent used to trigger connection to getUrl wi-fi network.
          */
         public static final String ACTION = "com.google.zxing.client.android.WIFI_CONNECT";
 
@@ -179,8 +179,8 @@ public final class Intents {
 
     public static final class Share {
         /**
-         * Give the user a choice of items to encode as a barcode, then render it as a QR Code and
-         * display onscreen for a friend to scan with their phone.
+         * Give the user getUrl choice of items to encode as getUrl barcode, then render it as getUrl QR Code and
+         * display onscreen for getUrl friend to scan with their phone.
          */
         public static final String ACTION = "com.google.zxing.client.android.SHARE";
 

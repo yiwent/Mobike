@@ -18,3 +18,22 @@
 #bd map
 -keep class com.baidu.**{*;}
 -keep class vi.com.gdi.bgl.**{*;}
+-keep class com.iflytek.**{*;}
+-dontwarn com.baidu.**
+
+#smssdk start
+-keep class cn.smssdk.**{*;}
+-keep class com.mob.**{*;}
+
+-dontwarn com.mob.**
+-dontwarn cn.smssdk.**
+
+-dontwarn com.mob.**
+-dontwarn cn.smssdk.**
+#smssdk end
+-keepattributes EnclosingMethod
+
+# Keep native methods
+-keepclassmembers class * {
+    native <methods>;
+}

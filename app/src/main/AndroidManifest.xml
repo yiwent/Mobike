@@ -30,6 +30,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
     <uses-permission android:name="android.permission.READ_PROFILE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
 
     <application
         android:name=".MyApplication"
@@ -38,6 +39,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <!-- sharesdk -->
         <activity
             android:name="com.mob.tools.MobUIShell"
@@ -73,21 +75,19 @@
         <activity android:name=".activity.GuideActivity">
         </activity>
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".activity.login.LoginActivity"
             android:theme="@style/AppTheme"/>
         <activity
-            android:name=".activity.UseInfoActivity"
+            android:name=".activity.usercenter.UseInfoActivity"
             android:label="@string/title_activity_use_info"
             android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity android:name=".activity.HelpHintActivity">
         </activity>
         <activity android:name=".activity.ActionSearchActivity">
         </activity>
         <!-- <activity android:name=".activity.SplashActivity"></activity> -->
         <activity
             android:name=".activity.MainActivity"
-            android:launchMode="singleTop"/>
+            android:launchMode="singleTask"/>
         <!-- baidu lbs -->
         <service
             android:name="com.baidu.location.f"
@@ -95,72 +95,156 @@
             android:process=":remote"/>
 
         <activity
-            android:name=".activity.UserActivity"
+            android:name=".activity.usercenter.UserActivity"
             android:label="@string/title_activity_User"
             android:theme="@style/use_activity_style">
         </activity>
-        <activity android:name=".activity.UserDetailActivity">
+        <activity android:name=".activity.usercenter.UserDetailActivity">
         </activity>
-        <activity android:name=".activity.MyMessagesActivity">
+        <activity android:name=".activity.usercenter.MyMessagesActivity">
         </activity>
         <activity
-            android:name=".activity.MessageDetailActivity"
+            android:name=".activity.usercenter.MessageDetailActivity"
             android:theme="@style/AppTheme">
         </activity>
         <activity android:name=".activity.WebViewActivity">
         </activity>
-        <activity android:name=".activity.MyRedPocketActivity">
+        <activity android:name=".activity.redpacket.MyRedPocketActivity">
         </activity>
         <!-- <activity android:name=".activity.RegActivity"> -->
         <!-- </activity> -->
         <!-- sns -->
         <activity
-            android:name=".activity.Hint_viewActivity"
+            android:name=".activity.HelpCardActivity"
             android:theme="@style/AppTheme.HintCard">
         </activity>
-        <activity android:name=".activity.ModifyNickNameActivity">
+        <activity android:name=".activity.usercenter.ModifyNickNameActivity">
         </activity>
-        <activity android:name=".activity.MobileNumActivity">
+        <activity android:name=".activity.usercenter.MobileNumActivity">
         </activity>
-        <activity android:name=".activity.WalletActivity">
+        <activity android:name=".activity.pay.WalletActivity">
         </activity>
         <!-- imagepicker -->
         <activity
             android:name="com.lzy.imagepicker.ui.ImagePreviewDelActivity"
             android:theme="@style/ImagePickerThemeFullScreen"/>
-        <activity android:name=".activity.SsoUserInfoActivity">
+        <activity android:name=".activity.login.SsoUserInfoActivity">
         </activity>
-        <activity android:name=".qrcode.CaptureActivity">
+        <activity
+            android:name=".qrcode.CaptureActivity"
+            android:theme="@style/AppTheme">
         </activity>
-        <activity android:name=".activity.CampusVerifyActivity">
+        <activity android:name=".activity.login.CampusVerifyActivity">
         </activity>
-        <activity android:name=".activity.RechargeHistoryActivity">
+        <activity android:name=".activity.pay.RechargeHistoryActivity">
         </activity>
-        <activity android:name=".activity.CustomerServiceWebActivity">
+        <activity android:name=".activity.customer.CustomerServiceWebActivity">
         </activity>
-        <activity android:name=".activity.MyCreditActivity">
+        <activity android:name=".activity.usercenter.MyCreditActivity">
         </activity>
-        <activity android:name=".activity.MyCouponsActivity">
+        <activity android:name=".activity.usercenter.MyCouponsActivity">
         </activity>
-        <activity android:name=".activity.MyTripsActivity">
+        <activity android:name=".activity.riding.MyTripsActivity">
         </activity>
-        <activity android:name=".activity.InviteFriendActivity">
+        <activity android:name=".activity.usercenter.InviteFriendActivity">
         </activity>
-        <activity android:name=".activity.UserManuelActivity">
+        <activity android:name=".activity.usercenter.UserManuelActivity">
         </activity>
-        <activity android:name=".activity.ReportUnlockFailActivity">
+        <activity android:name=".activity.customer.ReportUnlockFailActivity">
         </activity>
-        <activity android:name=".activity.BikeDamageReportActivity">
+        <activity android:name=".activity.customer.BikeDamageReportActivity">
         </activity>
-        <activity android:name=".activity.ReportViolationsActivity">
+        <activity android:name=".activity.customer.ReportViolationsActivity">
         </activity>
-        <activity android:name=".activity.UserManuelAllQuestionActivity">
+        <activity android:name=".activity.usercenter.UserManuelAllQuestionActivity">
         </activity>
-        <activity android:name=".activity.SettingsActivity">
+        <activity android:name=".activity.usercenter.SettingsActivity">
         </activity>
         <!-- <activity android:name=".TestActivity"> -->
         <!-- </activity> -->
-        <activity android:name=".activity.RegisterRechargeActivity">
+        <activity android:name=".activity.login.RegisterRechargeActivity">
+        </activity>
+        <activity android:name=".activity.login.IDCardVerifyActivity">
+        </activity>
+        <activity
+            android:name=".activity.riding.RouteDetailActivity"
+            android:theme="@style/AppTheme"/>
+
+        <service android:name=".service.RouteService"/>
+
+        <receiver android:name=".activity.MainActivity$LocationReceiver">
+            <intent-filter>
+                <action android:name="com.locationreceiver"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".service.RouteService$NetWorkReceiver"
+            android:label="NetworkConnection">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name=".provider.PoiProvider"
+            android:authorities="com.yiwen.mobike.provider.poiprovider"
+            android:exported="true"/>
+
+        <activity android:name=".activity.pay.DepositRefundIssueActivity">
+        </activity>
+        <activity android:name=".activity.customer.LastTenTripHistoryActivity">
+        </activity>
+        <activity android:name=".activity.customer.NormalLastRideDescActivity">
+        </activity>
+        <activity android:name=".activity.customer.RidingOtherIssueActivity">
+        </activity>
+        <activity android:name=".activity.usercenter.SettingAddressActivity">
+        </activity>
+        <activity android:name=".activity.pay.PayActivity">
+        </activity>
+        <activity android:name=".activity.login.SubmitIDInfoActivity">
+        </activity>
+        <activity android:name=".activity.QRCodeInputActivity">
+        </activity>
+        <activity android:name=".activity.WBShareActivity">
+        </activity>
+        <activity android:name=".activity.pay.CreditCardSelectActivity">
+        </activity>
+        <activity android:name=".activity.pay.CreditCardAddActivity">
+        </activity>
+        <activity android:name=".activity.pay.RefundAccountActivity">
+        </activity>
+        <activity android:name=".activity.pay.RefundResultActivity">
+        </activity>
+        <activity android:name=".activity.customer.LockNoFeeActivity">
+        </activity>
+        <activity android:name=".activity.customer.NormalCustomerServiceActivity">
+        </activity>
+        <activity android:name=".activity.customer.ReportIssueActivity">
+        </activity>
+        <activity android:name=".activity.customer.RidingCustomerServiceActivity">
+        </activity>
+        <activity android:name=".activity.redpacket.AlipayWithdrawActivity">
+        </activity>
+        <activity android:name=".activity.redpacket.RedPacketAmountDetailActivity">
+        </activity>
+        <activity android:name=".activity.redpacket.RedPocketDetailActivity">
+        </activity>
+        <activity android:name=".activity.redpacket.WithdrawActivity">
+        </activity>
+        <activity android:name=".activity.riding.RideResultActivity">
+        </activity>
+        <activity android:name=".activity.riding.SurpriseRedPackageActivity">
+        </activity>
+        <activity android:name=".activity.riding.TripDetailActivity">
+        </activity>
+        <activity android:name=".activity.riding.UploadParkingImgActivity">
+        </activity>
+        <activity android:name=".activity.usercenter.ChangeMobileNumActivity">
+        </activity>
+        <activity android:name=".activity.usercenter.CommonlyAddressSettingActivity">
+        </activity>
+        <activity android:name=".activity.usercenter.ContestNegativeRecordActivity">
         </activity>
     </application>
 

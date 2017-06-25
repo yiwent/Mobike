@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.yiwen.mobike.activity.MyCreditActivity">
+    tools:context="com.yiwen.mobike.activity.usercenter.MyCreditActivity">
 
     <com.yiwen.mobike.views.TabTitleView
         android:id="@+id/title_user_manuel"

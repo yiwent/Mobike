@@ -12,22 +12,42 @@ import cn.bmob.v3.datatype.BmobFile;
  */
 
 public class MyUser extends BmobUser implements Serializable {
-    private String   nickName;
-    private String   qq;
-    private String   weixin;
-    private String   School;
+    private String   nickName="";
+    private String   qq="";
+    private BmobFile qqPic;
+    private String   weixin="";
+    private BmobFile weixinPic;
+    private String   School="";
+    private String   SchoolNub="";
     private BmobFile picUser;
-    private Float    money;
-    private Boolean  isPay;
-    private Boolean  isRealName;
-    private String   token;
+    private Float   money      = 0.0f;
+    private Boolean isPay      = false;
+    private Boolean isRealName = false;
+    private String myName="";//真名
+    private String idCard="";
 
-    public String getToken() {
-        return token;
+    public String getSchoolNub() {
+        return SchoolNub;
     }
 
-    public void setToken(String token) {
-        this.token = token;
+    public void setSchoolNub(String schoolNub) {
+        SchoolNub = schoolNub;
+    }
+
+    public BmobFile getQqPic() {
+        return qqPic;
+    }
+
+    public void setQqPic(BmobFile qqPic) {
+        this.qqPic = qqPic;
+    }
+
+    public BmobFile getWeixinPic() {
+        return weixinPic;
+    }
+
+    public void setWeixinPic(BmobFile weixinPic) {
+        this.weixinPic = weixinPic;
     }
 
     public String getNickName() {
@@ -92,5 +112,39 @@ public class MyUser extends BmobUser implements Serializable {
 
     public void setRealName(Boolean realName) {
         isRealName = realName;
+    }
+
+    public String getMyName() {
+        return myName;
+    }
+
+    public void setMyName(String myName) {
+        this.myName = myName;
+    }
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
+    @Override
+    public String toString() {
+        return "MyUser{" +
+                "nickName='" + nickName + '\'' +
+                ", qq='" + qq + '\'' +
+                ", qqPic=" + qqPic +
+                ", weixin='" + weixin + '\'' +
+                ", weixinPic=" + weixinPic +
+                ", School='" + School + '\'' +
+                ", picUser=" + picUser +
+                ", money=" + money +
+                ", isPay=" + isPay +
+                ", isRealName=" + isRealName +
+                ", myName='" + myName + '\'' +
+                ", idCard='" + idCard + '\'' +
+                '}';
     }
 }
