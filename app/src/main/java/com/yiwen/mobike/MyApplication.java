@@ -28,7 +28,7 @@ import cn.bmob.v3.Bmob;
 public class MyApplication extends Application {
     private static MyApplication sInstance;
     public static String mSDCardPath;
-    public static final String APP_FOLDER_NAME = "BiuBike";
+    public static final String APP_FOLDER_NAME = "MoBike";
 
     @Override
     public void onCreate() {

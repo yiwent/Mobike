@@ -62,7 +62,7 @@ public class TestActivity extends AppCompatActivity {
 
     private void cheackUser() {
         BmobQuery<MyUser> query = new BmobQuery<MyUser>();
-        query.addWhereEqualTo("username", "18290022002");
+        query.addWhereEqualTo("username", "182****2002");
         query.setLimit(1);
         query.findObjects(new FindListener<MyUser>() {
             @Override
@@ -110,7 +110,7 @@ public class TestActivity extends AppCompatActivity {
 
     private void insert() {
         RideSummary r = new RideSummary();
-        //  r.setPhone("18290022002");
+        //  r.setPhone("182****2002");
         r.setKaluli("123.5");
         r.setRide("123.5");
         r.setSave("345");
@@ -178,7 +178,7 @@ public class TestActivity extends AppCompatActivity {
     }
     private void query() {
         BmobQuery<RideSummary> bmobQuery = new BmobQuery();
-        bmobQuery.addWhereEqualTo("phone", "18290022002");
+        bmobQuery.addWhereEqualTo("phone", "182****2002");
         bmobQuery.findObjects(new FindListener<RideSummary>() {
             @Override
             public void done(List<RideSummary> list, BmobException e) {

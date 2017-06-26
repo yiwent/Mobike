@@ -34,7 +34,7 @@ public class EmptyView extends LinearLayout {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-//        this.getUrl = ((ImageView)findViewById());
+//        this.a = ((ImageView)findViewById());
 //        this.b = ((TextView)findViewById());
 //        this.c = ((TextView)findViewById());
     }

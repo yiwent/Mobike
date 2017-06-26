@@ -12,9 +12,7 @@ import com.iflytek.cloud.SpeechError;
 import com.iflytek.cloud.SpeechSynthesizer;
 import com.iflytek.cloud.SynthesizerListener;
 
-/**
- * Created by gaolei on 17/4/24.
- */
+
 
 public class SpeechUtil {
     Context context;
@@ -110,7 +108,7 @@ public class SpeechUtil {
 
         @Override
         public void onCompleted(SpeechError error) {
-            Log.d("gaolei","----------------");
+            Log.d("----------------", "gaolei");
 
         }
 

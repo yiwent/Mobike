@@ -15,6 +15,6 @@ public class BootReceiver extends BroadcastReceiver
     public void onReceive(Context paramContext, Intent paramIntent)
     {
      //   if (paramIntent.getAction().equals("android.intent.action.BOOT_COMPLETED"))
-         //   getUrl.d(paramContext);
+         //   a.d(paramContext);
     }
 }

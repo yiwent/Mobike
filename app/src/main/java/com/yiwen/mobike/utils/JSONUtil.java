@@ -11,11 +11,7 @@ import com.google.gson.GsonBuilder;
 
 import java.lang.reflect.Type;
 
-/**
- * Created by Ivan on 14-9-29.
- * Copyright(c)2014 Guangzhou Onion Information Technology Co., Ltd.
- * http://www.cniao5.com
- */
+
 public class JSONUtil {
 
 

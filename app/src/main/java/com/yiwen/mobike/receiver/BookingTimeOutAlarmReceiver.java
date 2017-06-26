@@ -13,7 +13,7 @@ public class BookingTimeOutAlarmReceiver extends WakefulBroadcastReceiver
 {
     public void onReceive(Context paramContext, Intent paramIntent)
     {
-//        if (!MyApplication.getUrl())
+//        if (!MyApplication.a())
 //        {
 //            NotificationCompat.Builder localBuilder = new NotificationCompat.Builder(paramContext).setSmallIcon(2130838070).setContentTitle(paramContext.getString(2131296450)).setContentText(paramContext.getString(2131296449)).setAutoCancel(true);
 //            Intent localIntent = new Intent(paramContext, MainActivity.class);

@@ -33,9 +33,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by gaolei on 16/12/30.
- */
+
 
 public class Utils {
     private static PowerManager.WakeLock mWakeLock;
@@ -167,7 +165,7 @@ public class Utils {
         int size = myList.size();
         for (int i = 0; i < size; i++) {
             String mName = myList.get(i).service.getClassName().toString();
-            Log.d("gaolei","mName="+mName);
+            Log.d("yiwen","mName="+mName);
             if (mName.equals(serviceName)) {
                 isWork = true;
                 break;

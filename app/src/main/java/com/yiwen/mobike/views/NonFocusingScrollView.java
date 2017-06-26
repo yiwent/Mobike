@@ -38,6 +38,6 @@ public class NonFocusingScrollView extends ScrollView {
 
     protected boolean onRequestFocusInDescendants(int paramInt, Rect paramRect)
     {
-        return true;
+        return true;//子view获取焦点
     }
 }
