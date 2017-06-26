@@ -6,6 +6,7 @@ import cn.bmob.v3.BmobObject;
  * Created by yiwen (https://github.com/yiwent)
  * Date:2017/6/18
  * Time: 19:32
+ * desc:信用积分
  */
 
 public class Credit extends BmobObject {

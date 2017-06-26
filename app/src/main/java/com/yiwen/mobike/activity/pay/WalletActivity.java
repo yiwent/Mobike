@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.yiwen.mobike.MyApplication;
 import com.yiwen.mobike.R;
+import com.yiwen.mobike.activity.login.RegisterRechargeActivity;
 import com.yiwen.mobike.bean.MyUser;
 import com.yiwen.mobike.utils.ToastUtils;
 import com.yiwen.mobike.views.TabTitleView;
@@ -99,7 +100,7 @@ public class WalletActivity extends AppCompatActivity {
         if (mMyUser.getPay()){
             ToastUtils.show(WalletActivity.this,"退押金");
         } else {
-            ToastUtils.show(WalletActivity.this,"交押金");
+            startActivity(new Intent(WalletActivity.this,RegisterRechargeActivity.class));
         }
     }
 }

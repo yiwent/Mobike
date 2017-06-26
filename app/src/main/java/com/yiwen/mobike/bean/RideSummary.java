@@ -8,6 +8,7 @@ import cn.bmob.v3.BmobObject;
  * Created by yiwen (https://github.com/yiwent)
  * Date:2017/6/5
  * Time: 12:47
+ * desc:骑行数据
  */
 
 public class RideSummary extends BmobObject implements Serializable {

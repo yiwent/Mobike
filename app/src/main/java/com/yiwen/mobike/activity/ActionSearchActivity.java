@@ -21,7 +21,6 @@ import com.baidu.mapapi.search.sug.OnGetSuggestionResultListener;
 import com.baidu.mapapi.search.sug.SuggestionResult;
 import com.baidu.mapapi.search.sug.SuggestionSearch;
 import com.baidu.mapapi.search.sug.SuggestionSearchOption;
-import com.google.gson.reflect.TypeToken;
 import com.yiwen.mobike.R;
 import com.yiwen.mobike.adapter.PoiHostoryAdapter;
 import com.yiwen.mobike.adapter.PoiSuggestionAdapter;
@@ -30,7 +29,6 @@ import com.yiwen.mobike.provider.PoiObject;
 import com.yiwen.mobike.provider.ProviderUtil;
 import com.yiwen.mobike.utils.JSONUtil;
 import com.yiwen.mobike.utils.MyLocationManager;
-import com.yiwen.mobike.utils.NavUtil;
 import com.yiwen.mobike.utils.PreferencesUtils;
 import com.yiwen.mobike.views.ClearEditText;
 
@@ -110,7 +108,7 @@ public class ActionSearchActivity extends AppCompatActivity implements
         //        Intent intent = getIntent();
         //        mBDLocation = intent.getParcelableExtra("mylotion");
         //想使用内置导航，必须初始化导航， NavUtil.initNavi(this);
-        NavUtil.initNavi(this);
+//        NavUtil.initNavi(this);
         currentAddress = MyLocationManager.getInstance().getAddress();
         startLL = MyLocationManager.getInstance().getCurrentLL();
         mTvActionsechMylotion.setText(currentAddress);
@@ -154,8 +152,7 @@ public class ActionSearchActivity extends AppCompatActivity implements
     private void initAddress() {
         if (PreferencesUtils.getString(this, FIRST_ADDRESS, null) != null) {
             PoiObject poiObject = JSONUtil.fromJson(PreferencesUtils.
-                    getString(this, FIRST_ADDRESS, null), new TypeToken<PoiObject>() {
-            }.getType());
+                    getString(this, FIRST_ADDRESS, null), PoiObject.class);
             first = poiObject;
             mLoFirstAddress.setVisibility(View.VISIBLE);
             mAddress.setText(poiObject.address);
@@ -165,8 +162,7 @@ public class ActionSearchActivity extends AppCompatActivity implements
         }
         if (PreferencesUtils.getString(this, SENCOND_ADDRESS, null) != null) {
             PoiObject poiObject = JSONUtil.fromJson(PreferencesUtils.
-                    getString(this, SENCOND_ADDRESS, null), new TypeToken<PoiObject>() {
-            }.getType());
+                    getString(this, SENCOND_ADDRESS, null),PoiObject.class);
             second = poiObject;
             mLoSecondAddress.setVisibility(View.VISIBLE);
             mAddress1.setText(poiObject.address);

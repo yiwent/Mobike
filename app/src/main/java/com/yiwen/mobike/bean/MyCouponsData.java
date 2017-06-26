@@ -6,6 +6,7 @@ import cn.bmob.v3.BmobObject;
  * Created by yiwen (https://github.com/yiwent)
  * Date:2017/6/20
  * Time: 16:32
+ * desc:我的优惠 ，兑换优惠码
  */
 
 public class MyCouponsData extends BmobObject {

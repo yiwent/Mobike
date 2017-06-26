@@ -21,7 +21,7 @@
             android:layout_marginStart="8dp"
             android:layout_weight="5"
             android:background="@null"
-            android:drawableStart="@mipmap/icon_search"
+            android:drawableLeft="@mipmap/icon_search"
             android:gravity="center"
             android:hint="去哪找我"
             android:maxLines="1"

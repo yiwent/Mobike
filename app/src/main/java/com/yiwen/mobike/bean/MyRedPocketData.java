@@ -6,6 +6,7 @@ import cn.bmob.v3.BmobObject;
  * Created by yiwen (https://github.com/yiwent)
  * Date:2017/6/23
  * Time: 23:55
+ * desc:红包记录
  */
 
 public class MyRedPocketData extends BmobObject {
@@ -14,6 +15,14 @@ public class MyRedPocketData extends BmobObject {
     private String time;
     private String money;
     private boolean isvalid;
+
+    public MyRedPocketData(MyUser myUser, String carNub, String time, String money, boolean isvalid) {
+        mMyUser = myUser;
+        this.carNub = carNub;
+        this.time = time;
+        this.money = money;
+        this.isvalid = isvalid;
+    }
 
     public boolean isvalid() {
         return isvalid;

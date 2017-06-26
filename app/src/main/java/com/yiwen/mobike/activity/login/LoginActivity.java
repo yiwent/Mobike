@@ -17,7 +17,10 @@ import com.yiwen.mobike.R;
 import com.yiwen.mobike.activity.MainActivity;
 import com.yiwen.mobike.activity.customer.CustomerServiceWebActivity;
 import com.yiwen.mobike.base.BaseActivity;
+import com.yiwen.mobike.bean.Credit;
+import com.yiwen.mobike.bean.MyRedPocketData;
 import com.yiwen.mobike.bean.MyUser;
+import com.yiwen.mobike.bean.RideSummary;
 import com.yiwen.mobike.utils.BuidUrl;
 import com.yiwen.mobike.utils.ToastUtils;
 import com.yiwen.mobike.views.ClearEditText;
@@ -26,7 +29,9 @@ import com.yiwen.mobike.views.TabTitleView;
 
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -62,7 +67,7 @@ public class LoginActivity extends BaseActivity {
     TextView      mLoginServices;
 
     private boolean isRegister;//是否注册
-    private boolean isNeedPaycash,isRealName;//押金
+    private boolean isNeedPaycash, isRealName;//押金
     private boolean     isSendCode;//是否已发送了验证码
     private SpotsDialog mDialog;
 
@@ -266,9 +271,10 @@ public class LoginActivity extends BaseActivity {
                 if (e == null) {
                     if (myUser != null)
                         Logger.d(myUser);
-                        mApplication.putUser(myUser);
-                    Log.d(TAG, "done: isRegister ok");
-                    Go2Main();
+                    mApplication.clearUser();
+                    mApplication.putUser(myUser);
+                    Log.d(TAG, "done: login ok");
+                    Go2MainOrPay();
                 } else {
                     Log.d("bmob", "isRegister：" + e.getMessage() + "," + e.getErrorCode());
                     ToastUtils.show(LoginActivity.this, "未知错误");
@@ -283,20 +289,74 @@ public class LoginActivity extends BaseActivity {
         mUser.setUsername(mPhone);
         mUser.setPassword(mPhone);
         mUser.setMobilePhoneNumber(mPhone);
+        mUser.setMoney(0.0f);
+        mUser.setPay(false);
+        mUser.setRealName(false);
+        mUser.setMyName("");
         mUser.setNickName(mPhone.substring(0, 3) + "****" + mPhone.substring(7, 11));
         mUser.signUp(new SaveListener<MyUser>() {
             @Override
             public void done(MyUser myUser, BmobException e) {
                 if (e == null) {
                     Logger.d(myUser);
+                    RideSummary summary = new RideSummary();
+                    summary.setMyUser(myUser);
+                    summary.setKaluli("11");
+                    summary.setRide("123");
+                    summary.setSave("1222");
+                    summary.save(new SaveListener<String>() {
+                        @Override
+                        public void done(String s, BmobException e) {
+                            if (e == null) {
+
+                            } else {
+                                Logger.d(e);
+                            }
+                        }
+                    });
+                    Credit cr = new Credit();
+                    cr.setMyUser(myUser);
+                    cr.setCreditNub(100);
+                    cr.save(new SaveListener<String>() {
+                        @Override
+                        public void done(String s, BmobException e) {
+                            if (e == null) {
+
+                            } else {
+                                Logger.d(e);
+                            }
+                        }
+                    });
+                    initPocketData(myUser);
                     mApplication.putUser(myUser);
                     Log.d(TAG, "done: Register ok");
-                    Go2Main();
+                    Go2MainOrPay();
                 } else {
                     Log.d("bmob", "Register：" + e.getMessage() + "," + e.getErrorCode());
                     ToastUtils.show(LoginActivity.this, "未知错误");
                 }
                 DismissMyDialog();
+            }
+        });
+    }
+
+    private void initPocketData(MyUser myUser) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        Date curDate = new Date(System.currentTimeMillis());
+        MyRedPocketData pocketData=new MyRedPocketData(myUser,"8888",
+                formatter.format(curDate),"5",true);
+        pocketData.save(new SaveListener<String>() {
+            @Override
+            public void done(String s, BmobException e) {
+
+            }
+        });
+        pocketData=new MyRedPocketData(myUser,"123456",
+                formatter.format(curDate),"5",true);
+        pocketData.save(new SaveListener<String>() {
+            @Override
+            public void done(String s, BmobException e) {
+
             }
         });
     }
@@ -339,6 +399,23 @@ public class LoginActivity extends BaseActivity {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    private void Go2MainOrPay() {
+        if (MyApplication.getInstance().getUser().getPay()
+                && MyApplication.getInstance().getUser().getRealName()) {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        } else if (!MyApplication.getInstance().getUser().getPay()) {
+            Intent intent = new Intent(LoginActivity.this, RegisterRechargeActivity.class);
+            startActivity(intent);
+            finish();
+        } else if (!MyApplication.getInstance().getUser().getRealName()) {
+            Intent intent = new Intent(LoginActivity.this, IDCardVerifyActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     @OnClick({R.id.get_code, R.id.loin_voice, R.id.login_query, R.id.login_services})

@@ -18,7 +18,7 @@
             android:layout_height="30dp"
             android:layout_alignParentStart="true"
             android:layout_centerInParent="true"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="9dp"
             android:clickable="true"
             android:src="@drawable/icon_actionbar_home"/>
 
@@ -34,7 +34,7 @@
             android:layout_width="27dp"
             android:layout_height="27dp"
             android:layout_centerVertical="true"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="9dp"
             android:layout_toLeftOf="@+id/ic_message"
             android:clickable="true"
             android:src="@drawable/icon_actionbar_search"/>
@@ -45,7 +45,7 @@
             android:layout_height="27dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="5dp"
+            android:layout_marginRight="9dp"
             android:clickable="true"
             android:src="@drawable/notification"/>
 

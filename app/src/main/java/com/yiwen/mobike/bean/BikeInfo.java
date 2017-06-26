@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by gaolei on 16/12/19.
+ * 单车的描述
  */
 
 public class BikeInfo implements Serializable {

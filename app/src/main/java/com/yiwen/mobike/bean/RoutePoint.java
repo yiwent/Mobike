@@ -3,9 +3,7 @@ package com.yiwen.mobike.bean;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by gaolei on 17/2/4.
- */
+
 
 public class RoutePoint implements Parcelable {
 
@@ -61,7 +59,7 @@ public class RoutePoint implements Parcelable {
 
         @Override
         public RoutePoint[] newArray(int size) {
-// TODO Auto-generated method stub
+
             return new RoutePoint[size];
         }
     };

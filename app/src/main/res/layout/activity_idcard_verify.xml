@@ -1,10 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yiwen.mobike.activity.login.IDCardVerifyActivity">
+    >
 
-</android.support.constraint.ConstraintLayout>
+    <com.yiwen.mobike.views.TabTitleView
+        android:id="@+id/toolbar_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftImageIcon="@drawable/ic_close"
+        app:titleText="实名认证"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar_login"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="#F2F2F2"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="身份证号"
+                android:textColor="#333333"
+                android:textSize="18sp"/>
+
+            <com.yiwen.mobike.views.ClearEditText
+                android:id="@+id/et_idcard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
+                android:background="@null"
+                android:hint="请输入身份证号"
+                android:inputType="text"
+                android:padding="10dip"
+                android:textColorHint="#ABABAB"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="#F2F2F2"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:text="姓名"
+                android:textColor="#333333"
+                android:textSize="18sp"/>
+
+            <com.yiwen.mobike.views.ClearEditText
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
+                android:background="@null"
+                android:hint="请输入您的姓名"
+                android:inputType="text"
+                android:padding="10dip"
+                android:textColorHint="#ABABAB"/>
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/login_query"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/gray"
+            android:text="确定"
+            android:textColor="@color/white"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="点击-确定,即表示已阅读并同意"/>
+
+            <TextView
+                android:id="@+id/login_services"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="《实名认证条款》"
+                android:textColor="@color/red"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

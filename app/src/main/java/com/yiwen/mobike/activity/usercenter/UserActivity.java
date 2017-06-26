@@ -160,7 +160,7 @@ public class UserActivity extends AppCompatActivity {
                     mTvMyYouhui.setRigtTvText(integer+"张");
                 }else {
                     mTvMyYouhui.setRigtTvText("");
-                    Log.d(TAG, "done:Favorable "+e);
+                    Log.d(TAG, "done:MyCouponsData "+e);
                 }
             }
         });

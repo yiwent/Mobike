@@ -13,5 +13,109 @@
         app:leftImageIcon="@drawable/ic_close"
         app:titleText="押金充值"/>
 
+    <TextView
+        android:id="@+id/pay299"
+        android:text="充值押金299元"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        android:layout_marginLeft="10dp"
+        android:layout_below="@+id/toolbar_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <RelativeLayout
+        android:id="@+id/wechat_layout"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pay299"
+        android:background="@drawable/type_item_selector"
+        android:clickable="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_round_wechat"/>
+
+        <ImageView
+            android:id="@+id/wechat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:src="@drawable/report_checkbox_select_hover"/>
+
+    </RelativeLayout>
+    <View
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/wechat_layout"
+        android:background="@color/bg"/>
+
+    <RelativeLayout
+        android:id="@+id/alipay_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/view1"
+        android:background="@drawable/type_item_selector"
+        android:clickable="true">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_round_alipay"/>
+
+        <ImageView
+            android:id="@+id/alipay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:src="@drawable/report_checkbox_select_default"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/id_bt_pay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@color/red"
+        android:text="去充值"
+        android:textColor="@color/white"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/id_bt_pay"
+        android:layout_marginBottom="15dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点击-充值,即表示已阅读并同意"/>
+
+        <TextView
+            android:id="@+id/charge_services"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="充值协议"
+            android:textColor="@color/red"/>
+
+    </LinearLayout>
+    <include
+        android:id="@+id/pay_loading"
+        layout="@layout/loading_toast"
+        android:visibility="gone"/>
 
 </RelativeLayout>

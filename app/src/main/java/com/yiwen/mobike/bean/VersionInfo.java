@@ -8,6 +8,7 @@ import cn.bmob.v3.BmobObject;
  * Created by yiwen (https://github.com/yiwent)
  * Date:2017/6/21
  * Time: 9:54
+ * desc:更新版本
  */
 
 public class VersionInfo extends BmobObject implements Serializable{

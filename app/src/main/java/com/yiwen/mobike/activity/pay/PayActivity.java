@@ -15,6 +15,7 @@ import com.yiwen.mobike.R;
 import com.yiwen.mobike.activity.customer.CustomerServiceWebActivity;
 import com.yiwen.mobike.adapter.BaseAdapter;
 import com.yiwen.mobike.adapter.ChargeAmountAdapter;
+import com.yiwen.mobike.bean.MyUser;
 import com.yiwen.mobike.bean.RechargeHistoryData;
 import com.yiwen.mobike.utils.BuidUrl;
 import com.yiwen.mobike.utils.ToastUtils;
@@ -136,7 +137,7 @@ public class PayActivity extends AppCompatActivity {
         mData.setMyUser(MyApplication.getInstance().getUser());
         mData.setPayApproach(payType);
         mData.setStatusCode("付款成功");
-        mData.setCash(mIntegers.get(mAdapter.selectPosition)+"元");
+        mData.setCash(mIntegers.get(mAdapter.selectPosition)+"");
         SimpleDateFormat formatter   =   new   SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date curDate =  new Date(System.currentTimeMillis());
         mData.setTimestamp(formatter.format(curDate));
@@ -145,7 +146,13 @@ public class PayActivity extends AppCompatActivity {
             public void done(String s, BmobException e) {
                 if (e==null){
                     ToastUtils.show(PayActivity.this, "充值成功");
-
+                    MyUser myUser=  MyApplication.getInstance().getUser();
+                    myUser.setMoney(myUser.getMoney()+
+                            Float.parseFloat(mIntegers.get(mAdapter.selectPosition)+""));
+                    MyUser newUse=new MyUser();
+                    newUse.setMoney(myUser.getMoney()+
+                            Float.parseFloat(mIntegers.get(mAdapter.selectPosition)+""));
+                    MyApplication.getInstance().upDataUser(myUser,newUse);
                 }else {
                     ToastUtils.show(PayActivity.this, "充值失败");
                 }

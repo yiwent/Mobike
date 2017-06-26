@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Environment;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.imagepipeline.core.ImagePipelineConfig;
 import com.facebook.imagepipeline.decoder.SimpleProgressiveJpegConfig;
@@ -36,6 +37,7 @@ public class MyApplication extends Application {
                 .setProgressiveJpegConfig(new SimpleProgressiveJpegConfig())
                 .build();
         Fresco.initialize(this, config);
+        SDKInitializer.initialize(this);
         Bmob.initialize(this, "b0cb494256d9b86fc931ca930a055b75");
         Logger.addLogAdapter(new AndroidLogAdapter(){
             @Override

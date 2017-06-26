@@ -6,6 +6,7 @@ import cn.bmob.v3.BmobObject;
  * Created by yiwen (https://github.com/yiwent)
  * Date:2017/6/20
  * Time: 20:06
+ * desc:我的行程
  */
 
 public class MyTripsData extends BmobObject {

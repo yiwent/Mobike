@@ -21,6 +21,7 @@ import com.lzy.imagepicker.view.CropImageView;
 import com.yiwen.mobike.MyApplication;
 import com.yiwen.mobike.R;
 import com.yiwen.mobike.activity.login.CampusVerifyActivity;
+import com.yiwen.mobike.activity.login.IDCardVerifyActivity;
 import com.yiwen.mobike.activity.login.SsoUserInfoActivity;
 import com.yiwen.mobike.bean.MyUser;
 import com.yiwen.mobike.utils.ToastUtils;
@@ -158,10 +159,12 @@ public class UserDetailActivity extends AppCompatActivity {
                 Go2ModifyNickNameActivity();
                 break;
             case R.id.tv_name:
-                // TODO: 2017/6/21
+                if (!MyApplication.getInstance().getUser().getRealName())
+                    startActivity(new Intent(UserDetailActivity.this, IDCardVerifyActivity.class));
                 break;
             case R.id.tv_is_realname:
-                // TODO: 2017/6/21
+                if (!MyApplication.getInstance().getUser().getRealName())
+                    startActivity(new Intent(UserDetailActivity.this, IDCardVerifyActivity.class));
                 break;
             case R.id.tv_myphone:
                 Go2MobileNumActivity();
@@ -186,6 +189,8 @@ public class UserDetailActivity extends AppCompatActivity {
 
     private void Go2BindOrDisbindQQ() {
         // TODO: 2017/6/21
+        Intent intent = new Intent(UserDetailActivity.this, SsoUserInfoActivity.class);
+        startActivity(intent);
     }
 
     private void Go2BindOrDisbindWx() {

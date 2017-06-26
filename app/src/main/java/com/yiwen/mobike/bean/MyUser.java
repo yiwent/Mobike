@@ -9,22 +9,23 @@ import cn.bmob.v3.datatype.BmobFile;
  * Created by yiwen (https://github.com/yiwent)
  * Date:2017/6/5
  * Time: 15:07
+ * desc:用户基本信息
  */
 
 public class MyUser extends BmobUser implements Serializable {
-    private String   nickName="";
-    private String   qq="";
+    private String   nickName;
+    private String   qq;
     private BmobFile qqPic;
-    private String   weixin="";
+    private String   weixin;
     private BmobFile weixinPic;
-    private String   School="";
-    private String   SchoolNub="";
+    private String   School;
+    private String   SchoolNub;
     private BmobFile picUser;
-    private Float   money      = 0.0f;
-    private Boolean isPay      = false;
-    private Boolean isRealName = false;
-    private String myName="";//真名
-    private String idCard="";
+    private Float   money     ;
+    private Boolean isPay     ;
+    private Boolean isRealName ;
+    private String myName;//真名
+    private String idCard;
 
     public String getSchoolNub() {
         return SchoolNub;

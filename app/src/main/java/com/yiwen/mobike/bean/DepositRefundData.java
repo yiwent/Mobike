@@ -7,6 +7,7 @@ import cn.bmob.v3.datatype.BmobFile;
  * Created by yiwen (https://github.com/yiwent)
  * Date:2017/6/20
  * Time: 15:03
+ * desc:反馈7天未退押金
  */
 
 public class DepositRefundData extends BmobObject {

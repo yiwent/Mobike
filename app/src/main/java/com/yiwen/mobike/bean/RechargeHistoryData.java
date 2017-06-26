@@ -6,6 +6,7 @@ import cn.bmob.v3.BmobObject;
  * Created by yiwen (https://github.com/yiwent)
  * Date:2017/6/19
  * Time: 19:57
+ * desc:充值记录
  */
 
 public class RechargeHistoryData extends BmobObject {

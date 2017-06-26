@@ -9,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.google.gson.reflect.TypeToken;
 import com.yiwen.mobike.R;
 import com.yiwen.mobike.activity.ActionSearchActivity;
 import com.yiwen.mobike.provider.PoiObject;
@@ -66,8 +65,7 @@ public class SettingAddressActivity extends AppCompatActivity {
     private void initView() {
         if (PreferencesUtils.getString(this,FIRST_ADDRESS,null)!=null){
             PoiObject poiObject= JSONUtil.fromJson(PreferencesUtils.
-                    getString(this, FIRST_ADDRESS, null), new TypeToken<PoiObject>() {
-            }.getType());
+                    getString(this, FIRST_ADDRESS, null),PoiObject.class);
             mStar.setImageResource(R.drawable.address_star_selected);
             mAddress.setText(poiObject.address);
             mDistrict.setText(poiObject.district);
@@ -78,8 +76,7 @@ public class SettingAddressActivity extends AppCompatActivity {
         }
         if (PreferencesUtils.getString(this,SENCOND_ADDRESS,null)!=null){
             PoiObject poiObject= JSONUtil.fromJson(PreferencesUtils.
-                    getString(this, SENCOND_ADDRESS, null), new TypeToken<PoiObject>() {
-            }.getType());
+                    getString(this, SENCOND_ADDRESS, null),PoiObject.class);// new TypeToken<PoiObject>() {}.getType()
             mStar1.setImageResource(R.drawable.address_star_selected);
             mAddress1.setText(poiObject.address);
             mDistrict1.setText(poiObject.district);

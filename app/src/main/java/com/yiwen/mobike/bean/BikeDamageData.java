@@ -7,7 +7,7 @@ import cn.bmob.v3.datatype.BmobFile;
  * Created by yiwen (https://github.com/yiwent)
  * Date:2017/6/24
  * Time: 14:43
- * desc:举报违停和发现故障
+ * desc:举报违停和发现故障 的反馈
  */
 
 public class BikeDamageData extends BmobObject {

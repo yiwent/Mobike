@@ -24,6 +24,7 @@ import com.baidu.navisdk.adapter.BNaviSettingManager;
 import com.baidu.navisdk.adapter.BaiduNaviManager;
 import com.orhanobut.logger.Logger;
 import com.yiwen.mobike.R;
+import com.yiwen.mobike.map.BDInnerNaviActivity;
 import com.yiwen.mobike.views.NaviSelectDialog;
 
 import java.util.ArrayList;
@@ -316,7 +317,8 @@ public class NavUtil {
 
     private static void initSetting() {
         // 设置是否双屏显示
-        BNaviSettingManager.setShowTotalRoadConditionBar(BNaviSettingManager.PreViewRoadCondition.ROAD_CONDITION_BAR_SHOW_ON);
+        BNaviSettingManager.setShowTotalRoadConditionBar(BNaviSettingManager
+                .PreViewRoadCondition.ROAD_CONDITION_BAR_SHOW_ON);
         // 设置导航播报模式
         BNaviSettingManager.setVoiceMode(BNaviSettingManager.VoiceMode.Veteran);
         // 是否开启路况
