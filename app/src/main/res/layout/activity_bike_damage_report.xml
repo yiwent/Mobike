@@ -12,7 +12,7 @@
         android:id="@+id/title_bike_damage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:titleText="客户服务"/>
+        app:titleText="@string/services"/>
 
     <com.yiwen.mobike.views.NonFocusingScrollView
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="15dp"
                 android:gravity="left"
-                android:text="发现车辆故障"
+                android:text="@string/findcarproblem"
                 android:textColor="@color/black"/>
 
             <LinearLayout
@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginLeft="10dp"
-                    android:text="扫描二维码或者手动输入"/>
+                    android:text="@string/scan_or_input"/>
             </LinearLayout>
 
        <android.support.v7.widget.RecyclerView
@@ -73,7 +73,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginTop="15dp"
-                android:text="请拍摄违规停车照片含周围环境"
+                android:text="@string/pick_photo"
                 android:textColor="@color/black"
                 android:textSize="12sp"/>
 
@@ -91,7 +91,7 @@
                 android:layout_height="150dp"
                 android:gravity="start"
                 android:padding="8dp"
-                android:hint="备注"
+                android:hint="@string/beizhu"
                 android:layout_margin="8dp"
                 android:background="@color/bg"
                 android:maxLength="240"
@@ -113,7 +113,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:text="提交"
+                android:text="@string/query"
                 android:textColor="@color/white"/>
 
         </LinearLayout>

@@ -19,7 +19,7 @@
         android:id="@+id/title_webview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:titleText="titie"/>
+        app:titleText="@string/services"/>
 
     <include
         android:id="@+id/lo_networt"

@@ -22,12 +22,9 @@ import android.widget.LinearLayout;
 import com.yiwen.mobike.R;
 import com.yiwen.mobike.activity.pay.DepositRefundIssueActivity;
 import com.yiwen.mobike.utils.CommonUtils;
-import com.yiwen.mobike.utils.ToastUtils;
 import com.yiwen.mobike.views.LoadingPageView;
 import com.yiwen.mobike.views.NetworkUnavailableView;
 import com.yiwen.mobike.views.TabTitleView;
-
-import java.lang.annotation.Target;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -186,7 +183,7 @@ public class WebViewActivity extends AppCompatActivity {
                 @Override
                 public void run() {
                     //供网页调用安卓原生api
-                    ToastUtils.show(WebViewActivity.this, "点击网页：超过7个工作日未到账");
+                   // ToastUtils.show(WebViewActivity.this, "点击网页：超过7个工作日未到账");
                     startActivity(DepositRefundIssueActivity.
                             getDepositRefundIntent(WebViewActivity.this));
                 }

@@ -85,7 +85,12 @@
     <string name="demo_title_geocode">demo_title_geocode</string>
     <string name="demo_desc_geocode">demo_desc_geocode</string>
     <string name="load_more">努力加载中</string>
-
+    <string name="services">客户服务</string>
+    <string name="findcarproblem">发现车辆故障</string>
+    <string name="scan_or_input">扫描二维码或者手动输入</string>
+    <string name="pick_photo">请拍摄违规停车照片含周围环境</string>
+    <string name="query">提交</string>
+    <string name="beizhu">备注</string>
 
 
 </resources>
