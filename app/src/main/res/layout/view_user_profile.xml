@@ -43,7 +43,7 @@
         android:layout_marginBottom="35dp"
        android:gravity="center"
         android:background="@drawable/credit_bg"
-        android:text="信用积分0"
+        android:text="信用积分"
         android:textColor="@color/white"/>
 
 </RelativeLayout>

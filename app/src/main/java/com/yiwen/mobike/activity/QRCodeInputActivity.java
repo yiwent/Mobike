@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import com.jungly.gridpasswordview.GridPasswordView;
 import com.yiwen.mobike.R;
 import com.yiwen.mobike.qrcode.zxing.camera.CameraManager;
+import com.yiwen.mobike.utils.ToastUtils;
 import com.yiwen.mobike.views.TabTitleView;
 
 import butterknife.BindView;
@@ -114,6 +116,14 @@ public class QRCodeInputActivity extends AppCompatActivity {
     }
 
     private void queryUnlock() {
+        if (TextUtils.isEmpty(mPasswordView.getPassWord().toString())){
+            ToastUtils.show(QRCodeInputActivity.this,"请输入单车号码");
+            return;
+        }
+        if (mPasswordView.getPassWord().toString().length()!=10){
+            ToastUtils.show(QRCodeInputActivity.this,"请输入完整的单车号码");
+            return;
+        }
 
         if (isOnlyNub) {
             Intent intent = new Intent();
