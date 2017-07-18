@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:orientation="vertical"
     >
 
@@ -30,17 +31,24 @@
             android:textColor="@color/white"
             android:textColorHint="@color/smssdk_gray"/>
 
-
-        <TextView
-            android:id="@+id/tv_search_cancel"
+        <com.andexert.library.RippleView
+            android:id="@+id/rv_tv_search_cancel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            app:rv_centered="true"
+            app:rv_rippleDuration="150"
+            app:rv_type="simpleRipple"
+            >
+        <TextView
+            android:id="@+id/tv_search_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:clickable="true"
             android:gravity="center"
             android:text="取消"
             android:textColor="@color/white"/>
-
+        </com.andexert.library.RippleView>
     </LinearLayout>
 
     <LinearLayout

@@ -27,7 +27,7 @@
 //
 //public class BluetoothService extends Service
 //{
-//    public static final long   getUrl = 5000L;
+//    public static final long   a = 5000L;
 //    public static final long   b = 10000L;
 //    public static final int    d = 1;
 //    public static final int    e = 2;
@@ -51,23 +51,23 @@
 //    private BluetoothAdapter A;
 //    private String           B;
 //    private BluetoothGatt    C;
-//    private       getUrl                     D = getUrl.getUrl;
+//   // private       a                     D = a.a;
 //    private final BluetoothGattCallback E = new BluetoothGattCallback()
 //    {
 //        public void onCharacteristicChanged(BluetoothGatt paramBluetoothGatt, BluetoothGattCharacteristic paramBluetoothGattCharacteristic)
 //        {
-//            if (RideManager.getUrl().u())
+//           // if (RideManager.a().u())
 //            {
-//                BluetoothService.b(BluetoothService.this).postDelayed(b.getUrl(this, paramBluetoothGattCharacteristic), 0L);
+//                BluetoothService.b(BluetoothService.this).postDelayed(b.a(this, paramBluetoothGattCharacteristic), 0L);
 //                return;
 //            }
-//            BluetoothService.getUrl(BluetoothService.this, "com.mobike.ACTION_DATA_AVAILABLE", paramBluetoothGattCharacteristic);
+//            BluetoothService.a(BluetoothService.this, "com.mobike.ACTION_DATA_AVAILABLE", paramBluetoothGattCharacteristic);
 //        }
 //
 //        public void onCharacteristicRead(BluetoothGatt paramBluetoothGatt, BluetoothGattCharacteristic paramBluetoothGattCharacteristic, int paramInt)
 //        {
 //            if (paramInt == 0)
-//                BluetoothService.getUrl(BluetoothService.this, "com.mobike.ACTION_DATA_AVAILABLE", paramBluetoothGattCharacteristic);
+//                BluetoothService.a(BluetoothService.this, "com.mobike.ACTION_DATA_AVAILABLE", paramBluetoothGattCharacteristic);
 //        }
 //
 //        public void onCharacteristicWrite(BluetoothGatt paramBluetoothGatt, BluetoothGattCharacteristic paramBluetoothGattCharacteristic, int paramInt)
@@ -75,8 +75,8 @@
 //            if (paramInt == 0)
 //            {
 //                if (BluetoothService.this.c)
-//                    RideManager.getUrl().b(false);
-//                BluetoothService.getUrl(BluetoothService.this, "com.mobike.ACTION_DATA_WRITE_DONE");
+//                //    RideManager.a().b(false);
+//                BluetoothService.a(BluetoothService.this, "com.mobike.ACTION_DATA_WRITE_DONE");
 //            }
 //        }
 //
@@ -84,22 +84,22 @@
 //        {
 //            if (paramInt2 == 2)
 //            {
-//                BluetoothService.getUrl(BluetoothService.this, BluetoothService.getUrl.c);
-//                BluetoothService.getUrl(BluetoothService.this, "com.mobike.ACTION_GATT_CONNECTED");
-//                BluetoothService.getUrl(BluetoothService.this).discoverServices();
+//                BluetoothService.a(BluetoothService.this, BluetoothService.a.c);
+//                BluetoothService.a(BluetoothService.this, "com.mobike.ACTION_GATT_CONNECTED");
+//                BluetoothService.a(BluetoothService.this).discoverServices();
 //            }
 //            do
 //                return;
 //            while (paramInt2 != 0);
-//            BluetoothService.getUrl(BluetoothService.this, BluetoothService.getUrl.getUrl);
-//            RideManager.getUrl().C();
-//            BluetoothService.getUrl(BluetoothService.this, "com.mobike.ACTION_GATT_DISCONNECTED");
+//            BluetoothService.a(BluetoothService.this, BluetoothService.a.a);
+//            //RideManager.a().C();
+//            BluetoothService.a(BluetoothService.this, "com.mobike.ACTION_GATT_DISCONNECTED");
 //        }
 //
 //        public void onDescriptorWrite(BluetoothGatt paramBluetoothGatt, BluetoothGattDescriptor paramBluetoothGattDescriptor, int paramInt)
 //        {
 //            if (paramInt == 0)
-//                BluetoothService.getUrl(BluetoothService.this, "com.mobike.ACTION_GATT_SERVICES_DISCOVERED");
+//                BluetoothService.a(BluetoothService.this, "com.mobike.ACTION_GATT_SERVICES_DISCOVERED");
 //        }
 //
 //        public void onServicesDiscovered(BluetoothGatt paramBluetoothGatt, int paramInt)
@@ -109,12 +109,12 @@
 //        }
 //    };
 //    public        boolean               c = false;
-//    private final String                w = BluetoothService.class.getSimpleName();
-//    private final Handler               x = new Handler();
-//    private final IBinder               y = new b();
+//    private final String                TAG = BluetoothService.class.getSimpleName();
+//    private final Handler               mHandler = new Handler();
+//    private final IBinder               y = new MyBinder();
 //    private BluetoothManager z;
 //
-//    private void getUrl(String paramString, BluetoothGattCharacteristic paramBluetoothGattCharacteristic)
+//    private void a(String paramString, BluetoothGattCharacteristic paramBluetoothGattCharacteristic)
 //    {
 //        Intent localIntent = new Intent(paramString);
 //        if (u.equals(paramBluetoothGattCharacteristic.getUuid()))
@@ -128,13 +128,13 @@
 //        LocalBroadcastManager.getInstance(this).sendBroadcast(localIntent);
 //    }
 //
-//    public void getUrl(boolean paramBoolean, BluetoothAdapter.LeScanCallback paramLeScanCallback)
+//    public void a(boolean paramBoolean, BluetoothAdapter.LeScanCallback paramLeScanCallback)
 //    {
 //        if (this.A != null)
 //        {
 //            if (paramBoolean)
 //            {
-//                this.x.postDelayed(getUrl.getUrl(this, paramLeScanCallback), 5000L);
+//                this.mHandler.postDelayed(a.a(this, paramLeScanCallback), 5000L);
 //                this.A.startLeScan(paramLeScanCallback);
 //            }
 //        }
@@ -143,7 +143,7 @@
 //        this.A.stopLeScan(paramLeScanCallback);
 //    }
 //
-//    public boolean getUrl()
+//    public boolean a()
 //    {
 //        if (this.z == null)
 //        {
@@ -155,7 +155,7 @@
 //        return true;
 //    }
 //
-//    public boolean getUrl(String paramString)
+//    public boolean a(String paramString)
 //    {
 //        if ((this.A == null) || (TextUtils.isEmpty(paramString)))
 //            return false;
@@ -163,7 +163,7 @@
 //        {
 //            if (this.C.connect())
 //            {
-//                this.D = getUrl.b;
+//                this.D = a.b;
 //                return true;
 //            }
 //            return false;
@@ -171,16 +171,16 @@
 //        BluetoothDevice localBluetoothDevice = this.A.getRemoteDevice(paramString);
 //        if (localBluetoothDevice == null)
 //        {
-//            MobclickAgent.c(this, "01001");
+//           // MobclickAgent.c(this, "01001");
 //            return false;
 //        }
 //        this.C = localBluetoothDevice.connectGatt(this, false, this.E);
 //        this.B = paramString;
-//        this.D = getUrl.b;
+//        this.D = a.b;
 //        return true;
 //    }
 //
-//    public boolean getUrl(byte[] paramArrayOfByte)
+//    public boolean a(byte[] paramArrayOfByte)
 //    {
 //        BluetoothGattService localBluetoothGattService = this.C.getService(s);
 //        if (localBluetoothGattService == null)
@@ -246,26 +246,26 @@
 //        return super.onUnbind(paramIntent);
 //    }
 //
-//    private static enum getUrl
+//    private static enum a
 //    {
-//        getUrl,b,c;
+//        a,b,c;
 ////        static
 ////        {
-////            getUrl[] arrayOfa = new getUrl[3];
-////            arrayOfa[0] = getUrl;
+////            a[] arrayOfa = new a[3];
+////            arrayOfa[0] = a;
 ////            arrayOfa[1] = b;
 ////            arrayOfa[2] = c;
 ////            d = arrayOfa;
 ////        }
 //    }
 //
-//    public class b extends Binder
+//    public class MyBinder extends Binder//b
 //    {
-//        public b()
+//        public MyBinder()
 //        {
 //        }
 //
-//        public BluetoothService getUrl()
+//        public BluetoothService getBluetoothService()//a
 //        {
 //            return BluetoothService.this;
 //        }

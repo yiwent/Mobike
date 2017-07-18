@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.andexert.library.RippleView;
 import com.yiwen.mobike.R;
 
 
@@ -36,6 +37,7 @@ public class MyToolBar extends Toolbar {
     private Drawable       left_button_icon;
     private Drawable       right_button_icon;
     private String         title;
+    private RippleView     mLRippleView, mRRippleView;
 
 
     public MyToolBar(Context context) {
@@ -69,18 +71,34 @@ public class MyToolBar extends Toolbar {
     }
 
     private void initListener() {
-        toolbar_leftButton.setOnClickListener(new OnClickListener() {
+//        toolbar_leftButton.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (onLeftButtonClickListener != null) {
+//                    onLeftButtonClickListener.onClick();
+//                }
+//            }
+//        });
+//
+//        toolbar_rightButton.setOnClickListener(new OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (onRightButtonClickListener != null) {
+//                    onRightButtonClickListener.onClick();
+//                }
+//            }
+//        });
+        mLRippleView.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
             @Override
-            public void onClick(View v) {
+            public void onComplete(RippleView rippleView) {
                 if (onLeftButtonClickListener != null) {
                     onLeftButtonClickListener.onClick();
                 }
             }
         });
-
-        toolbar_rightButton.setOnClickListener(new OnClickListener() {
+        mRRippleView.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
             @Override
-            public void onClick(View v) {
+            public void onComplete(RippleView rippleView) {
                 if (onRightButtonClickListener != null) {
                     onRightButtonClickListener.onClick();
                 }
@@ -137,6 +155,8 @@ public class MyToolBar extends Toolbar {
         if (mView == null) {
             mInflater = LayoutInflater.from(getContext());
             mView = mInflater.inflate(R.layout.toolbar, null);
+            mLRippleView = (RippleView) mView.findViewById(R.id.more);
+            mRRippleView = (RippleView) mView.findViewById(R.id.more1);
             toolbar_rightButton = (ImageView) mView.findViewById(R.id.id_btn_right);
             toolbar_title = (TextView) mView.findViewById(R.id.id_tv_title);
             toolbar_searchview = (EditText) mView.findViewById(R.id.id_et_search);

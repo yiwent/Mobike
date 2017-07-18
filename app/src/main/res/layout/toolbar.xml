@@ -1,19 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-                android:minHeight="?attr/actionBarSize"
-              android:layout_height="wrap_content">
-    <ImageButton
-        android:id="@+id/id_ib_navigation"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="?attr/actionBarSize">
+
+    <com.andexert.library.RippleView
+        android:id="@+id/more"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="1dp"
-        android:minWidth="0dp"
-        style="@android:style/Widget.Material.Toolbar.Button.Navigation"
-        android:scaleType="centerInside"
-        android:visibility="gone"/>
+        android:layout_margin="5dp"
+        app:rv_centered="true"
+        app:rv_rippleDuration="150"
+        app:rv_type="simpleRipple"
+        >
+
+        <ImageButton
+            android:id="@+id/id_ib_navigation"
+            style="@android:style/Widget.Material.Toolbar.Button.Navigation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:gravity="center"
+            android:minWidth="0dp"
+            android:scaleType="centerInside"
+            android:visibility="gone"/>
+    </com.andexert.library.RippleView>
 
     <EditText
         android:id="@+id/id_et_search"
@@ -39,15 +53,24 @@
         android:textSize="20sp"
         android:visibility="gone"
         />
-
+    <com.andexert.library.RippleView
+        android:id="@+id/more1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="5dp"
+        app:rv_centered="true"
+        app:rv_rippleDuration="150"
+        app:rv_type="simpleRipple"
+        >
     <ImageView
         android:id="@+id/id_btn_right"
         style="@android:style/Widget.Material.Toolbar.Button.Navigation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
+        android:gravity="center"
         android:visibility="gone"
         />
-
+    </com.andexert.library.RippleView>
 </RelativeLayout>

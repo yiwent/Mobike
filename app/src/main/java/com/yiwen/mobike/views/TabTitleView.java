@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.andexert.library.RippleView;
 import com.yiwen.mobike.R;
 
 /**
@@ -27,6 +28,7 @@ public class TabTitleView extends RelativeLayout {
     private Drawable left_ImagViewDrawble;
 
     private Boolean showRightTextView = false;
+    private RippleView mLRippleView, mRRippleView;
 
     public TabTitleView(Context context) {
         this(context, null);
@@ -48,10 +50,10 @@ public class TabTitleView extends RelativeLayout {
         if (attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TabTitleView, defStyleAttr, defStyleRes);
             left_ImagViewDrawble = a.getDrawable(R.styleable.TabTitleView_leftImageIcon);
-            if (left_ImagViewDrawble == null){
-                left_ImagViewDrawble = getResources().getDrawable(R.drawable.up_arrow, null);}
-            else {
-            setleft_ImagViewDrawable(left_ImagViewDrawble);
+            if (left_ImagViewDrawble == null) {
+                left_ImagViewDrawble = getResources().getDrawable(R.drawable.up_arrow, null);
+            } else {
+                setleft_ImagViewDrawable(left_ImagViewDrawble);
             }
             showRightTextView = a.getBoolean(R.styleable.TabTitleView_showRightTextView, false);
             if (showRightTextView) {
@@ -79,18 +81,34 @@ public class TabTitleView extends RelativeLayout {
     }
 
     private void initListener() {
-        mLeftButton.setOnClickListener(new OnClickListener() {
+        //                mLeftButton.setOnClickListener(new OnClickListener() {
+        //                    @Override
+        //                    public void onClick(View v) {
+        //                        if (onLeftButtonClickListener != null) {
+        //                            onLeftButtonClickListener.onClick();
+        //                        }
+        //                    }
+        //                });
+        //
+        //                mRightTextView.setOnClickListener(new OnClickListener() {
+        //                    @Override
+        //                    public void onClick(View v) {
+        //                        if (onRightTextViewClickListener != null) {
+        //                            onRightTextViewClickListener.onClick();
+        //                        }
+        //                    }
+        //                });
+        mLRippleView.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
             @Override
-            public void onClick(View v) {
+            public void onComplete(RippleView rippleView) {
                 if (onLeftButtonClickListener != null) {
                     onLeftButtonClickListener.onClick();
                 }
             }
         });
-
-        mRightTextView.setOnClickListener(new OnClickListener() {
+        mRRippleView.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
             @Override
-            public void onClick(View v) {
+            public void onComplete(RippleView rippleView) {
                 if (onRightTextViewClickListener != null) {
                     onRightTextViewClickListener.onClick();
                 }
@@ -113,10 +131,12 @@ public class TabTitleView extends RelativeLayout {
         if (mTitleTextView != null)
             mTitleTextView.setText(titletext);//CharSequence
     }
+
     public void setTitleText(CharSequence titletext) {
         if (mTitleTextView != null)
             mTitleTextView.setText(titletext);//CharSequence
     }
+
     public void setRigtTvVisiable(int visiable) {
         if (mRightTextView != null)
             mRightTextView.setVisibility(visiable);
@@ -131,8 +151,10 @@ public class TabTitleView extends RelativeLayout {
     private void initView() {
         View view = mInflater.inflate(R.layout.tab_title, this, true);
         mTitleTextView = (TextView) view.findViewById(R.id.tv_tab_title);
-        mLeftButton = (ImageView) findViewById(R.id.iv_tab_left);
-        mRightTextView = (TextView) findViewById(R.id.tv_tab_ringht);
+        mLeftButton = (ImageView) view.findViewById(R.id.iv_tab_left);
+        mRightTextView = (TextView) view.findViewById(R.id.tv_tab_ringht);
+        mLRippleView = (RippleView) view.findViewById(R.id.more);
+        mRRippleView = (RippleView) view.findViewById(R.id.more1);
     }
 
     public interface OnLeftButtonClickListener {

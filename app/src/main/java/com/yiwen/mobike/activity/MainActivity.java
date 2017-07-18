@@ -35,6 +35,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.andexert.library.RippleView;
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
@@ -157,6 +158,12 @@ public class MainActivity extends AppCompatActivity implements OnGetRoutePlanRes
     LinearLayout   mLoBikeInfo;
     @BindView(R.id.confirm_cancel_layout)
     LinearLayout   mConfirm_cancle;
+    @BindView(R.id.rv_ic_menu)
+    RippleView     mRvicNemu;
+    @BindView(R.id.rv_ic_search)
+    RippleView     mRvicSearch;
+    @BindView(R.id.rv_ic_message)
+    RippleView     mRvicMessage;
     @BindView(R.id.tv_prices1)
     TextView       mTvPrices1;//价格
     @BindView(R.id.tv_distance1)
@@ -451,6 +458,24 @@ public class MainActivity extends AppCompatActivity implements OnGetRoutePlanRes
     private void initEvent() {
 
         initGPS();//检测GPS开启
+        mRvicNemu.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            @Override
+            public void onComplete(RippleView rippleView) {
+                Go2otherActivityAndChackLogin(UserActivity.class);
+            }
+        });
+        mRvicMessage.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            @Override
+            public void onComplete(RippleView rippleView) {
+                startActivity(new Intent(MainActivity.this, MyMessagesActivity.class));
+            }
+        });
+        mRvicSearch.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            @Override
+            public void onComplete(RippleView rippleView) {
+                Go2Seach();
+            }
+        });
     }
 
     private void initData() {
@@ -658,15 +683,15 @@ public class MainActivity extends AppCompatActivity implements OnGetRoutePlanRes
             R.id.kefu, R.id.hongbao, R.id.scan_qrcode, R.id.bt_loginOrorder, R.id.cancel_book, R.id.bike_sound})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.ic_menu:
-                Go2otherActivityAndChackLogin(UserActivity.class);
-                break;
-            case R.id.ic_search:
-                Go2Seach();
-                break;
-            case R.id.ic_message:
-                startActivity(new Intent(MainActivity.this, MyMessagesActivity.class));
-                break;
+            //            case R.id.ic_menu:
+            //               // Go2otherActivityAndChackLogin(UserActivity.class);
+            //                break;
+            //            case R.id.ic_search:
+            //             //   Go2Seach();
+            //                break;
+            //            case R.id.ic_message:
+            //               // startActivity(new Intent(MainActivity.this, MyMessagesActivity.class));
+            //                break;
             case R.id.tv_allmobike:
                 selectAllMobike();
                 break;

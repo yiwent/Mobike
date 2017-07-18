@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.andexert.library.RippleView;
 import com.baidu.location.BDLocation;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.search.sug.OnGetSuggestionResultListener;
@@ -45,8 +46,10 @@ public class ActionSearchActivity extends AppCompatActivity implements
 
     @BindView(R.id.et_action_search)
     ClearEditText mEtActionSearch;
+    @BindView(R.id.rv_tv_search_cancel)
+    RippleView      mRvSearchCancel;
     @BindView(R.id.tv_search_cancel)
-    TextView      mTvSearchCancel;
+    TextView    mTvSearchCancel;
     @BindView(R.id.tv_actionsech_mylotion)
     TextView      mTvActionsechMylotion;
     @BindView(R.id.recyclerview_poi_history)
@@ -98,7 +101,12 @@ public class ActionSearchActivity extends AppCompatActivity implements
     }
 
     private void initEvent() {
-
+        mRvSearchCancel.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
+            @Override
+            public void onComplete(RippleView rippleView) {
+                finish();
+            }
+        });
     }
 
     private void initData() {
@@ -178,9 +186,9 @@ public class ActionSearchActivity extends AppCompatActivity implements
     @OnClick({R.id.tv_search_cancel, R.id.new_first_address, R.id.new_second_address})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.tv_search_cancel:
-                ActionSearchActivity.this.finish();
-                break;
+//            case R.id.tv_search_cancel:
+//                ActionSearchActivity.this.finish();
+//                break;
             case R.id.new_first_address:
                 if (first != null)
                     getLocation(first);
