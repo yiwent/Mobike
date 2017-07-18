@@ -227,7 +227,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="8dp"
-                android:background="@drawable/scan_unlock"
+                android:background="@drawable/scan_unlock_button"
                 android:clickable="true"
                 android:gravity="center"
                 android:orientation="horizontal">
