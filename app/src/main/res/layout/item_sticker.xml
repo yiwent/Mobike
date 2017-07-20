@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:background="@drawable/setting_bg"
+                android:layout_margin="7dp">
+
+    <ImageView
+        android:id="@+id/id_iv_sticker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:padding="8dp"
+        android:src="@drawable/mobike_logo"/>
+
+    <TextView
+        android:id="@+id/id_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/id_iv_sticker"
+        android:text="骑膜拜，有惊喜"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/id_tv_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id_tv_title"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@+id/id_iv_sticker"
+        android:text="已有1000人集齐"
+        android:textColor="@color/smssdk_gray"/>
+
+    <ImageView
+        android:id="@+id/id_iv_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:padding="8dp"
+        android:src="@drawable/list_item_indicator"/>
+
+</RelativeLayout>

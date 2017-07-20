@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.usercenter.StickerCollectionActivity">
+
+    <com.yiwen.mobike.views.TabTitleView
+        android:id="@+id/title_sticker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        app:rightText="申请活动"
+        app:showRightTextView="true"
+        app:titleText="我的贴纸"/>
+
+    <com.yiwen.mobike.views.NonFocusingScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_sticker">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.yiwent.physicslayoutlib.PhysicsFrameLayout
+                android:id="@+id/physics_layout"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                app:bounds="true"
+                app:boundsSize="50dp"
+                app:gravityX="0.0"
+                app:gravityY="9.8"
+                app:physics="true">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorPrimary"
+                    android:gravity="center"
+                    android:text="骑膜拜有惊喜，开箱会上瘾"
+                    android:textColor="@color/white"/>
+            </com.yiwent.physicslayoutlib.PhysicsFrameLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="贴纸图鉴"
+                android:textColor="@color/black"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/id_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+
+    </com.yiwen.mobike.views.NonFocusingScrollView>
+
+</LinearLayout>

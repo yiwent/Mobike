@@ -15,7 +15,7 @@
         android:layout_centerVertical="true"
         android:layout_margin="5dp"
         app:rv_centered="true"
-        app:rv_rippleDuration="150"
+        app:rv_rippleDuration="80"
         app:rv_type="simpleRipple"
         >
         <ImageView
@@ -47,7 +47,7 @@
         android:layout_centerVertical="true"
         android:layout_margin="5dp"
         app:rv_centered="true"
-        app:rv_rippleDuration="150"
+        app:rv_rippleDuration="80"
         app:rv_type="simpleRipple"
         >
 

@@ -22,7 +22,7 @@
             android:layout_margin="5dp"
             android:layout_marginLeft="9dp"
             app:rv_centered="true"
-            app:rv_rippleDuration="150"
+            app:rv_rippleDuration="80"
             app:rv_type="simpleRipple"
             >
 
@@ -49,7 +49,7 @@
             android:layout_marginRight="9dp"
             android:layout_toLeftOf="@+id/rv_ic_message"
             app:rv_centered="true"
-            app:rv_rippleDuration="150"
+            app:rv_rippleDuration="80"
             app:rv_type="simpleRipple"
             >
 
@@ -69,7 +69,7 @@
             android:layout_centerVertical="true"
             android:layout_marginRight="9dp"
             app:rv_centered="true"
-            app:rv_rippleDuration="150"
+            app:rv_rippleDuration="80"
             app:rv_type="simpleRipple"
             >
 
@@ -138,13 +138,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.baidu.mapapi.map.MapView
+        <com.baidu.mapapi.map.TextureMapView
             android:id="@+id/bmapview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clickable="true">
 
-        </com.baidu.mapapi.map.MapView>
+        </com.baidu.mapapi.map.TextureMapView>
 
         <RelativeLayout
             android:layout_width="match_parent"

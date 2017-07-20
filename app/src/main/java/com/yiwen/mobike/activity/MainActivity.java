@@ -48,12 +48,12 @@ import com.baidu.mapapi.map.InfoWindow;
 import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
-import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.OverlayOptions;
+import com.baidu.mapapi.map.TextureMapView;
 import com.baidu.mapapi.model.LatLng;
 import com.baidu.mapapi.search.core.RouteLine;
 import com.baidu.mapapi.search.core.SearchResult;
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements OnGetRoutePlanRes
     @BindView(R.id.layout_selectmobike)
     LinearLayout   mLayoutSelectmobike;//单车类型布局
     @BindView(R.id.bmapview)
-    MapView        mBaiduMap;//mBaiduMap
+    TextureMapView mBaiduMap;//mBaiduMap
     @BindView(R.id.id_bt_login)
     Button         mLogin;//login
     @BindView(R.id.dingwei)

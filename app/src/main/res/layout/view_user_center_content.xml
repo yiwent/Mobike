@@ -39,6 +39,14 @@
         app:showRightTv="true"/>
 
     <include layout="@layout/divider"/>
+    <com.yiwen.mobike.views.MySettingView
+        android:id="@+id/tv_my_stickers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:leftTvText="我的贴纸"
+        />
+
+    <include layout="@layout/divider"/>
 
     <com.yiwen.mobike.views.MySettingView
         android:id="@+id/tv_my_distance"

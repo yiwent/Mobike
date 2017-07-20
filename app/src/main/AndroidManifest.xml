@@ -246,6 +246,8 @@
         </activity>
         <activity android:name=".activity.usercenter.ContestNegativeRecordActivity">
         </activity>
+        <activity android:name=".activity.usercenter.StickerCollectionActivity">
+        </activity>
     </application>
 
 </manifest>

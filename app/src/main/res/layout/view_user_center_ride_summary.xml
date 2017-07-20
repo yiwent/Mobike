@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
               android:id="@+id/id_lo_ride_summary"
+              android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:paddingTop="10dp"
+              android:orientation="horizontal"
               android:paddingBottom="10dp"
-              android:orientation="horizontal">
+              android:paddingTop="10dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -15,15 +16,16 @@
         android:orientation="vertical"
         android:src="@drawable/text_cursor_line">
 
-        <com.yiwen.mobike.views.NumberAnimTextView
+        <com.yiwent.viewlib.ShiftyTextview
             android:id="@+id/tv_ride"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:maxLines="1"
-            android:text="0"
             android:textColor="@color/red"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            app:duration="1000"
+            app:runWhenChange="true"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,7 +33,6 @@
             android:layout_marginTop="5dp"
             android:text="累计骑行（公里）"
             android:textColor="@color/smssdk_gray"
-
             android:textSize="10sp"/>
     </LinearLayout>
 
@@ -45,15 +46,16 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <com.yiwen.mobike.views.NumberAnimTextView
+        <com.yiwent.viewlib.ShiftyTextview
             android:id="@+id/tv_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:maxLines="1"
-            android:text="0"
             android:textColor="@color/red"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            app:duration="1000"
+            app:runWhenChange="true"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -74,15 +76,16 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <com.yiwen.mobike.views.NumberAnimTextView
+        <com.yiwent.viewlib.ShiftyTextview
             android:id="@+id/tv_kaluli"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:maxLines="1"
-            android:text="0"
             android:textColor="@color/red"
-            android:textSize="20sp"/>
+            android:textSize="20sp"
+            app:duration="1000"
+            app:runWhenChange="true"/>
 
         <TextView
             android:layout_width="wrap_content"

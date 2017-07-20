@@ -20,9 +20,11 @@ import com.yiwen.mobike.bean.MyCouponsData;
 import com.yiwen.mobike.bean.MyUser;
 import com.yiwen.mobike.bean.RideSummary;
 import com.yiwen.mobike.utils.CommonUtils;
+import com.yiwen.mobike.utils.JSONUtil;
+import com.yiwen.mobike.utils.PreferencesUtils;
 import com.yiwen.mobike.views.MySettingView;
 import com.yiwen.mobike.views.MyToolBar;
-import com.yiwen.mobike.views.NumberAnimTextView;
+import com.yiwent.viewlib.ShiftyTextview;
 
 import java.util.List;
 
@@ -38,7 +40,9 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserActivity extends AppCompatActivity {
 
-    private static final String TAG ="UserActivity" ;
+    private static final String TAG         = "UserActivity";
+    private static final String RIDESUMMARY = "RideSummary";
+    private static final String CREDIT      = "Credit";
     @BindView(R.id.iv_avatar)
     CircleImageView         mIvAvatar;
     @BindView(R.id.tv_nick)
@@ -46,15 +50,17 @@ public class UserActivity extends AppCompatActivity {
     @BindView(R.id.tv_credit)
     TextView                mTvCredit;
     @BindView(R.id.tv_ride)
-    NumberAnimTextView      mTvRide;
+    ShiftyTextview          mTvRide;
     @BindView(R.id.tv_save)
-    NumberAnimTextView      mTvSave;
+    ShiftyTextview          mTvSave;
     @BindView(R.id.tv_kaluli)
-    NumberAnimTextView      mTvKaluli;
+    ShiftyTextview          mTvKaluli;
     @BindView(R.id.tv_my_money)
     MySettingView           mTvMyMoney;
     @BindView(R.id.tv_my_youhui)
     MySettingView           mTvMyYouhui;
+    @BindView(R.id.tv_my_stickers)
+    MySettingView           mTvMyStickers;
     @BindView(R.id.tv_my_distance)
     MySettingView           mTvMyDistance;
     @BindView(R.id.tv_my_mymassege)
@@ -64,7 +70,7 @@ public class UserActivity extends AppCompatActivity {
     @BindView(R.id.tv_my_guide)
     MySettingView           mTvMyGuide;
     @BindView(R.id.tv_my_setting)
-    MySettingView           mTvMysetting;
+    MySettingView           mTvMysetting;//tv_my_stickers
     @BindView(R.id.toolbar_use)
     MyToolBar               mToolbar_use;
     @BindView(R.id.collapsinglayout)
@@ -102,20 +108,67 @@ public class UserActivity extends AppCompatActivity {
 
     private void initView() {
         initToolbar();
-        if (!CommonUtils.isNetworkAvailable(getApplication())){
+        if (!CommonUtils.isNetworkAvailable(getApplication())) {
             mTvNetfail.setVisibility(View.VISIBLE);
             mLoRideSummary.setVisibility(View.GONE);
         }
         myUser = MyApplication.getInstance().getUser();
-        if (myUser != null){
-            if (myUser.getPicUser()!=null){
-            Glide.with(this)
-                    .load(myUser.getPicUser().getUrl())
-                    .error(getResources().getDrawable(R.drawable.avatar_default_login))
-                    .into(mIvAvatar);
+        if (myUser != null) {
+            if (myUser.getPicUser() != null) {
+                Glide.with(this)
+                        .load(myUser.getPicUser().getUrl())
+                        .error(getResources().getDrawable(R.drawable.avatar_default_login))
+                        .into(mIvAvatar);
             }
             mTvNickNmane.setText(myUser.getNickName());
-            mTvMyMoney.setRigtTvText(myUser.getMoney()+"元");
+            mTvMyMoney.setRigtTvText(myUser.getMoney() + "元");
+        }
+        requestRideSummary();
+        requestCredit();
+        requestMyCouponsData();
+    }
+
+    private void requestMyCouponsData() {
+        BmobQuery<MyCouponsData> count = new BmobQuery<MyCouponsData>();
+        count.addWhereEqualTo("mMyUser", myUser);
+        count.count(MyCouponsData.class, new CountListener() {
+            @Override
+            public void done(Integer integer, BmobException e) {
+                if (e == null && integer != 0) {
+                    mTvMyYouhui.setRigtTvText(integer + "张");
+                } else {
+                    mTvMyYouhui.setRigtTvText("");
+                    Log.d(TAG, "done:MyCouponsData " + e);
+                }
+            }
+        });
+    }
+
+    private void requestCredit() {
+        BmobQuery<Credit> credit = new BmobQuery<Credit>();
+        credit.addWhereEqualTo("mMyUser", myUser);
+        credit.setLimit(1);
+        credit.findObjects(new FindListener<Credit>() {
+            @Override
+            public void done(List<Credit> list, BmobException e) {
+                if (e == null && list != null) {
+                    Credit cr = list.get(0);
+                    mTvCredit.setText("信用积分" + cr.getCreditNub() + "");
+                } else {
+                    Log.d(TAG, "done: Credit" + e);
+                    mTvCredit.setText("信用积");
+                }
+            }
+        });
+    }
+
+    private void requestRideSummary() {
+        if (PreferencesUtils.getString(this, RIDESUMMARY, null) != null) {
+            RideSummary rideSummary = JSONUtil.fromJson(PreferencesUtils.
+                    getString(this, RIDESUMMARY, null), RideSummary.class);
+            mTvRide.setNumberString(rideSummary.getRide());
+            mTvSave.setNumberString(rideSummary.getSave());
+            mTvKaluli.setNumberString(rideSummary.getKaluli());
         }
         BmobQuery<RideSummary> query = new BmobQuery<RideSummary>();
         query.addWhereEqualTo("mMyUser", myUser);
@@ -123,49 +176,21 @@ public class UserActivity extends AppCompatActivity {
         query.findObjects(new FindListener<RideSummary>() {
             @Override
             public void done(List<RideSummary> list, BmobException e) {
-                if (e == null&&list!=null) {
-                    RideSummary rideSummary=list.get(0);
+                if (e == null && list != null) {
+                    RideSummary rideSummary = list.get(0);
                     mTvRide.setNumberString(rideSummary.getRide());
                     mTvSave.setNumberString(rideSummary.getSave());
                     mTvKaluli.setNumberString(rideSummary.getKaluli());
+                    PreferencesUtils.putString(UserActivity.this,
+                            RIDESUMMARY, JSONUtil.toJSON(rideSummary));
                 } else {
-                    Log.d(TAG, "done: RideSummary"+e);
+                    Log.d(TAG, "done: RideSummary" + e);
                     mTvRide.setNumberString("0");
                     mTvSave.setNumberString("0");
                     mTvKaluli.setNumberString("0");
                 }
             }
         });
-        BmobQuery<Credit> credit = new BmobQuery<Credit>();
-        credit.addWhereEqualTo("mMyUser", myUser);
-        credit.setLimit(1);
-        credit.findObjects(new FindListener<Credit>() {
-            @Override
-            public void done(List<Credit> list, BmobException e) {
-                if (e == null&&list!=null) {
-                    Credit cr=list.get(0);
-                   mTvCredit.setText("信用积分"+cr.getCreditNub()+"");
-                } else {
-                    Log.d(TAG, "done: Credit"+e);
-                    mTvCredit.setText("信用积0");
-                }
-            }
-        });
-        BmobQuery<MyCouponsData> count = new BmobQuery<MyCouponsData>();
-        count.addWhereEqualTo("mMyUser", myUser);
-        count.count(MyCouponsData.class, new CountListener() {
-            @Override
-            public void done(Integer integer, BmobException e) {
-                if (e==null&&integer!=0){
-                    mTvMyYouhui.setRigtTvText(integer+"张");
-                }else {
-                    mTvMyYouhui.setRigtTvText("");
-                    Log.d(TAG, "done:MyCouponsData "+e);
-                }
-            }
-        });
-
-
     }
 
     private void initToolbar() {
@@ -182,8 +207,8 @@ public class UserActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.iv_avatar, R.id.tv_credit, R.id.tv_my_money, R.id.tv_my_youhui,
-            R.id.tv_my_distance, R.id.tv_my_mymassege, R.id.tv_my_invent,
-            R.id.tv_my_guide,R.id.tv_my_setting})
+            R.id.tv_my_stickers, R.id.tv_my_distance, R.id.tv_my_mymassege,
+            R.id.tv_my_invent, R.id.tv_my_guide, R.id.tv_my_setting})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_avatar:
@@ -197,6 +222,9 @@ public class UserActivity extends AppCompatActivity {
                 break;
             case R.id.tv_my_youhui:
                 Go2Activity(MyCouponsActivity.class);
+                break;
+            case R.id.tv_my_stickers:
+               // Go2Activity(StickerCollectionActivity.class);
                 break;
             case R.id.tv_my_distance:
                 Go2Activity(MyTripsActivity.class);
@@ -217,15 +245,15 @@ public class UserActivity extends AppCompatActivity {
     }
 
     private void Go2Activity(Class c) {
-        Intent intent=new Intent(UserActivity.this,c);
+        Intent intent = new Intent(UserActivity.this, c);
         startActivity(intent);
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        myUser= MyApplication.getInstance().getUser();
-        if (myUser==null){
+        myUser = MyApplication.getInstance().getUser();
+        if (myUser == null) {
             startActivity(new Intent(UserActivity.this, LoginActivity.class));
             finish();
         }
