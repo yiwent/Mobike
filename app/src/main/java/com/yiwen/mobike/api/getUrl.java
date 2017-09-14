@@ -9,7 +9,7 @@ public class getUrl {
     public static boolean c = false;
     public static boolean d = true;
 
-    public static String a(String addUrl)//getUrl
+    public static String getUrl(String addUrl)//a
     {
         String protocol = null;
         if (d)
@@ -42,7 +42,7 @@ public class getUrl {
         return "api.mobike.com/mobike-api";
     }
 
-    //  public static abstract interface getUrl
+    //  public static abstract interface a
     //  {
     //    public static final int A = 350;
     //    public static final int B = 404;
@@ -54,7 +54,7 @@ public class getUrl {
     //    public static final int H = 548;
     //    public static final int I = 600;
     //    public static final int J = 601;
-    //    public static final int getUrl = 0;
+    //    public static final int a = 0;
     //    public static final int b = 0;
     //    public static final int c = 200;
     //    public static final int d = 201;

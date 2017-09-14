@@ -69,7 +69,7 @@ public class BuidUrl {
     {
         if (paramRequestParams != null)
             try {
-                // paramRequestParams = new RequestParams();
+                paramRequestParams = new RequestParams();
                 //if (GeoRange.inCHINA());
                 for (String str = "0"; ; str = "1") {
                     paramRequestParams.add("countryid", str);

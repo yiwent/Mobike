@@ -447,7 +447,7 @@ public class CaptureActivity extends Activity implements Callback {
      * yiwen add
      * @param context
      * @param isOnlyNub
-     * @return
+     * @return Intent
      */
 
     public static Intent getMyIntent(Context context, boolean isOnlyNub) {
