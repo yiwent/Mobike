@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 android {
+    signingConfigs {
+        release {
+            keyAlias 'yiwen'
+            keyPassword '541051236'
+            storeFile file('../mobike.jks')
+            storePassword '541051236'
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
     aaptOptions {
@@ -90,7 +98,7 @@ dependencies {
     compile 'com.github.yiwent:PhysicsLayout:1.1.1'
     compile 'com.github.yiwent:ShiftyTextview:1.1.0'
     compile 'com.tencent.bugly:crashreport:2.6.5'
-    compile 'com.tencent.bugly:nativecrashreport:3.3.0'
+    compile 'com.tencent.bugly:nativecrashreport:3.3.1'
     //compile 'com.umeng.analytics:analytics:latest.integration'
     testCompile 'junit:junit:4.12'
     apt 'com.jakewharton:butterknife-compiler:8.4.0'

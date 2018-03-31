@@ -109,7 +109,7 @@ public class CustomerServiceWebActivity extends AppCompatActivity {
         }
         for (String str1 = "0"; ; str1 = "1") {
             localBuilder.appendQueryParameter("countryid", str1).
-                    appendQueryParameter("belongid", "0");//String.valueOf(q.getUrl().g().id)
+                    appendQueryParameter("belongid", "0");//String.valueOf(q.a().g().id)
             Iterator localIterator = paramUri.getQueryParameterNames().iterator();
             while (localIterator.hasNext()) {
                 String str2 = (String) localIterator.next();

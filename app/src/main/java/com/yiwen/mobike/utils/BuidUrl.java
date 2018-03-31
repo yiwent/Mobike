@@ -33,7 +33,7 @@ public class BuidUrl {
 
     public static String getBase()//getUrl
     {
-        return "m.mobike.com/app/pages";
+        return "m2.mobike.com/app/pages";
     }
 
     /**

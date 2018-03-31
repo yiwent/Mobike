@@ -34,20 +34,32 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        sInstance = this;
+
+        initMyApplication();
+
+    }
+
+    private void initMyApplication() {
+        //tencent bugly
         CrashReport.initCrashReport(getApplicationContext(), "e1a62089c6", false);
+        //Fresco
         ImagePipelineConfig config = ImagePipelineConfig.newBuilder(this)
                 .setProgressiveJpegConfig(new SimpleProgressiveJpegConfig())
                 .build();
         Fresco.initialize(this, config);
+        //baidu map sdk
         SDKInitializer.initialize(this);
+        //Bmob
         Bmob.initialize(this, "b0cb494256d9b86fc931ca930a055b75");
+        //Logger
         Logger.addLogAdapter(new AndroidLogAdapter(){
             @Override
             public boolean isLoggable(int priority, String tag) {
                 return true;// TODO: 2017/6/5
             }
         });
-        sInstance = this;
+        //locail use data
         initUser();
     }
 
