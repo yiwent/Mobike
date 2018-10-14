@@ -1,5 +1,5 @@
 # Mobike
-非常火爆的膜拜单车APP（仿）， 仅提供学习
+膜拜单车APP（仿）， 仅提供学习
 #### 下载
 - apk下载地址：[点击下载](https://raw.githubusercontent.com/yiwent/Mobike/master/app-release.apk)
 
